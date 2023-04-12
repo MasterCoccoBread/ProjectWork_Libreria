@@ -8,13 +8,13 @@ public class Libro {
 	
 	private String descrizione;
 	
-	//private Genere genere;
+	private Genere genere;
 	
 	private double prezzo;
 	
 	private String immagine;
 
-	//private Autore autore;
+	private Autore autore;
 	
 	private String codiceIsbn;
 

@@ -1,9 +1,12 @@
 package it.corso.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,8 +17,37 @@ public class Prenotazione {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 
 	
-	// private Utente utente; 
-	// private Evento evento; 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_utente", referencedColumnName = "id")
+	private Anagrafica anagrafica; 
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_evento", referencedColumnName = "id")
+	private Evento evento;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Anagrafica getAnagrafica() {
+		return anagrafica;
+	}
+
+	public void setAnagrafica(Anagrafica anagrafica) {
+		this.anagrafica = anagrafica;
+	}
+
+	public Evento getEvento() {
+		return evento;
+	}
+
+	public void setEvento(Evento evento) {
+		this.evento = evento;
+	} 
 	
 	
 }

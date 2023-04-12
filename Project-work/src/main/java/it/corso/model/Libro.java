@@ -1,10 +1,13 @@
 package it.corso.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,6 +24,8 @@ public class Libro {
 	@Column(name = "descrizione")
 	private String descrizione;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_genere", referencedColumnName = "id")
 	private Genere genere;
 	
 	@Column(name = "prezzo")
@@ -29,6 +34,8 @@ public class Libro {
 	@Column(name = "immagine")
 	private String immagine;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_autore", referencedColumnName = "id")
 	private Autore autore;
 	
 	@Column(name = "isbn")

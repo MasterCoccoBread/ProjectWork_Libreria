@@ -3,11 +3,14 @@ package it.corso.model;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 
@@ -25,11 +28,13 @@ public class Evento {
 	@Column(name = "data")
 	private LocalDate data;
 	
-	@Column(name = "tempo")
-	private LocalTime tempo; 
+	@Column(name = "orario")
+	private LocalTime orario; 
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_autore", referencedColumnName = "id")
+	private Autore autore;
 
-	
 	public int getId() {
 		return id;
 	}
@@ -54,12 +59,12 @@ public class Evento {
 		this.data = data;
 	}
 
-	public LocalTime getTempo() {
-		return tempo;
+	public LocalTime getOrario() {
+		return orario;
 	}
 
-	public void setTempo(LocalTime tempo) {
-		this.tempo = tempo;
+	public void setOrario(LocalTime orario) {
+		this.orario = orario;
 	}
 
 	

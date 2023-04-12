@@ -1,22 +1,38 @@
 package it.corso.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "libri")
 public class Libro {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@Column(name = "titolo")
 	private String titolo;
 	
+	@Column(name = "descrizione")
 	private String descrizione;
 	
 	private Genere genere;
 	
+	@Column(name = "prezzo")
 	private double prezzo;
 	
+	@Column(name = "immagine")
 	private String immagine;
 
 	private Autore autore;
 	
-	private String codiceIsbn;
+	@Column(name = "isbn")
+	private String isbn;
 
 	public int getId() {
 		return id;
@@ -58,12 +74,12 @@ public class Libro {
 		this.immagine = immagine;
 	}
 
-	public String getCodiceIsbn() {
-		return codiceIsbn;
+	public String getIsbn() {
+		return isbn;
 	}
 
-	public void setCodiceIsbn(String codiceIsbn) {
-		this.codiceIsbn = codiceIsbn;
+	public void setIsbn(String codiceIsbn) {
+		this.isbn = codiceIsbn;
 	}
 	
 	

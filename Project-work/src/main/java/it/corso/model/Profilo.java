@@ -8,17 +8,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table ("profili")
+@Table(name = "profili")
 public class Profilo {
 	
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 
-	@Column
+	@Column(name = "username")
 	private String username; 
-	@Column
+	@Column(name = "email")
 	private String email; 
-	@Column
+	@Column(name = "password")
 	private String password;
 	
 	public int getId() {

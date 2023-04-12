@@ -5,16 +5,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
-@Table ("autori")
+@Table(name = "autori")
 public class Autore {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column
+	@Column(name = "nome")
 	private String nome;
 
 	public int getId() {

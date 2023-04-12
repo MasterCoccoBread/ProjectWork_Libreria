@@ -8,18 +8,18 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table ("anagrafica")
+@Table(name ="anagrafica")
 public class Anagrafica {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 
 	
-	@Column
+	@Column(name = "nome")
 	private String nome;
-	@Column
+	@Column(name = "cognome")
 	private String cognome;
-	@Column
+	@Column(name = "telefono")
 	private String telefono;
 		
 	public int getId() {

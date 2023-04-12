@@ -12,20 +12,20 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table ("eventi")
+@Table(name = "eventi")
 public class Evento {
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column
+	@Column(name = "descrizione")
 	private String descrizione;
 
-	@Column
+	@Column(name = "data")
 	private LocalDate data;
 	
-	@Column
+	@Column(name = "tempo")
 	private LocalTime tempo; 
 	
 

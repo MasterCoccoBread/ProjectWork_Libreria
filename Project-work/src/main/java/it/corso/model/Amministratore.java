@@ -1,6 +1,6 @@
 package it.corso.model;
 
-public class Admin {
+public class Amministratore {
 
 	private int id;
 

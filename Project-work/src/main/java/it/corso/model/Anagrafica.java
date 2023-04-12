@@ -5,47 +5,30 @@ package it.corso.model;
 public class Anagrafica {
 	
 	private int id; 
-	private String ragioneSociale; 
-	private String indirizzo; 
-	private String localita; 
-	private String provincia; 
-	private String cap; 
+	private String nome;
+	private String cognome;
 	private String telefono;
+	
+	
+		
+		
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getRagioneSociale() {
-		return ragioneSociale;
+	public String getNome() {
+		return nome;
 	}
-	public void setRagioneSociale(String ragioneSociale) {
-		this.ragioneSociale = ragioneSociale;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
-	public String getIndirizzo() {
-		return indirizzo;
+	public String getCognome() {
+		return cognome;
 	}
-	public void setIndirizzo(String indirizzo) {
-		this.indirizzo = indirizzo;
-	}
-	public String getLocalita() {
-		return localita;
-	}
-	public void setLocalita(String localita) {
-		this.localita = localita;
-	}
-	public String getProvincia() {
-		return provincia;
-	}
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
-	}
-	public String getCap() {
-		return cap;
-	}
-	public void setCap(String cap) {
-		this.cap = cap;
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
 	}
 	public String getTelefono() {
 		return telefono;

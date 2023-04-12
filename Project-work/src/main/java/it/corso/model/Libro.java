@@ -8,8 +8,6 @@ public class Libro {
 	
 	private String descrizione;
 	
-	//private Tipologia tipologia;
-	
 	//private Genere genere;
 	
 	private double prezzo;
@@ -17,6 +15,8 @@ public class Libro {
 	private String immagine;
 
 	//private Autore autore;
+	
+	private String codiceIsbn;
 
 	public int getId() {
 		return id;
@@ -56,6 +56,14 @@ public class Libro {
 
 	public void setImmagine(String immagine) {
 		this.immagine = immagine;
+	}
+
+	public String getCodiceIsbn() {
+		return codiceIsbn;
+	}
+
+	public void setCodiceIsbn(String codiceIsbn) {
+		this.codiceIsbn = codiceIsbn;
 	}
 	
 	

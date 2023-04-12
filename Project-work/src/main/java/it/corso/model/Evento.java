@@ -1,6 +1,7 @@
 package it.corso.model;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Evento {
 
@@ -8,9 +9,11 @@ public class Evento {
 	
 	private String descrizione;
 
-	private LocalDate dataInizio;
+	private LocalDate data;
 	
-	private LocalDate dataFine;
+	private LocalTime tempo; 
+	
+
 	
 	public int getId() {
 		return id;
@@ -28,20 +31,21 @@ public class Evento {
 		this.descrizione = descrizione;
 	}
 
-	public LocalDate getDataInizio() {
-		return dataInizio;
+	public LocalDate getData() {
+		return data;
 	}
 
-	public void setDataInizio(LocalDate dataInizio) {
-		this.dataInizio = dataInizio;
+	public void setData(LocalDate data) {
+		this.data = data;
 	}
 
-	public LocalDate getDataFine() {
-		return dataFine;
+	public LocalTime getTempo() {
+		return tempo;
 	}
 
-	public void setDataFine(LocalDate dataFine) {
-		this.dataFine = dataFine;
+	public void setTempo(LocalTime tempo) {
+		this.tempo = tempo;
 	}
+
 	
 }

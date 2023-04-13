@@ -14,7 +14,7 @@ public class Autore {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+	// due list, una libri una enenti entrambe onetomany
 	@Column(name = "nome")
 	private String nome;
 

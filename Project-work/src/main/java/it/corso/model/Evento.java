@@ -34,7 +34,8 @@ public class Evento {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_autore", referencedColumnName = "id")
 	private Autore autore;
-
+// many to one con autore 
+	// lista prenotazioni  one to many
 	public int getId() {
 		return id;
 	}

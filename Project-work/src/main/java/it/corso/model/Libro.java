@@ -23,11 +23,12 @@ public class Libro {
 	
 	@Column(name = "descrizione")
 	private String descrizione;
-	
+
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_genere", referencedColumnName = "id")
 	private Genere genere;
-	
+//many to one
 	@Column(name = "prezzo")
 	private double prezzo;
 	
@@ -37,7 +38,7 @@ public class Libro {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_autore", referencedColumnName = "id")
 	private Autore autore;
-	
+// manytoone
 	@Column(name = "isbn")
 	private String isbn;
 
@@ -89,6 +90,20 @@ public class Libro {
 		this.isbn = codiceIsbn;
 	}
 	
+	public Genere getGenere() {
+		return genere;
+	}
 	
+	public void setGenere(Genere genere) {
+		this.genere = genere;
+	}
+	
+	public Autore getAutore() {
+		return autore;
+	}
+	
+	public void setAutore(Autore autore) {
+		this.autore = autore;
+	}
 	
 }

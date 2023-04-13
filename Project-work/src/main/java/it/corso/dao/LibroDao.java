@@ -4,4 +4,6 @@ import it.corso.model.Libro;
 
 public interface LibroDao extends CrudRepository<Libro, Integer>{
 
+	boolean existsByIsbn(String string);
+
 }

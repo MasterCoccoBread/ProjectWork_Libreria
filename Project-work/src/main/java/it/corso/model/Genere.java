@@ -17,7 +17,7 @@ public class Genere {
 	
 	@Column(name = "descrizione")
 	private String descrizione;
-
+// lista con one to many
 	public int getId() {
 		return id;
 	}

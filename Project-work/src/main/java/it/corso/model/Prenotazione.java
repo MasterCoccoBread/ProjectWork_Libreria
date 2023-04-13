@@ -20,11 +20,11 @@ public class Prenotazione {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_utente", referencedColumnName = "id")
 	private Anagrafica anagrafica; 
-	
+	// many to one
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_evento", referencedColumnName = "id")
 	private Evento evento;
-
+// many to one
 	public int getId() {
 		return id;
 	}

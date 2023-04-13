@@ -30,6 +30,8 @@ public class Anagrafica {
 	@JoinColumn(name = "id_profilo", referencedColumnName = "id")
 	private Profilo profilo;
 		
+	// lista prenotazioni one to many
+	
 	public int getId() {
 		return id;
 	}

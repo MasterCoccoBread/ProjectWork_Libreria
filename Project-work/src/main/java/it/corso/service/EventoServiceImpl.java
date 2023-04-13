@@ -17,7 +17,8 @@ public class EventoServiceImpl implements EventoService{
 
 	@Override
 	public void registraEvento(Evento evento) {
-	
+	//E' qui che serve il controllo che verifica che l'evento
+	// non sia uguale ad un altro già inseirto in precedenza?
 		eventoDao.save(evento);
 	}
 
@@ -32,10 +33,11 @@ public class EventoServiceImpl implements EventoService{
 	}
 
 	@Override
-	public void cancellaEvento(Evento evento) {
-		
-		eventoDao.delete(evento);
-		
+	public void cancellaEventoById(int id) {
+
+		eventoDao.deleteById(id);
 	}
+
+	
 
 }

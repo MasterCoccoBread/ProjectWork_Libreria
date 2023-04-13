@@ -1,0 +1,38 @@
+.contenitore-catologo {
+position: relative;
+width: 100%;
+height: 100%;
+background-color: blueviolet;
+z-index: 99;
+}
+
+.left-bar {
+    position: relative;
+    width: 263px;
+    height: 900px;
+    background: transparent;
+    float: left;
+}
+
+.cataloghi {
+    margin: 0;
+    position: relative;
+    width: 1256px;
+    height: 900px;
+    background-color: blue;
+    float:left;
+}
+
+
+
+.contenitore-catologo h4 {
+    margin-top: 10px;
+    text-align: center;
+    color:white;
+    opacity: 1;
+}
+
+.contenitore-catologo h4:hover::after {
+    cursor: pointer;
+
+}

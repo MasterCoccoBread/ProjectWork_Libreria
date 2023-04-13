@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #slideshow {
+          width: 500px;
+          height: 300px;
+          position: relative;
+          overflow: hidden;
+        }
+      
+        #slideshow img {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          transition: opacity 1s ease-in-out;
+        }
+      </style>
+</head>
+<body>
+    <div id="slideshow">
+        <img src="https://images.unsplash.com/photo-1680856652673-bfb78d35caea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDJ8NnNNVmpUTFNrZVF8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60">
+        <img src="https://images.unsplash.com/photo-1680371432814-d4adb9e67a20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDN8NnNNVmpUTFNrZVF8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60">
+        <img src="https://images.unsplash.com/photo-1681152553532-7e15439c0cba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDd8NnNNVmpUTFNrZVF8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60">
+      </div>
+
+      <ul class="slick-dots" style="display: block;" role="tablist"><li class="slick-active" role="presentation"><button type="button" role="tab" id="slick-slide-control20" aria-controls="slick-slide20" aria-label="1 of 4" tabindex="0" aria-selected="true">1</button></li><li role="presentation"><button type="button" role="tab" id="slick-slide-control21" aria-controls="slick-slide24" aria-label="2 of 4" tabindex="-1">2</button></li><li role="presentation"><button type="button" role="tab" id="slick-slide-control22" aria-controls="slick-slide28" aria-label="3 of 4" tabindex="-1">3</button></li><li role="presentation"><button type="button" role="tab" id="slick-slide-control23" aria-controls="slick-slide212" aria-label="4 of 4" tabindex="-1">4</button></li></ul>
+      <button class="cc-action-button" onclick="window.carouselRichRelevance().addToWishList('9788893904841', '11453642', true, this)" tabindex="0"><img loading="lazy" class="cc-icon" src="/Content/images/feltrinelli/icons/wishlist-outline-nero.svg" alt="Aggiungi alla lista dei desideri"></button>
+</body>
+<script>
+    const images = document.querySelectorAll('#slideshow img');
+    let currentImageIndex = 0;
+  
+    setInterval(() => {
+      images[currentImageIndex].style.opacity = 0;
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      images[currentImageIndex].style.opacity = 1;
+    }, 3000);
+  </script>
+</html>

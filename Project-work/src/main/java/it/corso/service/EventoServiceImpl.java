@@ -1,16 +1,12 @@
 package it.corso.service;
-
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import it.corso.dao.EventoDao;
 import it.corso.model.Autore;
 import it.corso.model.Evento;
+import it.corso.dao.EventoDao;
 
 
 @Service
@@ -19,22 +15,17 @@ public class EventoServiceImpl implements EventoService{
 	@Autowired
 	private EventoDao eventoDao; 
 
-	@Override
 	//che differenza fra aggiungere gli attributi o l'oggetto evento directly?
-	public void registraEvento(String descrizione, LocalDate data, LocalTime orario, Autore autore) {
+	@Override
+	public void registraEvento(Evento evento, String descrizione, LocalDate data, LocalTime orario, Autore autore) {
 	
-		Evento evento = new Evento(); 
-		
 		evento.setDescrizione(descrizione);
 		evento.setData(data);
 		evento.setOrario(orario);
-		
+		evento.setAutore(autore);
 		//E' qui che serve un controllo che verifica che l'evento
 		// non sia uguale ad un altro già inseto in precedenza
-		
 		//al psoto di isbn usiamo codiceID 
-			
-		
 		eventoDao.save(evento);
 	}
 

@@ -33,7 +33,7 @@
 						<div class="row">
 							<div class="col-12">
 								<label for="orario" th:text="'Orario:'"></label>
-								<input th:value="${evento.orario}" type="text" id="orario" name="orario" class="form-control" 
+								<input th:value="${evento.orario}" type="time" id="orario" name="orario" class="form-control" 
 									required="required">
 							</div>
 						</div>
@@ -42,13 +42,13 @@
 								<label for="autore" th:text="'Autore:'"></label>
 								<select id="autore" name="autore" class="form-select">
 									<option th:each="a : ${autori}" th:value="${a.id}" th:text="${a.nome}"
-									th:selected="${libro.autore != null AND a.id == libro.autore.id}"></option>
+									th:selected="${evento.autore != null AND a.id == evento.autore.id}"></option>
 								</select>
 							</div>
 						</div>
 						<div class="row mt-2">
 							<div class="col-12">
-								<label for="immagine" th:text="'Immagine Libro:'"></label>
+								<label for="immagine" th:text="'Immagine Evento:'"></label>
 								<input type="file" id="immagine" name="immagine" class="form-control">
 							</div>
 						</div>

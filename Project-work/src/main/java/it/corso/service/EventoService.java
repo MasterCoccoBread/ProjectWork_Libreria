@@ -9,5 +9,8 @@ public interface EventoService {
 	void registraEvento(Evento evento);
 	Evento getEventoById(int id);
 	List<Evento> getEventi();
-	void cancellaEvento(Evento evento);
+	
+	//Quale dei due?
+	//void cancellaEvento(Evento evento);
+	void cancellaEventoById(int id);
 }

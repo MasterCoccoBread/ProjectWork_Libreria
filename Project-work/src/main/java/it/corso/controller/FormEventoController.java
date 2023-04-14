@@ -28,13 +28,11 @@ public class FormEventoController {
 	@Autowired
 	private EventoService eventoService; 
 	
-	//non basta solo eventoService? perchè anche Autore? 
 	
 	@Autowired
 	private AutoreService autoreService; 
 	
-	// voglio far visualizzare anche data e orario, ho bisogno di creare classi service 
-	// anche per LOCALDATA e LOCALTIME? tipidato
+
 	
 	private Evento evento; 	
 	
@@ -52,7 +50,7 @@ public class FormEventoController {
 		model.addAttribute("eventi", eventi);
 		model.addAttribute("evento", evento);
 		model.addAttribute("autori", autori);
-		return "formeventi"; //serve rif. html 
+		return "formEvento"; //serve rif. html 
 	}
 	
 	

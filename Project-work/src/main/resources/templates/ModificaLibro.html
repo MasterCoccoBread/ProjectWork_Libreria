@@ -38,8 +38,12 @@
 								</td>
 								<td th:text="${l.titolo}" class="align-middle"></td>
 								<td class=" align-middle text-end">
-									<a th:href="@{formlibri/salvalibro(id=${l.id})}" class="btn btn-primary btn-sm" 
-										th:text="'Dettaglio Libro'"></a>
+									<a th:href="@{formlibri(id=${l.id})}" class="btn btn-primary btn-sm" 
+										th:text="'Modifica Libro'"></a>
+								</td>
+								<td class=" align-middle text-end">
+									<a th:href="@{formlibri/cancellalibro(id=${l.id})}" class="btn btn-primary btn-sm" 
+										th:text="'Cancella Libro'"></a>
 								</td>
 							</tr>
 						</tbody>

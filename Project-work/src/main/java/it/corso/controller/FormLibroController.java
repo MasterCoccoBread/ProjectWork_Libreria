@@ -31,6 +31,7 @@ public class FormLibroController {
 	private Libro libro;
 	private Autore autore;
 	private Genere genere;
+	
 	@GetMapping
 	public String getPage(Model model, @RequestParam(name = "id", required = false) Integer id) {
 		
@@ -45,7 +46,6 @@ public class FormLibroController {
 		model.addAttribute("autori", autori);
 		model.addAttribute("libro", libro);
 		model.addAttribute("libri", libri);
-		model.addAttribute("id", id);
 		return "formLibro";
 	}
 
@@ -57,16 +57,16 @@ public class FormLibroController {
 			@RequestParam("isbn") String isbn,
 			@RequestParam("genere") Genere genere,
 			@RequestParam("autore") Autore autore,
-			@RequestParam(name = "immagine", required = false) MultipartFile immagine) throws DuplicateIsbnException {
-		
-		libroService.registraLibro(titolo, descrizione, prezzo, isbn, genere, autore, immagine);
-		return "redirect:/formlibri";
+			@RequestParam(name = "immagine", required = false) MultipartFile immagine
+			) throws DuplicateIsbnException {
+		libroService.registraLibro(libro, titolo, descrizione, prezzo, isbn, genere, autore, immagine);
+		return "redirect:/modificalibro";
 	}
 	
-	@GetMapping("/calcellalibro")
+	@GetMapping("/cancellalibro")
 	public String calcellaLibro(@RequestParam("id") int id) {
 		Libro libro = libroService.getLibroById(id);
 		libroService.cancellaLibro(libro);
-		return "redirect:/formlibri";
+		return "redirect:/modificalibro";
 	}
 }

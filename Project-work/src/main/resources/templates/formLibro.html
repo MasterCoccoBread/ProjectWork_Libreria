@@ -14,33 +14,33 @@
 				</div>
 			</div>
 			<div class="row justify-content-center mt-4">
-				<div class="col-4" th:each="l : ${libri}" th:if="${l.id} == ${id}">
+				<div class="col-4">
 					<form action="formlibri/salvalibro" method="POST" enctype="multipart/form-data">
 						<div class="row">
 							<div class="col-12">
 								<label for="titolo" th:text="'Titolo:'"></label>
-								<input th:value="${l.titolo}" type="text" id="titolo" name="titolo" class="form-control" 
+								<input th:value="${libro.titolo}" type="text" id="titolo" name="titolo" class="form-control" 
 									required="required">
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-12">
 								<label for="descrizione" th:text="'Descrizione:'"></label>
-								<input th:value="${l.descrizione}" type="text" id="descrizione" name="descrizione" class="form-control" 
+								<input th:value="${libro.descrizione}" type="text" id="descrizione" name="descrizione" class="form-control" 
 									required="required">
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-12">
 								<label for="prezzo" th:text="'Prezzo:'"></label>
-								<input th:value="${l.prezzo}" type="number" id="prezzo" name="prezzo" class="form-control" 
+								<input th:value="${libro.prezzo}" type="number" id="prezzo" name="prezzo" class="form-control" 
 									required="required">
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-12">
 								<label for="isbn" th:text="'ISBN:'"></label>
-								<input th:value="${l.isbn}" type="text" id="isbn" name="isbn" class="form-control" 
+								<input th:value="${libro.isbn}" type="text" id="isbn" name="isbn" class="form-control" 
 									required="required">
 							</div>
 						</div>
@@ -72,7 +72,7 @@
 							<div class="col-12 text-center">
 								<input type="submit" th:value="'Registra Libro'" class="btn btn-primary">
 								&emsp;
-								<a th:href="@{/}" class="btn btn-secondary" th:text="'Torna Indietro'"></a>
+								<a th:href="@{/modificalibro}" class="btn btn-secondary" th:text="'Torna Indietro'"></a>
 							</div>
 						</div>
 					</form>

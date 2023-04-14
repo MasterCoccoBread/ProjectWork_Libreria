@@ -8,7 +8,7 @@ import it.corso.model.Libro;
 
 public interface LibroService {
 
-	void registraLibro(String titolo, String descrizione, double prezzo, String isbn, Genere genere, Autore autore, MultipartFile immagine)throws DuplicateIsbnException;
+	void registraLibro(Libro libro, String titolo, String descrizione, double prezzo, String isbn, Genere genere, Autore autore, MultipartFile immagine)throws DuplicateIsbnException;
 	Libro getLibroById(int id);
 	List<Libro> getLibri();
 	void cancellaLibro(Libro libro);

@@ -19,9 +19,8 @@ public class LibroServiceImpl implements LibroService {
 	@Autowired
 	private LibroDao libroDao;
 	@Override
-	public void registraLibro(String titolo, String descrizione, double prezzo, String isbn, Genere genere, Autore autore, MultipartFile immagine)  throws DuplicateIsbnException {
-		Libro libro = new Libro();
-		
+	public void registraLibro(Libro libro,String titolo, String descrizione, double prezzo, String isbn, Genere genere, Autore autore, MultipartFile immagine)  throws DuplicateIsbnException {
+
 		libro.setTitolo(titolo);
 		libro.setDescrizione(descrizione);
 		libro.setPrezzo(prezzo);
@@ -55,6 +54,8 @@ public class LibroServiceImpl implements LibroService {
 
 	@Override
 	public void cancellaLibro(Libro libro) {
+		libro.getGenere().getLibri().remove(libro);
+		libro.getAutore().getLibri().remove(libro);
 		libroDao.delete(libro);
 	}
 }

@@ -24,7 +24,9 @@ public class Prenotazione {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_evento", referencedColumnName = "id")
 	private Evento evento;
-// many to one
+	// many to one
+	
+	
 	public int getId() {
 		return id;
 	}

@@ -1,16 +1,16 @@
 package it.corso.service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
+import it.corso.model.Autore;
 import it.corso.model.Evento;
 
 public interface EventoService {
 	
-	void registraEvento(Evento evento);
+	void registraEvento(String descrizione, LocalDate data, LocalTime orario, Autore autore);
 	Evento getEventoById(int id);
 	List<Evento> getEventi();
-	
-	//Quale dei due?
-	//void cancellaEvento(Evento evento);
-	void cancellaEventoById(int id);
+	void cancellaEvento(Evento evento);
 }

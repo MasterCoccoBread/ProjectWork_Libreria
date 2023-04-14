@@ -1,5 +1,7 @@
 package it.corso.controller;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,62 +11,94 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import it.corso.model.Autore;
 import it.corso.model.Evento;
+import it.corso.service.AutoreService;
 import it.corso.service.EventoService;
+import it.corso.service.LibroService;
 
 @Controller
-public class EventoController {
+@RequestMapping ("/formeventi")
+public class FormEventoController {
 
 	@Autowired
-	private EventoService eventoService;
-
-	@GetMapping("/eventi")
-	public String mostraEventi(Model model) {
+	private EventoService eventoService; 
+	
+	//non basta solo eventoService? perchè anche Autore? 
+	
+	@Autowired
+	private AutoreService autoreService; 
+	
+	// voglio far visualizzare anche data e orario, ho bisogno di creare classi service 
+	// anche per LOCALDATA e LOCALTIME? tipidato
+	
+	private Evento evento; 	
+	
+	
+	@GetMapping
+	public String getPage(
+			Model model,
+			@RequestParam(name="id", required = false) Integer id)
+	{
+		
+		evento = (id== null) ? new Evento() : eventoService.getEventoById(id);
+		
 		List<Evento> eventi = eventoService.getEventi();
+		List<Autore> autori = autoreService.getAutori();
 		model.addAttribute("eventi", eventi);
-		return "lista-eventi";
+		model.addAttribute("evento", evento);
+		model.addAttribute("autori", autori);
+		return "formeventi"; //serve rif. html 
 	}
-
-	@GetMapping("/eventi")
-	public String mostraDettaglioEvento(@RequestParam("id") int id, Model model) {
+	
+	
+	@PostMapping("/salvaevento")
+	public String registraEvento(
+			
+			@RequestParam ("descrizione") String descrizione, 
+			@RequestParam ("autore") Autore autore, 
+			@RequestParam ("data") LocalDate data, 
+			@RequestParam ("orario") LocalTime orario)
+	{	 
+		
+		eventoService.registraEvento(descrizione, data, orario, autore);	
+		
+	
+	 return "redirect:/formeventi";
+	 
+	}
+	
+	
+	@GetMapping("/eventi/cancella")
+	public String cancellaEvento(@RequestParam("id") int id) {
 		Evento evento = eventoService.getEventoById(id);
-		model.addAttribute("evento", evento);
-		return "dettaglio-evento";
-	}
-
-	@GetMapping("/eventi/nuovo")
-	public String mostraFormNuovoEvento(Model model) {
-		Evento evento = new Evento();
-		model.addAttribute("evento", evento);
-		return "form-nuovo-evento";
-	}
-
-	@PostMapping("/eventi/nuovo")
-	public String salvaNuovoEvento(@ModelAttribute("evento") Evento evento) {
-		eventoService.registraEvento(evento);
+		eventoService.cancellaEvento(evento);
 		return "redirect:/eventi";
 	}
+	
+	
+	
+	
 
-	@GetMapping("/eventi/{id}/modifica")
+	
+
+	
+
+	
+
+	@GetMapping("/eventi/modifica")
 	public String mostraFormModificaEvento(@PathVariable("id") int id, Model model) {
 		Evento evento = eventoService.getEventoById(id);
 		model.addAttribute("evento", evento);
 		return "form-modifica-evento";
 	}
 
-	@PostMapping("/eventi/{id}/modifica")
-	public String salvaModificaEvento(@ModelAttribute("evento") Evento evento) {
-		eventoService.registraEvento(evento);
-		return "redirect:/eventi";
-	}
-
-	@GetMapping("/eventi/{id}/cancella")
-	public String cancellaEvento(@PathVariable("id") int id) {
-		eventoService.cancellaEventoById(id);
-		return "redirect:/eventi";
-	}
+	
+	
 }
 
 /*

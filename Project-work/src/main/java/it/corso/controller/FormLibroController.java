@@ -55,9 +55,16 @@ public class FormLibroController {
 			@RequestParam("prezzo") double prezzo,
 			@RequestParam("isbn") String isbn,
 			@RequestParam("genere") Genere genere,
-			@RequestParam("autore") Autore autore,
+			@RequestParam(name = "autore",required = false) Autore autore,
+			@RequestParam(name = "nome", required = false) String nome,
 			@RequestParam(name = "immagine", required = false) MultipartFile immagine
 			) throws DuplicateIsbnException {
+			if(!nome.equals("")) {
+				autore = new Autore();
+				autoreService.registraAutore(autore, nome);
+			}
+		
+		
 		libroService.registraLibro(libro, titolo, descrizione, prezzo, isbn, genere, autore, immagine);
 		return "redirect:/modificalibro";
 	}

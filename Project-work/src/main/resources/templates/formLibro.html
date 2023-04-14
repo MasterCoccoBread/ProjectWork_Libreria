@@ -15,7 +15,7 @@
 			</div>
 			<div class="row justify-content-center mt-4">
 				<div class="col-4">
-					<form action="formlibri/salvalibro" method="POST" enctype="multipart/form-data">
+					<form action="formlibri/salvalibro" method="POST" enctype="multipart/form-data" name="modulo">
 						<div class="row">
 							<div class="col-12">
 								<label for="titolo" th:text="'Titolo:'"></label>
@@ -48,6 +48,7 @@
 							<div class="col-12">
 								<label for="genere" th:text="'Genere:'"></label>
 								<select id="genere" name="genere" class="form-select">
+									<option value="seleziona" th:text="seleziona" hidden>
 									<option th:each="g : ${generi}" th:value="${g.id}" th:text="${g.descrizione}"
 									th:selected="${libro.genere != null AND g.id == libro.genere.id}"></option>
 								</select>
@@ -56,10 +57,19 @@
 						<div class="row">
 							<div class="col-12">
 								<label for="autore" th:text="'Autore:'"></label>
-								<select id="autore" name="autore" class="form-select">
+								<select id="autore" name="autore" class="form-select" onchange="abilita()">
+									<option value="seleziona" th:text="seleziona" hidden>
+									<option value="altro" id="altro" th:text="altro">
 									<option th:each="a : ${autori}" th:value="${a.id}" th:text="${a.nome}"
 									th:selected="${libro.autore != null AND a.id == libro.autore.id}"></option>
 								</select>
+							</div>
+						</div>
+						<div class="row" id="autore2" style="display:none;">
+							<div class="col-12">
+								<label for="nome" th:text="'Nuovo Autore:'"></label>
+								<input type="text" id="nome" name="nome" class="form-control" 
+									required="required">
 							</div>
 						</div>
 						<div class="row mt-2">
@@ -79,5 +89,18 @@
 				</div>
 			</div>
 		</div>
+		<script>
+			function abilita() {
+				  var autore = document.getElementById("autore").value;
+				  if (autore != "altro") {
+				    document.getElementById("autore2").style.display = "none";
+				    document.getElementById("nome").value = null;
+				    document.getElementById("nome").required = false;
+				  } else {
+				    document.getElementById("autore2").style.display = "block";
+				    document.getElementById("autore").value = document.getElementById("nome");
+				  }
+				}
+		</script>
 	</body>
 </html>

@@ -14,7 +14,6 @@ public class GenereServiceImpl implements GenereService {
 	@Override
 	public void registraGenere(String descrizione) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override

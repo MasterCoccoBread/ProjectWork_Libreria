@@ -12,9 +12,9 @@ public class AutoreServiceImpl implements AutoreService {
 	private AutoreDao autoreDao;
 	
 	@Override
-	public void registraAutore(String nome) {
-		// TODO Auto-generated method stub
-
+	public void registraAutore(Autore autore, String nome) {
+		autore.setNome(nome);
+		autoreDao.save(autore);
 	}
 
 	@Override

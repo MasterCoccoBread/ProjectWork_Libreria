@@ -31,6 +31,8 @@ public class EventoServiceImpl implements EventoService{
 		
 		//E' qui che serve un controllo che verifica che l'evento
 		// non sia uguale ad un altro già inseto in precedenza
+		
+		//al psoto di isbn usiamo codiceID 
 			
 		
 		eventoDao.save(evento);

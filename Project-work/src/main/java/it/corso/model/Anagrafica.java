@@ -16,6 +16,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name ="anagrafica")
+
 public class Anagrafica {
 	
 	@Id

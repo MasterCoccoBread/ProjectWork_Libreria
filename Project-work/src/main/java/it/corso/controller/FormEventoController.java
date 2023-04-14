@@ -14,6 +14,7 @@ import it.corso.model.Evento;
 import it.corso.service.AutoreService;
 import it.corso.service.EventoService;
 
+
 @Controller
 @RequestMapping ("/formeventi")
 public class FormEventoController {
@@ -29,7 +30,7 @@ public class FormEventoController {
 	@GetMapping
 	public String getPage(Model model, @RequestParam(name="id", required = false) Integer id) {
 		
-		evento = (id == null) ? new Evento() : eventoService.getEventoById(id);
+		Evento evento = (id == null) ? new Evento() : eventoService.getEventoById(id);
 		
 		List<Evento> eventi = eventoService.getEventi();
 		List<Autore> autori = autoreService.getAutori();
@@ -42,12 +43,13 @@ public class FormEventoController {
 	
 	@PostMapping("/salvaevento")
 	public String registraEvento(
+			@RequestParam ("id") Integer id, 
 			@RequestParam ("descrizione") String descrizione, 
 			@RequestParam ("autore") Autore autore, 
 			@RequestParam ("data") LocalDate data, 
 			@RequestParam ("orario") LocalTime orario)
 	{	 
-		eventoService.registraEvento(evento, descrizione, data, orario, autore);
+		eventoService.registraEvento(id, descrizione, data, orario, autore);
 		return "redirect:/modificaevento";
 	}
 	

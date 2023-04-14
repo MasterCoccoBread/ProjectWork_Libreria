@@ -41,6 +41,7 @@ public class EventoServiceImpl implements EventoService{
 
 	@Override
 	public void cancellaEvento(Evento evento) {
+		evento.getAutore().getEventi().remove(evento);
 		eventoDao.delete(evento);
 	}
 

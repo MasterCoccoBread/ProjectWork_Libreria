@@ -34,7 +34,7 @@ public class Evento {
 	@Column(name = "orario")
 	private LocalTime orario; 
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "id_autore", referencedColumnName = "id")
 	private Autore autore;
 	// many to one con autore 

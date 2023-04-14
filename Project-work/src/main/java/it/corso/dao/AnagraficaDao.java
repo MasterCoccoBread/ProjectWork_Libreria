@@ -3,5 +3,9 @@ import org.springframework.data.repository.CrudRepository;
 import it.corso.model.Anagrafica;
 
 public interface AnagraficaDao extends CrudRepository<Anagrafica, Integer>{
+	
+	
 	Anagrafica findByProfiloUsername(String username);
+	
+	
 }

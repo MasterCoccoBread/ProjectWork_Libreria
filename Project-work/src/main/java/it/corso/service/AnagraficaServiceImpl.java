@@ -16,9 +16,9 @@ public class AnagraficaServiceImpl implements AnagraficaService{
 	private AnagraficaDao anagraficaDao; 
 
 	@Override
-	public void registraAnagrafica(Anagrafica anagrafica, String nome, String cognome, String telefono,
+	public void registraAnagrafica(Integer id, String nome, String cognome, String telefono,
 			Profilo profilo) {
-		
+		Anagrafica anagrafica = new Anagrafica();
 		anagrafica.setNome(nome);
 		anagrafica.setCognome(cognome);
 		anagrafica.setTelefono(telefono);
@@ -27,9 +27,10 @@ public class AnagraficaServiceImpl implements AnagraficaService{
 		
 		
 		anagraficaDao.save(anagrafica);
-		
-		
-		
+
+		//save fa già da solo il controllo ID, se valido o null (solo integer può essere null, no int)
+
+
 	}
 
 	@Override

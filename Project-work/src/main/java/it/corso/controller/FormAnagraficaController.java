@@ -2,6 +2,7 @@ package it.corso.controller;
 
 import java.util.List;
 
+import it.corso.model.Evento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,28 +52,24 @@ public class FormAnagraficaController {
 		
 	@PostMapping("/salvaanagrafica")
 	public String registraAnagrafica(
+			@RequestParam ("id") Integer id,
 			@RequestParam ("nome") String nome,
 			@RequestParam ("cognome") String cognome,
 			@RequestParam ("telefono") String telefono, 
 			@RequestParam ("profilo") Profilo profilo,
 			@RequestParam (name = "prenotazione", required = false)
 			Prenotazione prenotazione) {
-		
 	     	
-        anagraficaService.registraAnagrafica(anagrafica, nome, cognome, telefono, profilo);	
-	// manca la gestione dell'errore:  
-	/*				 
-	Anagrafica anagraficaEsistente = anagraficaService.getAnagraficaByid();
-        if(anagraficaEsistente != null)
-	 */
-	
-	return "redirect:/modificaanagrafica"; 
-	
-		
-		
+        anagraficaService.registraAnagrafica(id, nome, cognome, telefono, profilo);
+		return "redirect:/modificaanagrafica";
+		}
+
+	@GetMapping("/cancellaanagrafica")
+	public String cancellaAnagrafica(@RequestParam("id") int id) {
+		Anagrafica anagrafica = anagraficaService.getAnagraficaByid(id);
+		anagraficaService.cancellaAnagrafica(anagrafica);
+		return "redirect:/modificaanagrafica";
 	}
-	
-	
 	
 	
 	}

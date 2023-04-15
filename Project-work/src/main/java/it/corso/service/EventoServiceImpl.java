@@ -15,21 +15,21 @@ public class EventoServiceImpl implements EventoService{
 	@Autowired
 	private EventoDao eventoDao; 
 
-	//che differenza fra aggiungere gli attributi o l'oggetto evento directly?
+	//Alternativa metodo @modelAttribute @Valid lezione 7
 	@Override
 	public void registraEvento(Integer id, String descrizione, LocalDate data, LocalTime orario, Autore autore) {
 	
+		//controllo ID da solo - non si vede il controllo 
+		
 		Evento evento = new Evento();
 		evento.setId(id);
 		evento.setDescrizione(descrizione);
 		evento.setData(data);
 		evento.setOrario(orario);
 		evento.setAutore(autore);
-		//E' qui che serve un controllo che verifica che l'evento
-		// non sia uguale ad un altro già inseto in precedenza
-		//al psoto di isbn usiamo codiceID 
+
 		eventoDao.save(evento);
-		//save fa già da solo il controllo ID! se valido o null (solo integer possono essere null no int) 
+		//save fa già da solo il controllo ID, se valido o null (solo integer può essere null, no int)
 	}
 
 	@Override

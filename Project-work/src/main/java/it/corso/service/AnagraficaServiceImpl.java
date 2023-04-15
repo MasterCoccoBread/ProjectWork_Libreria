@@ -3,11 +3,13 @@ package it.corso.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import it.corso.dao.AnagraficaDao;
 import it.corso.model.Anagrafica;
 import it.corso.model.Profilo;
 
+@Service
 public class AnagraficaServiceImpl implements AnagraficaService{
 	
 	@Autowired

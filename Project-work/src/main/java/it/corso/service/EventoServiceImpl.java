@@ -17,8 +17,10 @@ public class EventoServiceImpl implements EventoService{
 
 	//che differenza fra aggiungere gli attributi o l'oggetto evento directly?
 	@Override
-	public void registraEvento(Evento evento, String descrizione, LocalDate data, LocalTime orario, Autore autore) {
+	public void registraEvento(Integer id, String descrizione, LocalDate data, LocalTime orario, Autore autore) {
 	
+		Evento evento = new Evento();
+		evento.setId(id);
 		evento.setDescrizione(descrizione);
 		evento.setData(data);
 		evento.setOrario(orario);
@@ -27,6 +29,7 @@ public class EventoServiceImpl implements EventoService{
 		// non sia uguale ad un altro già inseto in precedenza
 		//al psoto di isbn usiamo codiceID 
 		eventoDao.save(evento);
+		//save fa già da solo il controllo ID! se valido o null (solo integer possono essere null no int) 
 	}
 
 	@Override

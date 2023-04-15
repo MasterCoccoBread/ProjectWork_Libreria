@@ -48,8 +48,7 @@ public class FormAnagraficaController {
 
 		return "formanagrafica" ;
 	}
-	
-	
+		
 	@PostMapping("/salvaanagrafica")
 	public String registraAnagrafica(
 			@RequestParam ("nome") String nome,

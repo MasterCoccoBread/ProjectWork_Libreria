@@ -18,6 +18,13 @@
 					<form action="formeventi/salvaevento" method="POST" enctype="multipart/form-data">
 						<div class="row">
 							<div class="col-12">
+								<label for="id" th:text="'Id'"></label>
+								<input th:value="${evento.id}" type="text" id="id" name="id" class="form-control" 
+									required="required">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
 								<label for="descrizione" th:text="'Descrizione:'"></label>
 								<input th:value="${evento.descrizione}" type="text" id="descrizione" name="descrizione" class="form-control" 
 									required="required">

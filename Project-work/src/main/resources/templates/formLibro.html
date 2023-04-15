@@ -68,8 +68,7 @@
 						<div class="row" id="autore2" style="display:none;">
 							<div class="col-12">
 								<label for="nome" th:text="'Nuovo Autore:'"></label>
-								<input type="text" id="nome" name="nome" class="form-control" 
-									>
+								<input type="text" id="nome" name="nome" class="form-control">
 							</div>
 						</div>
 						<div class="row mt-2">
@@ -95,7 +94,6 @@
 				  if (autore != "altro") {
 				    document.getElementById("autore2").style.display = "none";
 				    document.getElementById("nome").value = null;
-
 				  } else {
 				    document.getElementById("autore2").style.display = "block";
 				    document.getElementById("autore").value = document.getElementById("nome");

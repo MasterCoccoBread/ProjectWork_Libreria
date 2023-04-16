@@ -1,18 +1,15 @@
 package it.corso.model;
-import java.util.ArrayList;
-import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name ="anagrafica")
@@ -23,6 +20,7 @@ public class Anagrafica {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 
 	
+	@Pattern(regexp = "[a-zA-Z\\s']{1,255}", message = "Caratteri non ammessi")
 	@Column(name = "nome")
 	private String nome;
 	
@@ -32,18 +30,18 @@ public class Anagrafica {
 	@Column(name = "telefono")
 	private String telefono;
 	
-	@OneToOne(cascade = CascadeType.ALL) 
+	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "id_profilo", referencedColumnName = "id")
 	private Profilo profilo;
 		
 	// lista prenotazioni one to many
-	@OneToMany(
+	/* @OneToMany(
 			mappedBy = "anagrafica",
 			cascade = CascadeType.ALL,
 			fetch = FetchType.EAGER,
 			orphanRemoval = true
 	)
-	private List<Prenotazione> prenotazioni = new ArrayList<>(); 
+	private List<Prenotazione> prenotazioni = new ArrayList<>();*/ 
 	
 	public int getId() {
 		return id;
@@ -74,11 +72,11 @@ public class Anagrafica {
 	}
 	public void setProfilo(Profilo profilo) {
 		this.profilo = profilo;
-	}
+	} /*
 	public List<Prenotazione> getPrenotazioni() {
 		return prenotazioni;
 	}
 	public void setPrenotazioni(List<Prenotazione> prenotazioni) {
 		this.prenotazioni = prenotazioni;
-	} 
+	} */
 }

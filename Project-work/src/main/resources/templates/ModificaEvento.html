@@ -13,7 +13,7 @@
 					<h4 th:text="'Catalogo Eventi'"></h4>
 				</div>
 				<div class="col-2 text-end">
-					<a th:href="@{/formeventi}" th:text="'Registra Evento'" class="btn btn-success"></a>
+					<a th:href="@{/formevento}" th:text="'Registra Evento'" class="btn btn-success"></a>
 				</div>
 			</div>
 			<div class="row mt-4">
@@ -38,11 +38,11 @@
 								</td>-->
 								<td th:text="${e.descrizione}" class="align-middle"></td>
 								<td class=" align-middle text-end">
-									<a th:href="@{formeventi(id=${e.id})}" class="btn btn-primary btn-sm" 
+									<a th:href="@{formevento(id=${e.id})}" class="btn btn-primary btn-sm" 
 										th:text="'Modifica Evento'"></a>
 								</td>
 								<td class=" align-middle text-end">
-									<a th:href="@{formeventi/cancellaevento(id=${e.id})}" class="btn btn-primary btn-sm" 
+									<a th:href="@{formevento/cancellaevento(id=${e.id})}" class="btn btn-primary btn-sm" 
 										th:text="'Cancella Evento'"></a>
 								</td>
 							</tr>

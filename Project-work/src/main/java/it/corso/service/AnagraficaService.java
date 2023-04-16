@@ -8,11 +8,10 @@ import it.corso.model.Profilo;
 public interface AnagraficaService {
 	
 	void registraAnagrafica(
-		Integer id, String nome, String cognome,
-			String telefono, Profilo profilo);
+		Anagrafica anagrafica);
 	Anagrafica getAnagraficaByid(int id);
 	List<Anagrafica> getAnagrafiche();
-	void cancellaAnagrafica(Anagrafica anagrafica);
+	void cancellaAnagrafica(int id);
 	
 
 }

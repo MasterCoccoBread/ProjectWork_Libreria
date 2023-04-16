@@ -26,7 +26,7 @@ public class Autore {
 
 	@OneToMany(
 			mappedBy = "autore",
-			cascade = CascadeType.ALL,
+			cascade = CascadeType.REFRESH,
 			fetch = FetchType.EAGER,
 			orphanRemoval = true
 	)
@@ -34,7 +34,7 @@ public class Autore {
 	
 	@OneToMany(
 			mappedBy = "autore",
-			cascade = CascadeType.ALL,
+			cascade = CascadeType.REFRESH,
 			fetch = FetchType.EAGER,
 			orphanRemoval = true
 	)

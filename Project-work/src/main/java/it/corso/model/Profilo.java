@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "profili")
@@ -14,10 +15,14 @@ public class Profilo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 
-	@Column(name = "username")
+	
+	
+	@Column(name = "username", unique = true)
 	private String username; 
-	@Column(name = "email")
+	@Column(name = "email", unique = true)
 	private String email; 
+	
+	
 	@Column(name = "password")
 	private String password;
 	

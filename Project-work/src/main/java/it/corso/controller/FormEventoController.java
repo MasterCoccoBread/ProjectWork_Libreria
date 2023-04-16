@@ -16,7 +16,7 @@ import it.corso.service.EventoService;
 
 
 @Controller
-@RequestMapping ("/formeventi")
+@RequestMapping ("/formevento")
 public class FormEventoController {
 
 	@Autowired
@@ -24,13 +24,13 @@ public class FormEventoController {
 	@Autowired
 	private AutoreService autoreService; 
 	
-	private Evento evento; 	
 	private Autore autore;
 	
 	@GetMapping
 	public String getPage(Model model, @RequestParam(name="id", required = false) Integer id) {
 		
 		Evento evento = (id == null) ? new Evento() : eventoService.getEventoById(id);
+		
 		
 		List<Evento> eventi = eventoService.getEventi();
 		List<Autore> autori = autoreService.getAutori();

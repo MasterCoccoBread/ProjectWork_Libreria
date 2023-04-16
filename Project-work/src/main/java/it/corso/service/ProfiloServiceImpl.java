@@ -12,7 +12,8 @@ public class ProfiloServiceImpl implements ProfiloService {
 	
 	@Autowired
 	private ProfiloDao profiloDao;
-	
+
+
 
 	@Override
 	public void registraProfilo(Profilo profilo, String username, String password, String email) {
@@ -38,11 +39,9 @@ public class ProfiloServiceImpl implements ProfiloService {
 	public void cancellaProfilo(Profilo profilo) {
 		
 		// remove da anagrafica? 
-		
-		profiloDao.delete(profilo);
+		System.out.println("Cancello profilo con id " + profilo.getId());
+		profiloDao.deleteById( profilo.getId() );
+		System.out.println("Cancellato");
 	}
-	
-	
-	
 
 }

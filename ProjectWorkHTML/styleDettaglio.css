@@ -1,13 +1,9 @@
-div {
-    display: block;
-}
-.contenitore-dettaglio {
-    width: 1150px;
-    height: 592px;
-    display: block;
-    margin: 24px auto;
-    background: white;
-    border-radius: 3px;
+
+.container-dettaglio {
+    width: 70%;
+    min-height: 100%;
+    margin: 0 auto;
+    
 }
 
 .box-immagine {

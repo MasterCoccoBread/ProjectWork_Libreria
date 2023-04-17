@@ -16,7 +16,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-
 @Entity
 @Table(name = "eventi")
 public class Evento {
@@ -24,6 +23,9 @@ public class Evento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@Column(name = "titolo")
+	private String titolo;
 	
 	@Column(name = "descrizione")
 	private String descrizione;
@@ -33,6 +35,9 @@ public class Evento {
 	
 	@Column(name = "orario")
 	private LocalTime orario; 
+	
+	@Column(name = "immagine")
+	private String immagine;
 	
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "id_autore", referencedColumnName = "id")
@@ -52,6 +57,14 @@ public class Evento {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getTitolo() {
+		return titolo;
+	}
+
+	public void setTitolo(String titolo) {
+		this.titolo = titolo;
 	}
 
 	public String getDescrizione() {
@@ -76,6 +89,14 @@ public class Evento {
 
 	public void setOrario(LocalTime orario) {
 		this.orario = orario;
+	}
+
+	public String getImmagine() {
+		return immagine;
+	}
+
+	public void setImmagine(String immagine) {
+		this.immagine = immagine;
 	}
 
 	public Autore getAutore() {

@@ -1,5 +1,4 @@
 package it.corso.model;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,7 +37,7 @@ public class Libro {
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "id_autore", referencedColumnName = "id")
 	private Autore autore;
-// manytoone
+
 	@Column(name = "isbn")
 	private String isbn;
 

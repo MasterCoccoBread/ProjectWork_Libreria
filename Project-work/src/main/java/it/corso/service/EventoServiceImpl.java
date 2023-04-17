@@ -1,9 +1,13 @@
 package it.corso.service;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Base64;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 import it.corso.model.Autore;
 import it.corso.model.Evento;
 import it.corso.dao.EventoDao;
@@ -15,21 +19,23 @@ public class EventoServiceImpl implements EventoService{
 	@Autowired
 	private EventoDao eventoDao; 
 
-	//Alternativa metodo @modelAttribute @Valid lezione 7
 	@Override
-	public void registraEvento(Integer id, String descrizione, LocalDate data, LocalTime orario, Autore autore) {
+	public void registraEvento(Evento evento, String titolo, String descrizione, LocalDate data, LocalTime orario, Autore autore, MultipartFile immagine) {
 	
-		//controllo ID da solo - non si vede il controllo 
-		
-		Evento evento = new Evento();
-		evento.setId(id);
+		evento.setTitolo(titolo);
 		evento.setDescrizione(descrizione);
 		evento.setData(data);
 		evento.setOrario(orario);
 		evento.setAutore(autore);
-
+		if (immagine != null && !immagine.isEmpty()) {
+			String tipo = immagine.getContentType(); 
+			try {
+				evento.setImmagine("data:" + tipo + ";base64," + Base64.getEncoder().encodeToString(immagine.getBytes()));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		eventoDao.save(evento);
-		//save fa già da solo il controllo ID, se valido o null (solo integer può essere null, no int)
 	}
 
 	@Override

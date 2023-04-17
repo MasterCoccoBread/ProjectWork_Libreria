@@ -1,11 +1,17 @@
 package it.corso.model;
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -22,25 +28,33 @@ public class Libro {
 	
 	@Column(name = "descrizione")
 	private String descrizione;
-
-
-	@ManyToOne(cascade = CascadeType.REFRESH)
-	@JoinColumn(name = "id_genere", referencedColumnName = "id")
-	private Genere genere;
-//many to one
+	
 	@Column(name = "prezzo")
 	private double prezzo;
 	
 	@Column(name = "immagine")
 	private String immagine;
+	
+	@Column(name = "isbn")
+	private String isbn;
 
+	@ManyToOne(cascade = CascadeType.REFRESH)
+	@JoinColumn(name = "id_genere", referencedColumnName = "id")
+	private Genere genere;
+	
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "id_autore", referencedColumnName = "id")
 	private Autore autore;
 
-	@Column(name = "isbn")
-	private String isbn;
-
+	@ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+	@JoinTable
+	(
+			name = "prenotazione_libro",
+			joinColumns = @JoinColumn(name = "id_libro", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "id_prenotazione", referencedColumnName = "id")
+	)
+	private List<Prenotazione> prenotazioni = new ArrayList<>(); 
+	
 	public int getId() {
 		return id;
 	}
@@ -104,4 +118,13 @@ public class Libro {
 	public void setAutore(Autore autore) {
 		this.autore = autore;
 	}
+
+	public List<Prenotazione> getPrenotazioni() {
+		return prenotazioni;
+	}
+
+	public void setPrenotazioni(List<Prenotazione> prenotazioni) {
+		this.prenotazioni = prenotazioni;
+	}
+	
 }

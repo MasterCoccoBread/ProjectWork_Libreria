@@ -12,8 +12,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -42,15 +43,16 @@ public class Evento {
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "id_autore", referencedColumnName = "id")
 	private Autore autore;
-	// many to one con autore 
-	// lista prenotazioni  one to many
-	@OneToMany(
-			mappedBy = "evento",
-			cascade = CascadeType.ALL,
-			fetch = FetchType.EAGER,
-			orphanRemoval = true
+
+	@ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+	@JoinTable
+	(
+			name = "prenotazione_evento",
+			joinColumns = @JoinColumn(name = "id_evento", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "id_prenotazione", referencedColumnName = "id")
 	)
 	private List<Prenotazione> prenotazioni = new ArrayList<>(); 
+	
 	public int getId() {
 		return id;
 	}

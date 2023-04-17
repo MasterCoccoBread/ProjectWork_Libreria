@@ -20,9 +20,7 @@ public class Profilo {
 	@Column(name = "username")
 	private String username; 
 	@Column(name = "email")
-	private String email; 
-	
-	
+	private String email;
 	@Column(name = "password")
 	private String password;
 	
@@ -49,9 +47,5 @@ public class Profilo {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	} 
-	
-	
-	
-
+	}
 }

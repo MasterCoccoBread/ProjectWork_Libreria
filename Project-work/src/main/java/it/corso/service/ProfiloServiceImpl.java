@@ -17,13 +17,18 @@ public class ProfiloServiceImpl implements ProfiloService {
 
 
 	@Override
-	public void registraProfilo(Profilo profilo, String username, String password, String email) {
-		profilo.setUsername(username);
-		profilo.setEmail(email);
-		profilo.setPassword(password);
-		
+	public boolean registraProfilo(Profilo profilo) {
+
+		//METODO MAI UTILIZZATO FIN'ORA
+
+		Profilo profiloEsistente = profiloDao.findById(profilo.getId()).get();
+		if (profilo.getId()==0) {
+			return false;
+		}
+
 		profiloDao.save(profilo);
-		
+		return true;
+
 	}
 
 	@Override

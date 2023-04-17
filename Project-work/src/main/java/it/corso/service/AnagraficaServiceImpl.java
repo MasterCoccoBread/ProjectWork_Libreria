@@ -17,25 +17,15 @@ public class AnagraficaServiceImpl implements AnagraficaService{
 	@Autowired
 	private AnagraficaDao anagraficaDao;
 
-/*	@Override
-	public Anagrafica createAnagrafica(Anagrafica anagrafica) throws DuplicateEntryException {
-		// Verifica se l'anagrafica esiste già
-		if (anagraficaDao.findByTelefonoAndProfilo(anagrafica.getTelefono(), anagrafica.getProfilo()).isPresent() ||
-				anagraficaRepository.findByEmailAndProfilo(anagrafica.getEmail(), anagrafica.getProfilo()).isPresent() ||
-				anagraficaRepository.findByUsernameAndProfilo(anagrafica.getUsername(), anagrafica.getProfilo()).isPresent()) {
-			throw new DuplicateEntryException("L'anagrafica esiste già per questo profilo");
-		}
-		return anagraficaRepository.save(anagrafica);
-	} */
+	private Anagrafica anagraficaEsistente;
 	@Override
 	public boolean registraAnagrafica(Anagrafica anagrafica) {
 
-		Anagrafica anagraficaEsistente = anagraficaDao.findByProfiloUsername(anagrafica.getProfilo().getUsername());
-
-		//
+		 anagraficaEsistente = anagraficaDao.findByProfiloUsername(anagrafica.getProfilo().getUsername());
 		if (anagrafica.getId()==0&&anagraficaEsistente != null) {
 			return false;
 		}
+
 		anagraficaDao.save(anagrafica);
 			return  true;
 

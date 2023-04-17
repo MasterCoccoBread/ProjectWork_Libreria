@@ -1,0 +1,42 @@
+.contenitore-catologo {
+width: 100%;
+background-color: white;
+min-height: 1000px;
+max-height: 100%;
+
+}
+
+.left-bar {
+    position: relative;
+    width: 20%;
+    height: 100%;
+    background: white;
+    float: left;
+    
+}
+
+.cataloghi {
+    margin: 0;
+    position: relative;
+    width: 80%;
+    min-height: inherit;
+    height: 100%;
+    background-color: black;
+    float:left;
+    border-left: 1px solid grey;
+}
+
+
+
+.contenitore-catologo h4 {
+    margin-top: 10px;
+    text-align: center;
+    color:white;
+    opacity: 1;
+}
+
+.contenitore-catologo h4:hover::after {
+    cursor: pointer;
+
+}
+

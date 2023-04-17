@@ -17,17 +17,16 @@
 				<div class="col-4">
 					<form th:object="${anagrafica}" method="POST" >
 						<div class="row">
-						<!--	<div class="col-12">
-								<label th:text="'Id:'"></label>
-								<input th:field="*{id}" type="text" id="id" name="id" class="form-control"
-									   required="required" readonly>
-							</div> -->
-						</div>
-						<div class="row">
 								<div class="col-12">
 								<label th:text="'Nome:'"></label>
 								<input th:field="*{nome}" type="text" id="nome" name="nome" class="form-control" 
 									required="required">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<input th:field="*{id}" type="text" id="id" name="id" class="form-control"
+									   required="required" readonly hidden="hidden">
 							</div>
 						</div>
 						<div class="row">
@@ -43,6 +42,10 @@
 								<input th:field="*{telefono}" type="text" id="telefono" name="telefono" class="form-control" 
 									required="required">
 							</div>
+						</div>
+						<div class="col-12">
+							<input th:field="*{profilo.id}" type="text" id="idP" name="idP" class="form-control"
+								   required="required" readonly hidden="hidden">
 						</div>
 						<div class="row">
 							<div class="col-12">

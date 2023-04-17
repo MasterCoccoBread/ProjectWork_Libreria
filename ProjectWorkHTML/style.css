@@ -20,7 +20,7 @@ body {
     display: flex;
     height: 90px;   
     border-bottom: 1px solid white;
-    z-index: 3;
+    z-index: 99;
 }
 
 .nav-bar {
@@ -106,12 +106,12 @@ margin-right: 50px;
     text-align: center;
     height: auto;
     float: left;
-    position: absolute;
     border-radius: 0;
     border: none;
     background-color: transparent;
     margin-right: 14px;
     color: white;
+    z-index: 2;
 
 }
 
@@ -180,10 +180,15 @@ margin-right: 50px;
 .content-logo {
   margin-top: 0;
 }
-.content-logo img {
+ .img-logo {
   width: 50px;
   height: auto;
 
+}
+
+.img-testo {
+  width: 100px;
+  height: auto;
 }
 
 .btn {
@@ -229,10 +234,10 @@ margin-right: 50px;
 }
 
 .linea {
-  width: 75%;
-  border-top: 2px solid black;
+  width: 70%;
+  border-top: 1px solid black;
   margin: 0 auto;
-  padding-bottom: 20px;
+
 }
 
 .titoli {
@@ -401,4 +406,30 @@ margin-right: 50px;
 .carousel-cell img {
   width: 100%;
   height: 100%;
+}
+
+.bottone-indietro {
+  border: 2px solid white;
+  background-color: black;
+  color:white;
+  width: 200px;
+  height: 50px;
+  padding: 10px 0;
+  margin: 0 auto;
+  transition: all .2s ease-in-out;
+ 
+}
+.bottone-indietro a {
+   text-decoration: none;
+   color: white;
+   transition: all .2s ease-in-out;
+}
+.bottone-indietro:hover {
+  border: 2px solid black;
+  background: white;
+
+}
+
+.bottone-indietro a:hover {
+  color: black;
 }

@@ -11,9 +11,7 @@ public class AmministratoreServiceImpl implements AmministratoreService {
 
 	@Override
 	public boolean controlloLogin(String username, String password, HttpSession session) {
-		 
-			
-		
+
 				//Va cancellato attenzione 
 				final String USERNAME_REGISTRATO = "admin";
 				final String PASSWORD_REGISTRATA = "admin";

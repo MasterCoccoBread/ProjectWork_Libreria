@@ -102,8 +102,9 @@
         bottone.addEventListener("mouseout", invisible);
         function visible() {
                 document.getElementById("bottone-dettaglio").style.display = "block";
-                document.getElementById("bottone-dettaglio").style.transform="translateY(51%);";
+                document.getElementById("bottone").style.transition = "all 0.4s ease-in-out";
                 document.getElementById("bottone").style.display = "block";
+
         }
         function invisible() {
             document.getElementById("bottone-dettaglio").style.display ="none";

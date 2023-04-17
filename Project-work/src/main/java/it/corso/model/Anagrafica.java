@@ -19,8 +19,7 @@ public class Anagrafica {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 
-	
-	@Pattern(regexp = "[a-zA-Z\\s']{1,255}", message = "Caratteri non ammessi")
+
 	@Column(name = "nome")
 	private String nome;
 	
@@ -72,7 +71,8 @@ public class Anagrafica {
 	}
 	public void setProfilo(Profilo profilo) {
 		this.profilo = profilo;
-	} /*
+	}
+	/*
 	public List<Prenotazione> getPrenotazioni() {
 		return prenotazioni;
 	}

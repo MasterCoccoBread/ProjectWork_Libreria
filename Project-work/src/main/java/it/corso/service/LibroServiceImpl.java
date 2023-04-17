@@ -2,6 +2,7 @@ package it.corso.service;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,7 +17,7 @@ public class LibroServiceImpl implements LibroService {
 	@Autowired
 	private LibroDao libroDao;
 	@Override
-	public void registraLibro(Libro libro,String titolo, String descrizione, double prezzo, String isbn, Genere genere, Autore autore, MultipartFile immagine)  throws DuplicateIsbnException {
+	public boolean registraLibro(Libro libro,String titolo, String descrizione, double prezzo, String isbn, Genere genere, Autore autore, MultipartFile immagine) {
 
 		libro.setTitolo(titolo);
 		libro.setDescrizione(descrizione);
@@ -31,12 +32,16 @@ public class LibroServiceImpl implements LibroService {
 				e.printStackTrace();
 			}
 		}
-		libro.setIsbn(isbn);
-		//if (libroDao.existsByIsbn(libro.getIsbn())) { 
-		//	throw new DuplicateIsbnException("ISBN già registrato");
-		//} else { 
+		
+		Optional<Libro> existingBook = libroDao.findByIsbn(isbn);
+        
+		if (libro.getId() == 0 && existingBook.isPresent()) {
+            return false;
+        } else { 
+        	libro.setIsbn(isbn);
+        }
 		libroDao.save(libro);
-		//}
+		return true;
 	}
 
 	@Override

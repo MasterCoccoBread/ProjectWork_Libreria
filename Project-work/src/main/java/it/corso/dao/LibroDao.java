@@ -1,9 +1,9 @@
 package it.corso.dao;
+import java.util.Optional;
+
 import org.springframework.data.repository.CrudRepository;
 import it.corso.model.Libro;
 
 public interface LibroDao extends CrudRepository<Libro, Integer>{
-
-	boolean existsByIsbn(String string);
-
+	Optional<Libro> findByIsbn(String isbn);
 }

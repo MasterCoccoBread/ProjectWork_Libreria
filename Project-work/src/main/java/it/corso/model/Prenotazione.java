@@ -6,7 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,14 +17,16 @@ public class Prenotazione {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "id_utente", referencedColumnName = "id")
 	private Anagrafica anagrafica; 
-	
-	@OneToOne(cascade = CascadeType.ALL)
+	// many to one
+	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "id_evento", referencedColumnName = "id")
 	private Evento evento;
-
+	// many to one
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -48,6 +50,4 @@ public class Prenotazione {
 	public void setEvento(Evento evento) {
 		this.evento = evento;
 	} 
-	
-	
 }

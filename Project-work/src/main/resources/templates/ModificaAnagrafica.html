@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title th:text="'ADMIN Anagrafica'"></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row mt-4">
+				<div class="col-10 text-center">
+					<h4 th:text="'Elenco Utenti Registrati'"></h4>
+				</div>
+				<div class="col-2 text-end">
+					<a th:href="@{/formanagrafica}" th:text="'Registra Anagrafica'" class="btn btn-success"></a>
+				</div>
+			</div>
+			<div class="row mt-4">
+				<div class="col-12">
+					<table class="table table-striped table-responsive">
+						<thead>
+							<tr>
+								<th></th>
+								<th th:text="'Descrizione Anagrafiche'"></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="e : ${anagrafiche}">
+							<!--  	<td>
+									<img th:if="${e.immagine == null}" th:src="@{image/markerImage.png}" 
+										class="img-thumbnail" alt="evento" 
+										style="width:50px;max-width:50px;height:60px;max-height:60px;">
+									<img th:if="${e.immagine != null}" th:src="@{${e.immagine}}" 
+										class="img-thumbnail" alt="evento"
+										style="width:50px;max-width:50px;height:60px;max-height:60px;">
+								</td>-->
+								<td th:text="${e.nome}" class="align-middle"></td>
+								<td th:text="${e.cognome}" class="align-middle"></td>
+								<td th:text="${e.telefono}" class="align-middle"></td>
+								<td th:text="${e.profilo}" class="align-middle"></td>
+								<td class=" align-middle text-end">
+									<a th:href="@{formanagrafica(id=${e.id})}" class="btn btn-primary btn-sm" 
+										th:text="'Modifica anagrafica'"></a>
+								</td>
+								<td class=" align-middle text-end">
+									<a th:href="@{modificaanagrafica/cancellaanagrafica(id=${e.id})}" class="btn btn-primary btn-sm" 
+										th:text="'Cancella Anagrafica'"></a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

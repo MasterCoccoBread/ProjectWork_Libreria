@@ -1,9 +1,12 @@
 package it.corso.service;
 
 
+import org.springframework.stereotype.Service;
+
 import it.corso.model.Amministratore;
 import jakarta.servlet.http.HttpSession;
 
+@Service
 public class AmministratoreServiceImpl implements AmministratoreService {
 
 	@Override

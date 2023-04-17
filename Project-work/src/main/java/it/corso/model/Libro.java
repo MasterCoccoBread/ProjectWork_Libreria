@@ -7,7 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,21 +23,22 @@ public class Libro {
 	
 	@Column(name = "descrizione")
 	private String descrizione;
-	
-	@OneToOne(cascade = CascadeType.ALL)
+
+
+	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "id_genere", referencedColumnName = "id")
 	private Genere genere;
-	
+//many to one
 	@Column(name = "prezzo")
 	private double prezzo;
 	
 	@Column(name = "immagine")
 	private String immagine;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "id_autore", referencedColumnName = "id")
 	private Autore autore;
-	
+// manytoone
 	@Column(name = "isbn")
 	private String isbn;
 
@@ -89,6 +90,19 @@ public class Libro {
 		this.isbn = codiceIsbn;
 	}
 	
+	public Genere getGenere() {
+		return genere;
+	}
 	
+	public void setGenere(Genere genere) {
+		this.genere = genere;
+	}
 	
+	public Autore getAutore() {
+		return autore;
+	}
+	
+	public void setAutore(Autore autore) {
+		this.autore = autore;
+	}
 }

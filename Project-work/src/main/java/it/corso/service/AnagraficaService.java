@@ -7,7 +7,7 @@ import it.corso.model.Profilo;
 
 public interface AnagraficaService {
 	
-	void registraAnagrafica(
+	boolean registraAnagrafica(
 		Anagrafica anagrafica);
 	Anagrafica getAnagraficaByid(int id);
 	List<Anagrafica> getAnagrafiche();

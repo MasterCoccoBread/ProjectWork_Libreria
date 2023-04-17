@@ -28,13 +28,16 @@ public class AnagraficaServiceImpl implements AnagraficaService{
 		return anagraficaRepository.save(anagrafica);
 	} */
 	@Override
-	public void registraAnagrafica(Anagrafica anagrafica) {
+	public boolean registraAnagrafica(Anagrafica anagrafica) {
 
-		Anagrafica anagraficaEsistente = anagraficaDao.findByTelefono(anagrafica.getTelefono());
-		if (anagraficaEsistente != null) {
-			throw new DuplicateEntryException("Il numero di telefono inserito esiste già.");
+		Anagrafica anagraficaEsistente = anagraficaDao.findByProfiloUsername(anagrafica.getProfilo().getUsername());
+
+		//
+		if (anagrafica.getId()==0&&anagraficaEsistente != null) {
+			return false;
 		}
 		anagraficaDao.save(anagrafica);
+			return  true;
 
 		//save fa già da solo il controllo ID, se valido o null (solo integer può essere null, no int)
 

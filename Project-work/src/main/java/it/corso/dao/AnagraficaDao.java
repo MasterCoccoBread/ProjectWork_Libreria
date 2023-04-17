@@ -9,6 +9,5 @@ public interface AnagraficaDao extends CrudRepository<Anagrafica, Integer>{
 	
 	Anagrafica findByProfiloUsername(String username);
 
-	Anagrafica findByTelefono(String telefono);
 	
 }

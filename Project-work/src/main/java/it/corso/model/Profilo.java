@@ -17,9 +17,9 @@ public class Profilo {
 	private int id; 
 	
 	
-	@Column(name = "username", unique = true)
+	@Column(name = "username")
 	private String username; 
-	@Column(name = "email", unique = true)
+	@Column(name = "email")
 	private String email; 
 	
 	

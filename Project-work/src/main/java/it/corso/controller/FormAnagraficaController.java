@@ -28,29 +28,41 @@ public class FormAnagraficaController {
 	
 	@Autowired
 	private ProfiloService profiloService;
-	
+
+	private Anagrafica anagraficaP;
 
 	@GetMapping
-	public String getPage(Model model,@RequestParam(name="id", required = false) Integer id)
+	public String getPage(Model model,@RequestParam(name="id", required = false) Integer id,
+						  @RequestParam (name="fe", required = false) String formError)
 	{
-		Anagrafica anagrafica = (id == null) ? new Anagrafica() : anagraficaService.getAnagraficaByid(id);
+		if(formError == null)
+		anagraficaP = (id == null) ? new Anagrafica() : anagraficaService.getAnagraficaByid(id);
 
-		model.addAttribute("anagrafica", anagrafica);
-		model.addAttribute("profilo",anagrafica.getProfilo());
+		model.addAttribute("anagrafica", anagraficaP);
+		model.addAttribute("formError", formError!= null);
+		//model.addAttribute("profilo",anagrafica.getProfilo());
 		
 		return "formAnagrafica" ;
 	}
-		
-	@PostMapping("/salvaanagrafica")
+
+
+	//private Anagrafica getAnagrafica(){}
+	@PostMapping
 	public String registraAnagrafica( @Valid
 			@ModelAttribute ("anagrafica") Anagrafica anagrafica,
 			BindingResult bindingResult)
 	{ 
 		//se ci sono errori ripresento la pagina html dove mostro i singoli messaggi
-		if (bindingResult.hasErrors())
+		if (bindingResult.hasErrors()){
 			return "formAnagrafica";
-  
-        anagraficaService.registraAnagrafica(anagrafica);
+
+		}
+		if (!anagraficaService.registraAnagrafica(anagrafica)){
+			anagraficaP = anagrafica;
+			return "redirect:/formanagrafica?fe";
+		}
+
+
 		return "redirect:/modificaanagrafica";
 	}
 

@@ -42,7 +42,6 @@ public class FormAnagraficaController {
 	}
 
 
-	//private Anagrafica getAnagrafica(){}
 	@PostMapping
 	public String registraAnagrafica( @Valid
 			@ModelAttribute ("anagrafica") Anagrafica anagrafica,
@@ -55,7 +54,7 @@ public class FormAnagraficaController {
 		}
 		if (!anagraficaService.registraAnagrafica(anagrafica)){
 			anagraficaP = anagrafica;
-			return "redirect:/form?fe";
+			return "redirect:/formutente?fe";
 		}
 
 

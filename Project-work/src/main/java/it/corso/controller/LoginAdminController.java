@@ -20,14 +20,17 @@ public class LoginAdminController {
    private AmministratoreService adminService;
 
     @GetMapping
-    public String getPage(@RequestParam (name="le", required= false) String logError, Model model) {
+    public String getPage(@RequestParam (name="le", required= false) String logError, Model model, HttpSession session) {
 
+    	if(session.getAttribute("admin") != null)
+    		return "redirect:/areariservataadmin";
         model.addAttribute("logError",logError != null);
 
-        return "LoginAdmin";
+        	return "LoginAdmin";
     }
 
-    @PostMapping
+    
+    @PostMapping 
     public String gestioneLogin(
             @RequestParam("username")String username,
             @RequestParam("password")String password,

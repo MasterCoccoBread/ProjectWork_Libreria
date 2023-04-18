@@ -12,7 +12,7 @@ public class AmministratoreServiceImpl implements AmministratoreService {
 	@Override
 	public boolean controlloLogin(String username, String password, HttpSession session) {
 
-				//Va cancellato attenzione 
+				//Va cancellato attenzione perchè non dovrebbe prendere da qui ma dak database
 				final String USERNAME_REGISTRATO = "admin";
 				final String PASSWORD_REGISTRATA = "admin";
 				
@@ -22,10 +22,10 @@ public class AmministratoreServiceImpl implements AmministratoreService {
 					admin.setUsername(USERNAME_REGISTRATO);
 					admin.setPassword(PASSWORD_REGISTRATA);
 					
-					session.setAttribute("amministratore",admin);
+					session.setAttribute("admin",admin);
 					
 					return true;
-				} else 			
+				}		
 					
 				return false;
 	}

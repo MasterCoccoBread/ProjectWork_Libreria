@@ -1,0 +1,48 @@
+.container-body {
+    width: 95%;
+    background: black;
+}
+
+.swiper {
+    width: 100%;
+
+}
+
+.swiper-wrapper {
+    width: 100%;
+    margin: 3%;
+}
+
+.swiper-slide {
+    width: 190px;
+    margin: 0;
+
+}
+
+
+.section-1  .section-1-card {
+    height: 360px;
+    width: 100%;
+    display: flex;
+    padding: 0;
+}
+
+.btn {
+    color: black;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.btn:hover {
+    color: white;
+    border: 1px solid black;
+    background-color:black ;
+}
+
+.swiper-button-next {
+    margin-top:-81px ;
+}
+
+.swiper-button-prev {
+    margin-top:-81px ;
+}

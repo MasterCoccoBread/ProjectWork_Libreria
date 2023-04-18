@@ -6,6 +6,8 @@
 }
 body {
     background: burlywood;
+    widows: 100%;
+    margin: 0 auto;
 
 }
 .header {
@@ -13,14 +15,13 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 24px 5%;
+    padding: 24px 0;
     background: black;
     justify-content: space-between;
     text-align: center;
     display: flex;
     height: 90px;   
-    border-bottom: 1px solid white;
-    z-index: 3;
+    z-index: 99;
 }
 
 .nav-bar {
@@ -73,9 +74,9 @@ margin-right: 50px;
 }
 
 .container-body {
-    width: 80%;
+
     margin:0 auto;
-    background-color: rgb(5, 3, 117);
+    background-color: white;
     border-radius: 5px;
     z-index: 1;
     height: 1500px;    
@@ -95,23 +96,26 @@ margin-right: 50px;
 
 .section-1-card {
   width: 100%;
-  height:60%;
+  height:100%;
   background-color:transparent;
-  padding: 24px 28px;
+  padding: 24px;
   text-align: center;
   position: absolute;
   
 }
 .card {
+    width: 190px;
     text-align: center;
-    height: auto;
     float: left;
-    position: absolute;
     border-radius: 0;
     border: none;
     background-color: transparent;
     margin-right: 14px;
-    color: white;
+    position:relative;
+    float: left;
+    z-index: 4;
+    height:360px;
+    display: flex;
 
 }
 
@@ -132,9 +136,9 @@ margin-right: 50px;
 
 .cover-img {
     padding: 10px 10px;
-    width: 100%;
+    width: 190px;
     height: 220px;
-    background-color: #282d32;
+    background-color: #a2a8ae;
     z-index: 1;
 
 }
@@ -143,51 +147,78 @@ margin-right: 50px;
     width: 90%;
     height: 100%;
 }
+
+.nascondi {
+  width: 190px;
+  height: 100%;
+  opacity: 0;
+  transition:  0.2s ease;
+  display: flex;
+  z-index: 5;
+  position: absolute;
+  left: 0;
+  right: 0;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+
+}
+
+.nascondi:hover {
+  opacity: 1;
+}
+
+.nascondi:hover .btn-dettaglio, .nascondi:hover .btn{
+
+  transition: translateY(0);
+}
+
 .cover-dettaglio {
     padding: 0;
     left: 0;
     border: none;
     font: inherit;
     color: inherit;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.3);
     position: absolute;
-    top: 51%;
-    width: 100%;
-    height: 50px;
+    top: 50%;
+    width: 190px;
+    height: 60px;
     text-align: center;
     cursor: pointer;
     transition: all 0.4s ease-in-out;
-    transform: translateY(0);
-    opacity: 0;
+    transform: translateY(-20px);
 
 }
+
 .btn-dettaglio {
-  width: 100%;
+  width: 190px;
   border: none;
   background-color: transparent;
   color: #f0f9ff;
-  margin: 0 auto;
-  padding:10px;
-  transition: all 0.4s ease-in-out ;
-  opacity: 0;
+  margin: 20px auto;
+  transition: all 0.4s ease-in-out;
+
 }
 
-.cover-dettaglio:hover, .btn-dettaglio:hover, .cover-img:hover {
-  opacity:1;
-}
 
 
 .content-logo {
   margin-top: 0;
 }
-.content-logo img {
+ .img-logo {
   width: 50px;
   height: auto;
 
 }
 
+.img-testo {
+  width: 100px;
+  height: auto;
+}
+
 .btn {
-  width: 100%;
+  width: 190px;
   background:transparent;
   color: white;
   font-size: 14.5px;
@@ -197,25 +228,30 @@ margin-right: 50px;
   border-radius: none;
   border: 2px solid white;
   transition: all 0.2s ease-in-out;
+  transform: translateY(-20px);
+}
+
+.btn:hover {
+  color: white;
+  background: black;
 }
 
 
 .card-body {
-  padding-top: 10px;
+  width: 190px;
   height: 75px;
 }
 
 .section-1 {
-  width: 100%;
-  height: 600px;
+  width: 90%;
+  height: 400px;
   background-color: transparent;
-  display: flex;
-  padding-top: -20px;
+  
 }
 
 .cover-section-1 {
   height: 140px;
-  width: 80%;
+  width: 100%;
   position: absolute;
   background-color: burlywood;
   margin: 0 auto;
@@ -229,17 +265,19 @@ margin-right: 50px;
 }
 
 .linea {
-  width: 75%;
-  border-top: 2px solid black;
+  width: 70%;
+  border-top: 1px solid black;
   margin: 0 auto;
-  padding-bottom: 20px;
+
 }
 
 .titoli {
-
+  position: relative;
+  margin: 0 auto;
   font-weight: 900px;
   color: black;
   font-family: 'Soin Sans Pro';
+  text-align: center;
 }
 
 
@@ -292,7 +330,7 @@ margin-right: 50px;
 
 
 .footer-dark {
-    padding:50px 0;
+    padding:20px 0;
     color:#f0f9ff;
     background-color:#282d32;
     min-height: 100%;
@@ -401,4 +439,33 @@ margin-right: 50px;
 .carousel-cell img {
   width: 100%;
   height: 100%;
+}
+
+.bottone-indietro {
+  border: 2px solid white;
+  background-color: black;
+  color:white;
+  width: 200px;
+  height: 50px;
+  padding: 10px 0;
+  margin: 0 auto;
+  transition: all .2s ease-in-out;
+}
+.bottone-indietro a {
+   text-decoration: none;
+   color: white;
+   transition: all .2s ease-in-out;
+}
+.bottone-indietro:hover {
+  border: 2px solid black;
+  background: white;
+
+}
+
+.bottone-indietro a:hover {
+  color: black;
+}
+
+html {
+  overflow-x: hidden;
 }

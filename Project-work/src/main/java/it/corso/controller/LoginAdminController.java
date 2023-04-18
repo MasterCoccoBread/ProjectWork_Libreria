@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 @Controller
 @RequestMapping("/loginadmin")
 public class LoginAdminController {
@@ -23,7 +24,7 @@ public class LoginAdminController {
 
         model.addAttribute("logError",logError != null);
 
-        return "login";
+        return "LoginAdmin";
     }
 
     @PostMapping
@@ -33,10 +34,10 @@ public class LoginAdminController {
             HttpSession session) {
 
         if(!adminService.controlloLogin(username, password,session))
-            return "redirect:/login?le";
+            return "redirect:/loginadmin?le";
 
 
-        return "redirect:/reserved";
+        return "redirect:/areariservataadmin";
     }
 
 

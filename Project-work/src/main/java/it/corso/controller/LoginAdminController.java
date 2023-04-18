@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+//ERRORE CHE MI DA:
+//org.thymeleaf.exceptions.TemplateInputException: Error resolving template [login], template might not exist or might not be accessible by any of the configured Template Resolvers
+//dove si trova l'errore?
+
 @Controller
 @RequestMapping("/loginadmin")
 public class LoginAdminController {

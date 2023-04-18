@@ -15,7 +15,7 @@ import it.corso.service.AnagraficaService;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("/formanagrafica")
+@RequestMapping("/formutente")
 public class FormAnagraficaController {
 	@Autowired
 	private AnagraficaService anagraficaService;
@@ -38,11 +38,10 @@ public class FormAnagraficaController {
 		model.addAttribute("anagrafica", anagraficaP);
 		model.addAttribute("formError", formError!= null);
 		model.addAttribute("profilo", anagraficaP.getProfilo());
-		return "formAnagrafica" ;
+		return "Form" ;
 	}
 
 
-	//private Anagrafica getAnagrafica(){}
 	@PostMapping
 	public String registraAnagrafica( @Valid
 			@ModelAttribute ("anagrafica") Anagrafica anagrafica,
@@ -50,16 +49,16 @@ public class FormAnagraficaController {
 	{ 
 		//se ci sono errori ripresento la pagina html dove mostro i singoli messaggi
 		if (bindingResult.hasErrors()){
-			return "formAnagrafica";
+			return "Form";
 
 		}
 		if (!anagraficaService.registraAnagrafica(anagrafica)){
 			anagraficaP = anagrafica;
-			return "redirect:/formanagrafica?fe";
+			return "redirect:/formutente?fe";
 		}
 
 
-		return "redirect:/modificaanagrafica";
+		return "redirect:/areautente";
 	}
 
 	

@@ -31,7 +31,7 @@ public class EventiController {
 	}
 	
 	@PostMapping("/prenotaevento")
-	public String prenotaEvento(
+	public String prenotaEvento(// html session
 			//@RequestParam Integer idAnagrafica,
 			@RequestParam int idEvento) {
 		Integer idAnagrafica = 1;

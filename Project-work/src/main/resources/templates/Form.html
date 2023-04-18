@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/Form.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Document</title>
+    <title th:text="'Registra Utente'"></title>
 </head>
  <body>
     <header class="header">
@@ -23,7 +23,7 @@
             <a href="#">Contatti</a> 
         </nav>
         <nav class="nav-bar">
-            <a href="Form.html">Accedi / Registrati</a>
+            <a th:href="@{/formutente}">Accedi / Registrati</a>
         </nav>
     </header>
     <div class="cover-header"></div>
@@ -31,44 +31,53 @@
     <div class="contenitore-form">
         
         <div class="box reg">
-            <form action="">
-                <h2>Registrati</h2>
+            <form action="" th:object="${anagrafica}" method="POST">
+                <h2 th:text="'Registrati'"></h2>
+                   <div class="input-box" hidden="hidden"> 
+                   <input th:field="*{id}" type="text" id="id" name="id" class="form-control"
+									   required="required" readonly hidden="hidden">
+                   </div>
                 <div class="input-box">
                     <span class="icon"></span>
-                    <input type="text" required>
-                    <label>Nome</label>
+					<input th:field="*{nome}" type="text" id="nome" name="nome" class="form-control" required="required">
+					 <label th:text="'Nome:'"></label>
                 </div>
                 <div class="input-box">
                     <span class="icon"></span>
-                    <input type="text" required>
-                    <label>Cognome</label>
+                    <input th:field="*{cognome}" type="text" id="cognome" name="cognome" class="form-control" required="required">
+					 <label th:text="'Cognome:'"></label>
+                </div>
+                  <div class="input-box">
+                    <span class="icon"></span>
+                   <input th:field="*{telefono}" type="text" id="telefono" name="telefono" class="form-control" required="required">
+					<label th:text="'Telefono'"></label>
+                </div>
+                <div class="input-box" hidden="hidden">
+                	<input th:field="*{profilo.id}" type="text" id="idP" name="idP" class="form-control" required="required" readonly hidden="hidden">
+                </div> 
+                <div class="input-box">
+                    <span class="icon"></span>
+                    <input th:field="*{profilo.username}" type="text" id="username" name="username" class="form-control" required="required">
+                  <label th:text="'Username'"></label>
+                </div>
+                
+                <div class="input-box">
+                    <span class="icon"></span>
+                    <input th:field="*{profilo.email}" type="email" id="email" name="email" class="form-control" required="required">
+                    <label th:text="'Email'"></label>
                 </div>
                 <div class="input-box">
                     <span class="icon"></span>
-                    <input type="text" required>
-                    <label>Username</label>
-                </div>
-                <div class="input-box">
-                    <span class="icon"></span>
-                    <input type="text" required>
-                    <label>Email</label>
-                </div>
-                <div class="input-box">
-                    <span class="icon"></span>
-                    <input type="tel" required>
-                    <label>Telefono</label>
-                </div>
-                <div class="input-box">
-                    <span class="icon"></span>
-                    <input type="password" required>
-                    <label>Password</label>
+					<input th:field="*{profilo.password}" type="password" id="password" name="password" class="form-control">
+                    <label th:text="'Password'"></label>
                 </div>
                 <div class="pass-dimenticato">
-                    <a href="#">Password dimenticato?</a>
+                    <a href="#">Password dimenticata?</a>
                 </div>
-                <button type="submit" class="btn-accedi">Registrati</button>
+                <input type="submit" th:value="'Registrati'" class="btn btn-primary">
+				&emsp; 
+					<a th:href="@{/homepage}" class="btn btn-secondary" th:text="'Torna Indietro'"></a>
                 <div class="accedi-registrati">
-                    <p>Hai già un account?<a href="#"> Accedi</a></p>
                 </div>
             </form>
         </div>

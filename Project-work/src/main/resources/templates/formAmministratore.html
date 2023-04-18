@@ -4,16 +4,33 @@
 		<title th:text="'Home Page'"></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
     	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    	<link href="/css/style.css" type="text/css" rel="stylesheet">
     	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 <body>
-	<div class="container-fluid" th:if="${divform == true}">   
+	<header class="header row">
+		<div class="row">
+	        <div class="col-3  text-end content-logo">
+	        	<img src="/images/LibreriaDelLevantesolo_logo2.jpg" alt="LOGO">
+		        </div>
+			<div class="col-6 text-center">
+				<h1 th:text="'Admin Area'" style="magin: 0 auto;"></h1>
+			</div>
+			<div class="col-3  text-end">
+	        	<a th:href="@{/homepage}" th:text="'Home Page'" class="btn btn-success"></a>
+	        </div>
+		</div>
+	</header>
+	<div class="cover-header"></div>
+	<div class="container-fluid"  style="min-height:1000px;">   
 			<div class="row mt-4">
 				<div class="col-12 text-center">
-					<h4 th:text="'Registrazione Evento'"></h4>
+					<h4 th:text="'Registrazione Evento'" th:if="${divform == true}"></h4>
+					<h4 th:text="'Registrazione Libro'" th:if="${divform == false}"></h4>
 				</div>
 			</div>
-			<div class="row justify-content-center mt-4">
+			<div class="row justify-content-center mt-4" th:if="${divform == true}">
 				<div class="col-4">
 					<form action="salvaevento" method="POST" enctype="multipart/form-data">
 						<div class="row">
@@ -77,14 +94,7 @@
 					</form>
 				</div>
 			</div>
-		</div> 
-		<div class="container-fluid" th:if="${divform == false}">
-			<div class="row mt-4">
-				<div class="col-12 text-center" >
-					<h4 th:text="'Registrazione Libro'"></h4>
-				</div>
-			</div>
-			<div class="row justify-content-center mt-4">
+			<div class="row justify-content-center mt-4" th:if="${divform == false}">
 				<div class="col-4">
 					<form action="salvalibro" method="POST" enctype="multipart/form-data" name="modulo">
 						<div class="row">
@@ -159,6 +169,40 @@
 					</form>
 				</div>
 			</div>
+		</div> <!--  
+		<div class="container-fluid"  style="min-height:1000px;">
+			<div class="row mt-4">
+				<div class="col-12 text-center" >
+					<h4 th:text="'Registrazione Libro'"></h4>
+				</div>
+			</div>-->
+			<div class="footer-dark">
+	        <footer>
+	            <div class="container">
+	                <div class="row">
+	                    <div class="col-sm-6 col-md-3 item">
+	                        <h3>Servizi</h3>
+	                        <ul>
+	                            <li><a href="#">Web design</a></li>
+	                            <li><a href="#">Svilupppo</a></li>
+	                            <li><a href="#">Hosting</a></li>
+	                        </ul>
+	                    </div>
+	                    <div class="col-sm-6 col-md-3 item">
+	                        <h3>Di noi!</h3>
+	                        <ul>
+	                            <li><a href="#">Azienda</a></li>
+	                            <li><a href="#">Squadra</a></li>
+	                            <li><a href="#">Carriere</a></li>
+	                        </ul>
+	                    </div>
+	                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+	                </div>
+	               <a th:href="@{/catalogo}" style="text-decoration: none; color: rgb(178, 172, 172); cursor: pointer;">
+	                <p class="copyright"> Libreria Del Levante © 2023</p></a>
+	            </div>
+	        </footer>
+	    </div>
 		</div>
 		<script>
 			function abilita() {

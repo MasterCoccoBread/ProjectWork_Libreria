@@ -40,7 +40,7 @@ public class LoginAdminController {
             return "redirect:/loginadmin?le";
 
 
-        return "redirect:/areariservataadmin";
+        return "redirect:/catalogo";
     }
 
 

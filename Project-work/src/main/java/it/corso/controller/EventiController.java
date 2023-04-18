@@ -1,11 +1,16 @@
 package it.corso.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import it.corso.model.Evento;
 import it.corso.service.EventoService;
 import it.corso.service.PrenotazioneService;
 
@@ -19,18 +24,21 @@ public class EventiController {
 	private PrenotazioneService prenotazioneService;
 	
 	@GetMapping
-	public String getPage() {
-		return "eventi";
+	public String getPage(Model model) {
+		List<Evento> eventi = eventoService.getEventi();
+		model.addAttribute("eventi", eventi);
+		return "Eventi";
 	}
 	
 	@PostMapping("/prenotaevento")
 	public String prenotaEvento(
-			@RequestParam(name = "idAnagrafica") int idAnagrafica,
-			@RequestParam(name = "idEvento", required = false) Integer idEvento,
-			@RequestParam(name = "idLibro", required = false) Integer idLibri) {
+			//@RequestParam Integer idAnagrafica,
+			@RequestParam int idEvento) {
+		Integer idAnagrafica = 1;
 		
-		String ticket = prenotazioneService.generaTicket(idEvento, idLibri);
-		prenotazioneService.registraPrenotazione(ticket, idAnagrafica, idEvento, idLibri);
+		String tipoPrenotazione = "evento";
+		String ticket = prenotazioneService.generaTicket(idEvento, tipoPrenotazione);
+		prenotazioneService.registraPrenotazione(ticket, idAnagrafica, idEvento, tipoPrenotazione);
 		return "redirect:/eventi";
 	}
 }

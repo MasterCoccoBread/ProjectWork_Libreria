@@ -53,11 +53,37 @@
                     </div>
             </div> 
             <div class="content-button">
-            	<form action="eventi/prenotaevento@{id=}" method="post">
+            	<form action="eventi/prenotaevento" method="post">
                 	<input type="submit" class="btn btn-primary" th:value="'PRENOTA BIGLIETTO'">
             	</form>
             </div>
         </div>
+        <form action="eventi/prenotaevento" method="post">
+        <div class="container-body" >
+            <div class="immagine-evento" >
+                <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d182293.26004324885!2d8.726023448153326!3d44.44685920581271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d34152dcd49aad%3A0x236a84f11881620a!2sGenova%20GE!5e0!3m2!1sit!2sit!4v1681477359509!5m2!1sit!2sit" width="800" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="linea"></div>
+                <h1>SCOPRI TUTTI I NOSTRI EVENTI</h1>
+            </div>
+            <div class="container-desc-autore">
+                <div class="autore-immagine">
+                    <img src="images/imgEvento.jpg" alt="">
+                </div>
+                    <div class="desc-autore" >
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    </div>
+	            </div> 
+	            <div th:each="e : ${eventi}">
+	            		<label for="idEvento"  ></label>
+	            		<p th:text="${e.id}" style="color:white;"></p>
+	            		<input th:value="${e.id}" type="radio" id="idEvento" name="idEvento" ><!-- th:attr="data-id=${e.id}" -->
+	            	<div class="content-button" >
+	            	
+            		</div>
+	            </div>
+	                	<input type="submit" class="btn btn-primary" th:value="'PRENOTA BIGLIETTO'">
+        </div>
+        </form>
     </div>
     <div class="footer-dark">
         <footer>

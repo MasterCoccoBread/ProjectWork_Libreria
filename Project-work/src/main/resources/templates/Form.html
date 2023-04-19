@@ -24,16 +24,42 @@
             <a href="#">Contatti</a> 
         </nav>
         <nav class="nav-bar">
-            <a th:href="@{/formutente}">Accedi / Registrati</a>
+                <ul>
+                <li><a th:href="@{/formutente}">Accedi / Registrati</a></li>
+                </ul>
         </nav>
     </header>
     <div class="cover-header"></div>
 
     <div class="contenitore-form">
-        
-        <div class="box reg">
+        <div class="accedi_registrati-box">
+            <div class="box accedi" id="accedi">
+                    <form action="">
+                        <h2>Accedi</h2>
+                        <div class="input-box">
+                            <span class="icon"></span>
+                            <input type="text" required>
+                            <label>Email</label>
+                        </div>
+                        <div class="input-box">
+                            <span class="icon"></span>
+                            <input type="password" required>
+                            <label>Password</label>
+                        </div>
+                        <div class="pass-dimenticato">
+                            <a href="#">Password dimenticato?</a>
+                        </div>
+                        <button type="submit" class="btn-accedi">Accedi</button>
+                        <div class="accedi-registrati">
+                            <p>Non Hai un account?<a href="#" id="registratiLink"> Registrati</a></p>
+                        </div>
+                    </form>
+            </div>
+        </div>
+
+        <div class="box registrati" style="display:none" id="reg">
             <form th:object="${anagrafica}" method="POST">
-                <h2 th:text="'Registrati'"></h2>
+                <h2 th:text="'Registrati'">Registrati</h2>
                    <div class="input-box" hidden="hidden"> 
                    <input th:field="*{id}" type="text" id="id" name="id" class="form-control"
 									   required="required" readonly hidden="hidden">
@@ -41,17 +67,17 @@
                 <div class="input-box">
                     <span class="icon"></span>
 					<input th:field="*{nome}" type="text" id="nome" name="nome" class="form-control" required="required">
-					 <label th:text="'Nome:'"></label>
+					 <label th:text="'Nome:'">Nome</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"></span>
                     <input th:field="*{cognome}" type="text" id="cognome" name="cognome" class="form-control" required="required">
-					 <label th:text="'Cognome:'"></label>
+					 <label th:text="'Cognome:'">Cognome</label>
                 </div>
                   <div class="input-box">
                     <span class="icon"></span>
                    <input th:field="*{telefono}" type="text" id="telefono" name="telefono" class="form-control" required="required">
-					<label th:text="'Telefono'"></label>
+					<label th:text="'Telefono'">Telefono</label>
                 </div>
                 <div class="input-box" hidden="hidden">
                 	<input th:field="*{profilo.id}" type="text" id="idP" name="idP" class="form-control" required="required" readonly hidden="hidden">
@@ -59,31 +85,33 @@
                 <div class="input-box">
                     <span class="icon"></span>
                     <input th:field="*{profilo.username}" type="text" id="username" name="username" class="form-control" required="required">
-                  <label th:text="'Username'"></label>
+                  <label th:text="'Username'">Username</label>
                   <p th:if="${formError}" th:text="'Username Duplicato'" style="text-align:center; color:red; margin:0;"></p>
                 </div>
                 
                 <div class="input-box">
                     <span class="icon"></span>
                     <input th:field="*{profilo.email}" type="email" id="email" name="email" class="form-control" required="required">
-                    <label th:text="'Email'"></label>
+                    <label th:text="'Email'">Email</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"></span>
-					<input th:field="*{profilo.password}" type="password" id="password" name="password" class="form-control">
-                    <label th:text="'Password'"></label>
+					<input th:field="*{profilo.password}" type="password" id="password" name="password" class="form-control" placeholder="Password">
+                    <label th:text="'Password'">Password</label>
                 </div>
                 <div class="pass-dimenticato">
                     <a href="#">Password dimenticata?</a>
                 </div>
-                <input type="submit" th:value="'Registrati'" class="btn btn-primary">
+                <button type="submit" class="btn-accedi">Registrati</button>
 				&emsp; 
-					<a th:href="@{/homepage}" class="btn btn-secondary" th:text="'Torna Indietro'"></a>
                 <div class="accedi-registrati">
-                    <p>Hai già un account?<a href="#"> Accedi</a></p>
+                    <p>Hai già un account?<a href="#" id="accediLink"> Accedi</a></p>
                 </div>
             </form>
         </div>
+
+
+        
 
     </div>
 
@@ -123,13 +151,13 @@
         click2.addEventListener("click", cambio_accedi)
 
         function cambio_registrati(){
-            document.getElementById("accediLog").style.display = "none";
-            document.getElementById("registrati").style.display = "flex";
+            document.getElementById("accedi").style.display = "none";
+            document.getElementById("reg").style.display = "flex";
 
         }
         function cambio_accedi(){
-            document.getElementById("registrati").style.display = "none";
-            document.getElementById("accediLog").style.display = "flex";
+            document.getElementById("reg").style.display = "none";
+            document.getElementById("accedi").style.display = "flex";
 
 
         }

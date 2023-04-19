@@ -10,7 +10,14 @@ public class AreaUtenteController {
 	
 	@GetMapping
 	public String getPage() {
+		
+		//aggiungere la vista dei dati profilo 
+		//aggiungere la vista delle prenotazioni 
+		
+		
 		return "AreaProfilo";
 	}
-
+		
+	
+	
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import it.corso.model.Anagrafica;
 import it.corso.service.AnagraficaService;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
@@ -28,8 +29,9 @@ public class FormAnagraficaController {
 	@GetMapping
 	public String getPage(Model model,@RequestParam(name="id", required = false) Integer id,
 						  @RequestParam (name = "idP", required = false) Integer idP,
-						  @RequestParam (name="fe", required = false) String formError)
-	{
+						  @RequestParam (name="fe", required = false) String formError
+						  )
+	{				
 		if(formError == null) {
 			anagraficaP = (id == null) ? new Anagrafica() : anagraficaService.getAnagraficaByid(id);
 			profilo = (idP == null) ? new Profilo() : profiloService.getProfiloById(idP);
@@ -49,7 +51,7 @@ public class FormAnagraficaController {
 	{ 
 		//se ci sono errori ripresento la pagina html dove mostro i singoli messaggi
 		if (bindingResult.hasErrors()){
-			return "Form";
+			return "redirect:/formutente?fe";
 
 		}
 		if (!anagraficaService.registraAnagrafica(anagrafica)){

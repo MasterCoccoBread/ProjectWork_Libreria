@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import it.corso.dao.AnagraficaDao;
 import it.corso.model.Anagrafica;
 import it.corso.model.Profilo;
+import jakarta.servlet.http.HttpSession;
 
 @Service
 public class AnagraficaServiceImpl implements AnagraficaService{
 
-	@Autowired
-	private ProfiloService profiloService;
+
 	@Autowired
 	private AnagraficaDao anagraficaDao;
 
@@ -46,17 +46,27 @@ public class AnagraficaServiceImpl implements AnagraficaService{
 	@Override
 	public void cancellaAnagrafica(Anagrafica anagrafica) {
 
-		// Bisogna cancellailre il profilo perchè la FK al profilo sta nell'anagrafica. Se invece si mettesse ls FK all'anagraica nel profilo,
+		// Bisognerebbe cancellailre il profilo perchè la FK al profilo sta nell'anagrafica. Se invece si mettesse ls FK all'anagraica nel profilo,
 		// si potrebbe cancellare direttamente l'analgrafica che quindi cancellerebbe anche il profilo.
-
-
-		//relativo al cascade All o Refresh
-		// cancellazione profilo 
-		// cancellazione della prenotazione?
 		anagraficaDao.delete(anagrafica);
-		//profiloService.cancellaProfilo(anagrafica.getProfilo());
-		//cancello prima il profilo e poi l'anagrafica (forzando) perchè non
+		//profiloService.cancellaProfilo(anagrafica.getProfilo()); non necessario grazie al cascade ALL 
+		//cancellato da qui e inserito nel metodo getMapping
 
 	}
 
+
+	@Override
+	public boolean controlloLogin(String username, String password, HttpSession session) {
+		
+		Anagrafica anagrafica = anagraficaDao.findByProfiloUsernameAndProfiloPassword(username, password);
+		
+		if(anagrafica!=null) {
+			session.setAttribute("utente", anagrafica);
+			
+			return true;
+		}
+		
+		return false;
+	}
+	
 }

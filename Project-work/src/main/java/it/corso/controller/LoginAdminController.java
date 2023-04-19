@@ -20,10 +20,11 @@ public class LoginAdminController {
    private AmministratoreService adminService;
 
     @GetMapping
-    public String getPage(@RequestParam (name="le", required= false) String logError, Model model, HttpSession session) {
+    public String getPage(@RequestParam (name="le", required= false) String logError, Model model, HttpSession session)
+    {
 
     	if(session.getAttribute("admin") != null)
-    		return "redirect:/areariservataadmin";
+    		return "redirect:/catalogo";
         model.addAttribute("logError",logError != null);
 
         	return "LoginAdmin";

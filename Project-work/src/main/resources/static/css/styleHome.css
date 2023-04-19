@@ -47,3 +47,15 @@
 .swiper-button-prev {
     margin-top:-81px ;
 }
+
+.titoli {
+    margin:30px auto ;
+}
+
+.titoli button {
+    height: 60px;
+}
+.btn-bookstore {
+    margin: 30px auto;
+
+}

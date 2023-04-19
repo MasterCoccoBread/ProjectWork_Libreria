@@ -14,7 +14,8 @@
  <body>
     <header class="header">
         <div class="content-logo">
-        <img src="logo2.jpg" alt="LOGO">
+        <a href="HomePage.html"><img class="img-logo" src="LibreriaDelLevantesolo_logo2.jpg" alt="LOGO">
+        <img class="img-testo" src="LibreriaDelLevantesolo_testo2.jpg" alt="LOGO"></a>
         </div>
         <nav class="nav-bar">
             <a href="HomePage.html">Home</a>
@@ -23,16 +24,42 @@
             <a href="#">Contatti</a> 
         </nav>
         <nav class="nav-bar">
-            <a th:href="@{/formutente}">Accedi / Registrati</a>
+                <ul>
+                <li><a th:href="@{/formutente}">Accedi / Registrati</a></li>
+                </ul>
         </nav>
     </header>
     <div class="cover-header"></div>
 
     <div class="contenitore-form">
-        
-        <div class="box reg">
+        <div class="accedi_registrati-box">
+            <div class="box accedi" id="accedi">
+                    <form action="">
+                        <h2>Accedi</h2>
+                        <div class="input-box">
+                            <span class="icon"></span>
+                            <input type="text" required>
+                            <label>Email</label>
+                        </div>
+                        <div class="input-box">
+                            <span class="icon"></span>
+                            <input type="password" required>
+                            <label>Password</label>
+                        </div>
+                        <div class="pass-dimenticato">
+                            <a href="#">Password dimenticato?</a>
+                        </div>
+                        <button type="submit" class="btn-accedi">Accedi</button>
+                        <div class="accedi-registrati">
+                            <p>Non Hai un account?<a href="#" id="registratiLink"> Registrati</a></p>
+                        </div>
+                    </form>
+            </div>
+        </div>
+
+        <div class="box registrati" style="display:none" id="reg">
             <form th:object="${anagrafica}" method="POST">
-                <h2 th:text="'Registrati'"></h2>
+                <h2 th:text="'Registrati'">Registrati</h2>
                    <div class="input-box" hidden="hidden"> 
                    <input th:field="*{id}" type="text" id="id" name="id" class="form-control"
 									   required="required" readonly hidden="hidden">
@@ -40,17 +67,17 @@
                 <div class="input-box">
                     <span class="icon"></span>
 					<input th:field="*{nome}" type="text" id="nome" name="nome" class="form-control" required="required">
-					 <label th:text="'Nome:'"></label>
+					 <label th:text="'Nome:'">Nome</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"></span>
                     <input th:field="*{cognome}" type="text" id="cognome" name="cognome" class="form-control" required="required">
-					 <label th:text="'Cognome:'"></label>
+					 <label th:text="'Cognome:'">Cognome</label>
                 </div>
                   <div class="input-box">
                     <span class="icon"></span>
                    <input th:field="*{telefono}" type="text" id="telefono" name="telefono" class="form-control" required="required">
-					<label th:text="'Telefono'"></label>
+					<label th:text="'Telefono'">Telefono</label>
                 </div>
                 <div class="input-box" hidden="hidden">
                 	<input th:field="*{profilo.id}" type="text" id="idP" name="idP" class="form-control" required="required" readonly hidden="hidden">
@@ -58,55 +85,34 @@
                 <div class="input-box">
                     <span class="icon"></span>
                     <input th:field="*{profilo.username}" type="text" id="username" name="username" class="form-control" required="required">
-                  <label th:text="'Username'"></label>
+                  <label th:text="'Username'">Username</label>
                   <p th:if="${formError}" th:text="'Username Duplicato'" style="text-align:center; color:red; margin:0;"></p>
                 </div>
                 
                 <div class="input-box">
                     <span class="icon"></span>
                     <input th:field="*{profilo.email}" type="email" id="email" name="email" class="form-control" required="required">
-                    <label th:text="'Email'"></label>
+                    <label th:text="'Email'">Email</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"></span>
-					<input th:field="*{profilo.password}" type="password" id="password" name="password" class="form-control">
-                    <label th:text="'Password'"></label>
+					<input th:field="*{profilo.password}" type="password" id="password" name="password" class="form-control" placeholder="Password">
+                    <label th:text="'Password'">Password</label>
                 </div>
                 <div class="pass-dimenticato">
                     <a href="#">Password dimenticata?</a>
                 </div>
-                <input type="submit" th:value="'Registrati'" class="btn btn-primary">
+                <button type="submit" class="btn-accedi">Registrati</button>
 				&emsp; 
-					<a th:href="@{/homepage}" class="btn btn-secondary" th:text="'Torna Indietro'"></a>
                 <div class="accedi-registrati">
+                    <p>Hai già un account?<a href="#" id="accediLink"> Accedi</a></p>
                 </div>
             </form>
         </div>
 
-    <div class="accedi_registrati-box">
-        <div class="box accedi">
-                <form action="">
-                    <h2>Accedi</h2>
-                    <div class="input-box">
-                        <span class="icon"></span>
-                        <input type="text" required>
-                        <label>Email</label>
-                    </div>
-                    <div class="input-box">
-                        <span class="icon"></span>
-                        <input type="password" required>
-                        <label>Password</label>
-                    </div>
-                    <div class="pass-dimenticato">
-                        <a href="#">Password dimenticato?</a>
-                    </div>
-                    <button type="submit" class="btn-accedi">Accedi</button>
-                    <div class="accedi-registrati">
-                        <p>Non Hai un account?<a href="#"> Registrati</a></p>
-                    </div>
-                </form>
-        </div>
-    </div>
+
+        
+
     </div>
 
     <div class="footer-dark">
@@ -131,14 +137,30 @@
                     </div>
                     <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
                 </div>
-                <p class="copyright">Libreria Del Levante © 2023</p>
+                <a href="" style="text-decoration: none; color: rgb(178, 172, 172); cursor: pointer;">
+                <p class="copyright">Libreria Del Levante © 2023</p></a>
             </div>
         </footer>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script>
-        
+        const click = document.getElementById("registratiLink")
+        const click2 = document.getElementById("accediLink")
+        click.addEventListener("click", cambio_registrati)
+        click2.addEventListener("click", cambio_accedi)
+
+        function cambio_registrati(){
+            document.getElementById("accedi").style.display = "none";
+            document.getElementById("reg").style.display = "flex";
+
+        }
+        function cambio_accedi(){
+            document.getElementById("reg").style.display = "none";
+            document.getElementById("accedi").style.display = "flex";
+
+
+        }
     </script>
  </body>
 </html>

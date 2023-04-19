@@ -8,14 +8,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.min.css" integrity="sha512-fJcFDOQo2+/Ke365m0NMCZt5uGYEWSxth3wg2i0dXu7A1jQfz9T4hdzz6nkzwmJdOdkcS8jmy2lWGaRXl+nFMQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/styleHome.css">
+
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Home page</title>
 </head>
  <body>
     <header class="header">
         <div class="content-logo">
-        <img src="LibreriaDelLevantesolo_logo2.jpg" alt="LOGO">
+        <a href="HomePage.html"><img class="img-logo" src="LibreriaDelLevantesolo_logo2.jpg" alt="LOGO">
+        <img class="img-testo" src="LibreriaDelLevantesolo_testo2.jpg" alt="LOGO"></a>
         </div>
         <nav class="nav-bar">
             <a href="HomePage.html">Home</a>
@@ -24,7 +28,9 @@
             <a href="#">Contatti</a> 
         </nav>
         <nav class="nav-bar">
-            <a th:href="@{/formutente}">Accedi / Registrati</a>
+        	<ul>
+            <li><a th:href="@{/formutente}" href="Form.html">Accedi / Registrati</a></li>
+            </ul>
         </nav>
     </header>
     <div class="cover-header"></div>
@@ -32,41 +38,166 @@
         <div class="contenitore-top">
         <div class="locandine-eventi">
             <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true }'>
-                <div class="carousel-cell"><a href="Eventi.html"><img src="imgEvento1.jpg" alt=""></a></div>
-                <div class="carousel-cell">Prova</div>
-                <div class="carousel-cell">Prova</div>
-                <div class="carousel-cell">Prova</div>
-                <div class="carousel-cell">Prova</div>
-                <div class="carousel-cell">Prova</div>
+                <div class="carousel-cell"><a href="Eventi.html"><img src="images/imgEvento1.jpg" alt=""></a></div>
               </div>
         </div>
         </div>
+        <div class="titoli" style="background: burlywood;"><h1>SCOPRI I NOSTRI LIBRI IN PROMOZIONE</h1></div>
         <div class="container-body">
-            <div class="cover-section-1"></div>
-        <div class="section-1">
-            <div class="section-1-card">
-                <div class="card" id="card-libri" style="width: 12rem;">
-                <div class="cover-img">
-                <img src="imglocandica.jpg" alt="Card image cap">
-                <div class="cover-dettaglio" id="bottone-dettaglio" style="display: none;">
-                    <button class="btn-dettaglio">
-                        Dettagli<a href="Dettaglio.html"></a>
-                    </button>
+        <div class="cover-section-1"></div>
+        <div class="section-1 swiper mySwiper">
+            <div class="section-1-card swiper-wrapper">
+                        <div class="card swiper-slide" id="card-libri" style="width: 200px;">
+                            <div class="nascondi">
+                                <div class="cover-dettaglio">
+                                    <button class="btn-dettaglio"  href="Dettaglio.html">
+                                        Dettagli
+                                    </button>
+                                </div>
+                                
+                                <div class="card-cart">
+                                    <a href="#" class="btn">PRENOTA IL LIBRO</a>
+                                </div>
+                            </div>
+                        <div class="cover-img">
+                        <img src="images/imglocandica.jpg" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: white;">Titolo libro</h5>
+                            <p class="card-price" style="color: white;">5.00$</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card swiper-slide" id="card-libri" style="width: 12rem;">
+                            <div class="nascondi">
+                                <div class="cover-dettaglio">
+                                    <button class="btn-dettaglio"  href="Dettaglio.html">
+                                        Dettagli
+                                    </button>
+                                </div>
+                                
+                                <div class="card-cart">
+                                    <a href="#" class="btn">PRENOTA IL LIBRO</a>
+                                </div>
+                            </div>
+                        <div class="cover-img">
+                        <img src="images/imglocandica.jpg" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: white;">Titolo libro2</h5>
+                            <p class="card-price" style="color: white;">5.00$</p>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide" id="card-libri" style="width: 12rem;">
+                            <div class="nascondi">
+                                <div class="cover-dettaglio">
+                                    <button class="btn-dettaglio"  href="Dettaglio.html">
+                                        Dettagli
+                                    </button>
+                                </div>
+                                
+                                <div class="card-cart">
+                                    <a href="#" class="btn">PRENOTA IL LIBRO</a>
+                                </div>
+                            </div>
+                        <div class="cover-img">
+                        <img src="images/imglocandica.jpg" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: white;">Titolo libro3</h5>
+                            <p class="card-price" style="color: white;">5.00$</p>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide" id="card-libri" style="width: 12rem;">
+                            <div class="nascondi">
+                                <div class="cover-dettaglio">
+                                    <button class="btn-dettaglio"  href="Dettaglio.html">
+                                        Dettagli
+                                    </button>
+                                </div>
+                                
+                                <div class="card-cart">
+                                    <a href="#" class="btn">PRENOTA IL LIBRO</a>
+                                </div>
+                            </div>
+                        <div class="cover-img">
+                        <img src="images/imglocandica.jpg" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: white;">Titolo libro</h5>
+                            <p class="card-price" style="color: white;">5.00$</p>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide" id="card-libri" style="width: 12rem;">
+                            <div class="nascondi">
+                                <div class="cover-dettaglio">
+                                    <button class="btn-dettaglio"  href="Dettaglio.html">
+                                        Dettagli
+                                    </button>
+                                </div>
+                                
+                                <div class="card-cart">
+                                    <a href="#" class="btn">PRENOTA IL LIBRO</a>
+                                </div>
+                            </div>
+                        <div class="cover-img">
+                        <img src="images/imglocandica.jpg" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: white;">Titolo libro</h5>
+                            <p class="card-price" style="color: white;">5.00$</p>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide" id="card-libri" style="width: 12rem;">
+                            <div class="nascondi">
+                                <div class="cover-dettaglio">
+                                    <button class="btn-dettaglio"  href="Dettaglio.html">
+                                        Dettagli
+                                    </button>
+                                </div>
+                                
+                                <div class="card-cart">
+                                    <a href="#" class="btn">PRENOTA IL LIBRO</a>
+                                </div>
+                            </div>
+                        <div class="cover-img">
+                        <img src="images/imglocandica.jpg" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: white;">Titolo libro</h5>
+                            <p class="card-price" style="color: white;">5.00$</p>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide" id="card-libri" style="width: 12rem;">
+                            <div class="nascondi">
+                                <div class="cover-dettaglio">
+                                    <button class="btn-dettaglio"  href="Dettaglio.html">
+                                        Dettagli
+                                    </button>
+                                </div>
+                                
+                                <div class="card-cart">
+                                    <a href="#" class="btn">PRENOTA IL LIBRO</a>
+                                </div>
+                            </div>
+                        <div class="cover-img">
+                        <img src="images/imglocandica.jpg" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: white;">Titolo libro</h5>
+                            <p class="card-price" style="color: white;">5.00$</p>
+                            </div>
+                        </div>
                 </div>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Titolo libro</h5>
-                    <p class="card-price">5.00$</p>
-                </div>
-                <div class="card-cart" id="bottone">
-                    <a href="#" class="btn">PRENOTA IL LIBRO</a>
-                </div>
-            </div>
+
+                
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                
+                  </div>
         </div>
         </div>
-            <div class="section-2">
-            <div class="linea"></div>
-            <div class="titoli"><h1>SCOPRI I NOSTRI LIBRI IN PROMOZIONE</h1></div>
+        </div>
         </div>
         </div>
     </div>
@@ -101,22 +232,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.pkgd.min.js" integrity="sha512-achKCfKcYJg0u0J7UDJZbtrffUwtTLQMFSn28bDJ1Xl9DWkl/6VDT3LMfVTo09V51hmnjrrOTbtg4rEgg0QArA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
     <script>
-    const bottone = document.getElementById("card-libri");
-    bottone.addEventListener("mouseover", visible);
-    bottone.addEventListener("mouseout", invisible);
-    function visible() {
-            document.getElementById("bottone-dettaglio").style.display = "block";
-            document.getElementById("bottone").style.transition = "all 0.4s ease-in-out";
-            document.getElementById("bottone").style.display = "block";
-
-    }
-    function invisible() {
-        document.getElementById("bottone-dettaglio").style.display ="none";
-        
-
-        document.getElementById("bottone").style.display ="none";
-    }
+      var swiper = new Swiper('.swiper', {
+        slidesPerView: 5,
+        direction: getDirection(),
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        on: {
+          resize: function () {
+            swiper.changeDirection(getDirection());
+          },
+        },
+      });
+  
+      function getDirection() {
+        var windowWidth = window.innerWidth;
+        var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
+  
+        return direction;
+      }
     </script>
  </body>
 </html>

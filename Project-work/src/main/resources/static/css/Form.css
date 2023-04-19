@@ -111,3 +111,16 @@
     text-decoration: underline;
 }
 
+.accedi {
+    height: 400px;
+}
+
+::-webkit-input-placeholder { 
+    color:   rgba(255, 255, 255, 0.973);
+    margin-left: 0;
+}
+
+:-ms-input-placeholder { 
+    color:    white;
+    margin-left: 0;
+}

@@ -29,17 +29,17 @@ public class PrenotazioneServiceImpl implements PrenotazioneService {
 		//prenotazioniDao.save(prenotazione);
 		Anagrafica anagrafica = anagraficaService.getAnagraficaByid(idAnagrafica);
 		prenotazione.setAnagrafica(anagrafica);
-	//	if (tipoPrenotazione.equals("evento")) {
+		if (tipoPrenotazione.equals("evento")) {
 			prenotazione.getEvento().clear();
 			evento = eventoService.getEventoById(idTipo);
 			prenotazione.getEvento().add(evento);
-	/*	} else {
+		} else {
 			prenotazione.getLibro().clear();
 			//for(int idLibro : idLibri) {
 				libro = libroService.getLibroById(idTipo);
 				prenotazione.getLibro().add(libro);
 			//}
-		}*/
+		}
 		prenotazioniDao.save(prenotazione);
 	}
 
@@ -70,9 +70,10 @@ public class PrenotazioneServiceImpl implements PrenotazioneService {
 	@Override
 	public String generaTicket(Integer idTipo, String tipoPrenotazione) {
 		int numeroPrenotazione;
-		String corpoPrenotazione, corpo;
+		String corpoPrenotazione, corpo, corpoTipo;
 		corpo = "" + idTipo;
 		if (tipoPrenotazione.equals("evento")) {
+			corpoTipo = "E";
 			evento = eventoService.getEventoById(idTipo); 
 			List<Prenotazione> prenotazioniInEvento = evento.getPrenotazioni(); // salvo le prenotazioni di quell'evento
 			if(!prenotazioniInEvento.isEmpty()) // se ci sono prenotazioni 
@@ -81,6 +82,7 @@ public class PrenotazioneServiceImpl implements PrenotazioneService {
 				numeroPrenotazione = 1; // se non ci sono prenotazioni è la prima
 			corpoPrenotazione = "" + numeroPrenotazione;
 		} else {
+			corpoTipo = "L";
 			libro = libroService.getLibroById(idTipo); 
 			List<Prenotazione> prenotazioniInLibro = libro.getPrenotazioni();
 			if(!prenotazioniInLibro.isEmpty())
@@ -97,7 +99,7 @@ public class PrenotazioneServiceImpl implements PrenotazioneService {
 				corpo = "0" + corpo;
 		}
 		
-		String ticket = "Ticket_" + corpoPrenotazione + "_" + corpo;
+		String ticket = "Ticket_" + corpoTipo + corpoPrenotazione + "_" + corpo;
 		return ticket;
 	}
 	

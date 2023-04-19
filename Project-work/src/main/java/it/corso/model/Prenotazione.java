@@ -38,16 +38,16 @@ public class Prenotazione {
 			inverseJoinColumns = @JoinColumn(name = "id_evento", referencedColumnName = "id")
 	)
 	private List<Evento> evento = new ArrayList<>();
-	/*
+	
 	@ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
 	@JoinTable
 	(
-			name = "prenotazione_evento",
+			name = "prenotazione_libro",
 			joinColumns = @JoinColumn(name = "id_prenotazione", referencedColumnName = "id"),
 			inverseJoinColumns = @JoinColumn(name = "id_libro", referencedColumnName = "id")
 	)
 	private List<Libro> libro = new ArrayList<>();
-	*/
+	
 	public int getId() {
 		return id;
 	}
@@ -79,7 +79,7 @@ public class Prenotazione {
 	public void setEvento(List<Evento> evento) {
 		this.evento = evento;
 	}
-/*
+
 	public List<Libro> getLibro() {
 		return libro;
 	}
@@ -87,5 +87,5 @@ public class Prenotazione {
 	public void setLibro(List<Libro> libro) {
 		this.libro = libro;
 	}
-*/
+
 }

@@ -1,6 +1,6 @@
 .container-body {
     width: 95%;
-    background: black;
+    background: rgb(170, 137, 95);
 }
 
 .swiper {
@@ -10,12 +10,13 @@
 
 .swiper-wrapper {
     width: 100%;
-    margin: 3%;
+    margin: 0 3.3%;
 }
 
 .swiper-slide {
     width: 190px;
     margin: 0;
+
 
 }
 
@@ -45,4 +46,16 @@
 
 .swiper-button-prev {
     margin-top:-81px ;
+}
+
+.titoli {
+    margin:30px auto ;
+}
+
+.titoli button {
+    height: 60px;
+}
+.btn-bookstore {
+    margin: 30px auto;
+
 }

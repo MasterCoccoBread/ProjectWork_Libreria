@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,9 +23,9 @@
             <button type="submit"><i class="bx bx-search"></i></button>
         </form>
         <nav class="nav-bar">
-            <a href="HomePage.html">Home</a>
-            <a href="CatalogoLibri.html">Cataloghi</a>
-            <a href="Eventi.html">Eventi</a>
+            <a th:href="@{/homepage}">Home</a>
+            <a th:href="@{/libri}">Cataloghi</a>
+            <a th:href="@{/eventi}">Eventi</a>
             <a href="#">Contatti</a> 
         </nav>
         <nav class="nav-bar">
@@ -34,144 +34,83 @@
     </header>
     <div class="cover-header"></div>
     <div class="titolo-catalogo">
-        <h6> IL NOSTRO</h6>
-        <h1>BOOKSTORE</h1>
+        <h6 th:text="'IL NOSTRO'"></h6>
+        <h1 th:text="'BOOKSTORE'"></h1>
         <div class="linea linea-top"></div>
+	    <div style="margin-top: 8px;" th:if="${pren == true}">
+	    	<h3 th:text="'PRENOTAZIONE AVVENUTA CON SUCCESSO'" style="color: green;"></h3>
+	    	<div class="linea linea-top"></div>
+	    </div>
     </div>
-    
     <div class="contenitore-catologo">
         <div class="left-bar">
-            <h4>Categorie</h4>
+            <h4 th:text="'Categorie'"></h4>
             <div class="linea"></div>
-            <form action="post">
-                <ul>
-                    <li><a href="#">Romanzo  </a> <input type="checkbox"></li>
-                    <li><a href="#">Horror</a></li>
-                    <li><a href="#">Giallo</a></li>
+                <ul th:each="g : ${generi}">
+                    <li>
+                    	<a th:href="@{libri(idGenere=${g.id})}" th:text="${g.descrizione}"></a> 
+                    </li>
                 </ul>
-            </form>
             <div class="linea"></div>
         </div>
         <div class="cataloghi">
             <div class="catologhi-content">
                 <div class="section-1">
                     <div class="section-1-card">
-                        <div class="card" id="card-libri" style="width: 12rem;">
-                        <div class="cover-img">
-                        <img src="imglocandica.jpg" alt="Card image cap">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Titolo libro</h5>
-                            <p class="card-price">5.00$</p>
-                        </div>
-                        <div class="nascondi">
-                        <div class="cover-dettaglio">
-                            <button class="btn-dettaglio"  href="Dettaglio.html">
-                                Dettagli
-                            </button>
-                        </div>
-                        
-                        <div class="card-cart">
-                            <a href="#" class="btn">PRENOTA IL LIBRO</a>
-                        </div>
+                     
+                        <div class="card" id="card-libri" style="width: 12rem;" th:each="l : ${libri}" th:if="${totale == true}">
+	                        <div class="cover-img">
+	                        	<img th:src="${l.immagine}" alt="Card image cap">
+	                        </div>
+	                        <div class="card-body">
+	                            <h5 class="card-title" th:text=${l.titolo}></h5>
+	                            <p class="card-price" th:text="${l.prezzo} + '€'"></p>
+	                        </div>
+                        	<div class="nascondi">
+	                        	<div class="cover-dettaglio">
+	                            	<a href="Dettaglio.html">
+	                            	<button class="btn-dettaglio" href="Dettaglio.html" th:text="'Dettagli'"></button>
+	                            	</a>
+	                        	</div>
+			                    <div class="card-cart">
+			                    <form action="libri/prenotalibro" method="post">
+			                    	<label for="idLibro"  ></label>
+				   					<input th:value="${l.id}" type="hidden" id="idLibro" name="idLibro" >
+			       					<input type="submit" class="btn" th:value="'PRENOTA IL LIBRO'">
+			                    </form>
+			                    </div>
+                    		</div>
+       					</div>  
+       					<div class="card" id="card-libri" style="width: 12rem;" th:each="gl : ${genereLibri}" th:if="${totale == false}">
+	                        <div class="cover-img">
+	                        	<img th:src="${l.immagine}" alt="Card image cap">
+	                        </div>
+	                        <div class="card-body">
+	                            <h5 class="card-title" th:text=${l.titolo}></h5>
+	                            <p class="card-price" th:text="${l.prezzo} + '€'"></p>
+	                        </div>
+                        	<div class="nascondi">
+	                        	<div class="cover-dettaglio">
+	                            	<a href="Dettaglio.html">
+	                            	<button class="btn-dettaglio" href="Dettaglio.html" th:text="'Dettagli'"></button>
+	                            	</a>
+	                        	</div>
+			                    <div class="card-cart">
+			                    <form action="libri/prenotalibro" method="post">
+			                    	<label for="idLibro"  ></label>
+				   					<input th:value="${l.id}" type="hidden" id="idLibro" name="idLibro" >
+			       					<input type="submit" class="btn" th:value="'PRENOTA IL LIBRO'">
+			                    </form>
+			                    </div>
+                    		</div>
+       					</div>        					
                     </div>
-                    </div>
-
-
-                    <div class="card" id="card-libri" style="width: 12rem;">
-                        <div class="cover-img">
-                        <img src="imglocandica.jpg" alt="Card image cap">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Titolo libro</h5>
-                            <p class="card-price">5.00$</p>
-                        </div>
-                        <div class="nascondi">
-                        <div class="cover-dettaglio">
-                            <button class="btn-dettaglio"  href="Dettaglio.html">
-                                Dettagli
-                            </button>
-                        </div>
-                        
-                        <div class="card-cart">
-                            <a href="#" class="btn">PRENOTA IL LIBRO</a>
-                        </div>
-                    </div>
-                    </div>
-
-
-                    <div class="card" id="card-libri" style="width: 12rem;">
-                        <div class="cover-img">
-                        <img src="imglocandica.jpg" alt="Card image cap">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Titolo libro</h5>
-                            <p class="card-price">5.00$</p>
-                        </div>
-                        <div class="nascondi">
-                        <div class="cover-dettaglio">
-                            <button class="btn-dettaglio"  href="Dettaglio.html">
-                                Dettagli
-                            </button>
-                        </div>
-                        
-                        <div class="card-cart">
-                            <a href="#" class="btn">PRENOTA IL LIBRO</a>
-                        </div>
-                    </div>
-                    </div>
-
-                    <div class="card" id="card-libri" style="width: 12rem;">
-                        <div class="cover-img">
-                        <img src="imglocandica.jpg" alt="Card image cap">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Titolo libro</h5>
-                            <p class="card-price">5.00$</p>
-                        </div>
-                        <div class="nascondi">
-                        <div class="cover-dettaglio">
-                            <button class="btn-dettaglio"  href="Dettaglio.html">
-                                Dettagli
-                            </button>
-                        </div>
-                        
-                        <div class="card-cart">
-                            <a href="#" class="btn">PRENOTA IL LIBRO</a>
-                        </div>
-                    </div>
-                    </div>
-
-
-                    <div class="card" id="card-libri" style="width: 12rem;">
-                        <div class="cover-img">
-                        <img src="imglocandica.jpg" alt="Card image cap">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Titolo libro</h5>
-                            <p class="card-price">5.00$</p>
-                        </div>
-                        <div class="nascondi">
-                        <div class="cover-dettaglio">
-                            <button class="btn-dettaglio"  href="Dettaglio.html">
-                                Dettagli
-                            </button>
-                        </div>
-                        
-                        <div class="card-cart">
-                            <a href="#" class="btn">PRENOTA IL LIBRO</a>
-                        </div>
-                    </div>
-                    </div>
-
-
-                    </div>
-
+       					<!-- 
+			                    	<a href="#" class="btn">PRENOTA IL LIBRO</a>
+       					 -->
                 </div>
             </div>
         </div>
-
-    </div>
     </div>
     <div class="footer-dark">
         <footer>

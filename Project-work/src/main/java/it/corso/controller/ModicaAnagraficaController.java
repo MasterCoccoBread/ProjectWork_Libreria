@@ -38,9 +38,9 @@ public class ModicaAnagraficaController {
 	}
 
 	@GetMapping("/cancellaanagrafica")
-	//devo cancellare il profilo di quell'anagrafica - cancella profilo>> cancella anagrafica
 	public String cancellaAnagrafica(@RequestParam("id") int id) {
-		anagraficaService.cancellaAnagrafica(id);
+		Anagrafica anagrafica = anagraficaService.getAnagraficaByid(id);
+		anagraficaService.cancellaAnagrafica(anagrafica);
 		return "redirect:/modificaanagrafica";
 	}
 	

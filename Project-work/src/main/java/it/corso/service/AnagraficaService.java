@@ -11,7 +11,7 @@ public interface AnagraficaService {
 		Anagrafica anagrafica);
 	Anagrafica getAnagraficaByid(int id);
 	List<Anagrafica> getAnagrafiche();
-	void cancellaAnagrafica(int id);
+	void cancellaAnagrafica(Anagrafica anagrafica);
 	
 
 }

@@ -9,54 +9,62 @@
     	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 <body>
-	<header class="header row">
+	<div class="container-fluid" style="max-width:1200px;">
+	<header class="header row" style="width:100%;">
 		<div class="row">
-	        <div class="col-3  text-end content-logo">
-	        	<img src="/images/LibreriaDelLevantesolo_logo2.jpg" alt="LOGO">
-		        </div>
+	        <div class="col-3  text-center content-logo">
+	        	<img src="/images/LibreriaDelLevantesolo_logo2.jpg" alt="LOGO" >
+		    </div>
 			<div class="col-6 text-center">
-				<h1 th:text="'Admin Area'" style="magin: 0 auto;"></h1>
+				<h1 th:text="'Area Admin'" style="magin: 0px auto;"></h1>
 			</div>
-			<div class="col-3  text-end">
-	        	<a th:href="@{/homepage}" th:text="'Home Page'" class="btn btn-success"></a>
+			<div class="col-3  text-center" style="margin-top:-18px">
+			        	<a th:href="@{/homepage}" th:text="'Home'" class="btn btn-success"></a>
+			        	<form th:action="@{/catalogo/logout}" method="post">
+			        		<input  type="submit" th:value="'Logout'" class="btn btn-success">
+			        	</form>
 	        </div>
 		</div>
 	</header>
 	<div class="cover-header"></div>
-	<div class="container-fluid" style="max-width:1200px;">
-		<div class="row mt-4">
-			<div class="col-4 text-end">
+		<div class="row mt-4"  style="max-width:1200px;">
+			<div class="col-4 text-center">
 				<a th:href="@{/catalogo/eventi}" th:text="'Catalogo Eventi'" class="btn btn-success"></a>
 			</div>
 			<div class="col-4 text-center">
 				<a th:href="@{/catalogo/libri}" th:text="'Catalogo Libri'" class="btn btn-success"></a>
 			</div>
-			<div class="col-4 text-end">
-				<a th:href="@{/catalogo/libri}" th:text="'Catalogo Libri'" class="btn btn-success"></a>
+			<div class="col-4 text-center">
+				<a th:href="@{/catalogo/utenti}" th:text="'Utenti Registrati'" class="btn btn-success"></a>
 			</div>
 		</div>
-		<div style="min-height:1000px;">
+		<div style="min-height:1000px; ">
 			<div class="row mt-4" th:if="${adminArea == false}">
-				<div class="row mt-4">
-					<div class="col-12 text-center">
-						<input type="text" id="search-input" placeholder="Cerca nel catalogo..." style="width:400px; height:40px;">
-					</div>
-					<div class="col-12 my-4 text-center">
-					<a th:href="@{/form/libri}" th:text="'Registra Libro'" class="btn btn-success" th:if="${catalogo == false}"></a>
-					<a th:href="@{/form/eventi}" th:text="'Registra Evento'" class="btn btn-success" th:if="${catalogo == true}"></a>
+				<div class="col-12 text-center">
+					<input type="text" id="search-input" class="search-input form-control" placeholder="Cerca..." 
+					style="width:400px; height:40px; margin: 0 auto; max-width:100%;">
 				</div>
+				<div class="col-12 my-4 text-center">
+					<a th:href="@{/form/libri}" th:text="'Registra Libro'" class="btn btn-success" th:if="${catalogo == 'libri'}"></a>
+					<a th:href="@{/form/eventi}" th:text="'Registra Evento'" class="btn btn-success" th:if="${catalogo == 'eventi'}"></a>
 				</div>
-				<div class="col-12">
+				<div class="col-12 text-center">
 					<table class="table table-striped table-responsive">
 						<thead>
-							<tr>
+							<tr th:if="${catalogo != 'utenti'}">
 								<th></th>
 								<th th:text="'Titolo'"></th>
 								<th th:text="'Autore'"></th>
 								<th></th>
 							</tr>
+							<tr th:if="${catalogo == 'utenti'}">
+								<th th:text="'Nome'"></th>
+								<th th:text="'Username'"></th>
+								<th th:text="'Email'"></th>
+								<th th:text="'telefono'"></th>
+							</tr>
 						</thead>
-						<tbody th:if="${catalogo == false}">
+						<tbody th:if="${catalogo == 'libri'}">
 							<tr th:each="l : ${libri}">
 								<td>
 									<img th:if="${l.immagine == null}" th:src="@{image/imagenull.png}" 
@@ -76,7 +84,7 @@
 								</td>
 							</tr>
 						</tbody>
-						<tbody th:if="${catalogo == true}">
+						<tbody th:if="${catalogo == 'eventi'}">
 							<tr th:each="e : ${eventi}">
 								<td>
 									<img th:if="${e.immagine == null}" th:src="@{image/imagenull.png}" 
@@ -93,6 +101,18 @@
 										th:text="'Modifica Evento'"></a>
 									<a th:href="@{/form/cancellaevento(id=${e.id})}" class="btn btn-primary btn-sm" 
 										th:text="'Cancella Evento'" style="background-color:red; border:red;"></a>
+								</td>
+							</tr>
+						</tbody>
+						<tbody th:if="${catalogo == 'utenti'}">
+							<tr th:each="a : ${anagrafiche}">
+								<td th:text="${a.nome} + ' ' + ${a.cognome}" class="align-middle"></td>
+								<td th:text="${a.profilo.username}" class="align-middle"></td>
+								<td th:text="${a.profilo.email}" class="align-middle"></td>
+								<td th:text="${a.telefono}" class="align-middle"></td>
+								<td class=" align-middle text-end">
+									<a th:href="@{/catalogo/cancellaanagrafica(id=${a.id})}" class="btn btn-primary btn-sm" 
+										th:text="'Cancella Anagrafica'" style="background-color:red; border:red;"></a>
 								</td>
 							</tr>
 						</tbody>

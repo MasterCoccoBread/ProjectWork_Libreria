@@ -44,7 +44,7 @@ public class AnagraficaServiceImpl implements AnagraficaService{
 	}
 
 	@Override
-	public void cancellaAnagrafica(int id) {
+	public void cancellaAnagrafica(Anagrafica anagrafica) {
 
 		// Bisogna cancellailre il profilo perchè la FK al profilo sta nell'anagrafica. Se invece si mettesse ls FK all'anagraica nel profilo,
 		// si potrebbe cancellare direttamente l'analgrafica che quindi cancellerebbe anche il profilo.
@@ -53,9 +53,8 @@ public class AnagraficaServiceImpl implements AnagraficaService{
 		//relativo al cascade All o Refresh
 		// cancellazione profilo 
 		// cancellazione della prenotazione?
-		Anagrafica anagrafica = getAnagraficaByid(id);
 		anagraficaDao.delete(anagrafica);
-		profiloService.cancellaProfilo(anagrafica.getProfilo());
+		//profiloService.cancellaProfilo(anagrafica.getProfilo());
 		//cancello prima il profilo e poi l'anagrafica (forzando) perchè non
 
 	}

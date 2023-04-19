@@ -11,19 +11,19 @@
 <body>
 	<header class="header row">
 		<div class="row">
-	        <div class="col-3  text-end content-logo">
+	        <div class="col-3  text-center content-logo">
 	        	<img src="/images/LibreriaDelLevantesolo_logo2.jpg" alt="LOGO">
 		        </div>
 			<div class="col-6 text-center">
 				<h1 th:text="'Admin Area'" style="magin: 0 auto;"></h1>
 			</div>
-			<div class="col-3  text-end">
+			<div class="col-3  text-center">
 	        	<a th:href="@{/homepage}" th:text="'Home Page'" class="btn btn-success"></a>
 	        </div>
 		</div>
 	</header>
 	<div class="cover-header"></div>
-	<div class="container-fluid"  style="min-height:1000px;">   
+	<div class="container-fluid"  style="min-height:1000px; width:100%;">   
 			<div class="row mt-4">
 				<div class="col-12 text-center">
 					<h4 th:text="'Registrazione Evento'" th:if="${divform == true}"></h4>

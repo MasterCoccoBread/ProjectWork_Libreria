@@ -29,8 +29,8 @@ public class FormAnagraficaController {
 	@GetMapping
 	public String getPage(Model model,@RequestParam(name="id", required = false) Integer id,
 						  @RequestParam (name = "idP", required = false) Integer idP,
-						  @RequestParam (name="fe", required = false) String formError
-						  )
+						  @RequestParam (name="fe", required = false) String formError,
+						  HttpSession session)
 	{				
 		if(formError == null) {
 			anagraficaP = (id == null) ? new Anagrafica() : anagraficaService.getAnagraficaByid(id);
@@ -60,7 +60,7 @@ public class FormAnagraficaController {
 		}
 
 
-		return "redirect:/loginutente";
+		return "redirect:/areautente";
 	}
 
 	

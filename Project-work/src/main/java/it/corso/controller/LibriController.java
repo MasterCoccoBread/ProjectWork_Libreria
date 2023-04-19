@@ -25,9 +25,20 @@ public class LibriController {
 	private PrenotazioneService prenotazioneService;
 	
 	private Genere genere;
+	List<Libro> libri;
 	@GetMapping
-	private String getPage(Model model) {
-		List<Libro> libri = libroService.getLibri();
+	private String getPage(Model model,
+			@RequestParam(name = "idGenere", required = false) Integer idGenere) {
+		
+		if (idGenere == null) {
+			libri = libroService.getLibri();
+		} else {
+			genere = genereService.getGenereById(idGenere);
+			libri = genere.getLibri();
+		}
+		
+		
+	 
 		List<Genere> generi = genereService.getGeneri();
 		model.addAttribute("libri", libri);
 		model.addAttribute("generi", generi);
@@ -37,24 +48,14 @@ public class LibriController {
 	
 	@PostMapping("/prenotalibro")
 	public String prenotaLibro( //html session
-			@RequestParam int idLibro) {
+			@RequestParam int idLibro,
+			Model model) {
 		Integer idAnagrafica = 1;
 		
 		String tipoPrenotazione = "libro";
 		String ticket = prenotazioneService.generaTicket(idLibro, tipoPrenotazione);
 		prenotazioneService.registraPrenotazione(ticket, idAnagrafica, idLibro, tipoPrenotazione);
+		model.addAttribute("pren", true);
 		return "redirect:/libri";
-	}
-	
-	@GetMapping("/generelibro")
-	public String getGenereLibro(
-			@RequestParam("idGenere") int idGenere,
-			Model model) {
-		
-		genere = genereService.getGenereById(idGenere);
-		List<Libro> genereLibri = genere.getLibri();
-		model.addAttribute("genereLibri", genereLibri);
-		model.addAttribute("totale", false);
-		return "CatalogoLibri"  ;
 	}
 }

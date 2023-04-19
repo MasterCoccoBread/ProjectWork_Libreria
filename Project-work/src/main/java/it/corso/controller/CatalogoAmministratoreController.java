@@ -4,9 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import it.corso.model.Anagrafica;
 import it.corso.model.Evento;
 import it.corso.model.Libro;
+import it.corso.service.AnagraficaService;
 import it.corso.service.EventoService;
 import it.corso.service.LibroService;
 import jakarta.servlet.http.HttpSession;
@@ -19,6 +24,8 @@ public class CatalogoAmministratoreController {
 	private EventoService eventoService;
 	@Autowired
 	private LibroService libroService;
+	@Autowired
+	private AnagraficaService anagraficaService;
 	
 	@GetMapping
 	public String getPage(Model model, HttpSession session) {
@@ -32,7 +39,7 @@ public class CatalogoAmministratoreController {
 	public String getPageLibro(Model model) {
 		List<Libro> libri = libroService.getLibri();
 		model.addAttribute("libri", libri);
-		model.addAttribute("catalogo", false);
+		model.addAttribute("catalogo", "libri");
 		model.addAttribute("adminArea", false);
 		return "catalogoAmministratore";
 	}
@@ -41,8 +48,32 @@ public class CatalogoAmministratoreController {
 	public String getPageEvento(Model model) {
 		List<Evento> eventi = eventoService.getEventi();
 		model.addAttribute("eventi", eventi);
-		model.addAttribute("catalogo", true);
+		model.addAttribute("catalogo", "eventi");
 		model.addAttribute("adminArea", false);
 		return "catalogoAmministratore";
+	}
+	
+	@GetMapping("/utenti")
+	public String getPage(Model model) {
+		List<Anagrafica> anagrafiche = anagraficaService.getAnagrafiche();
+		model.addAttribute("anagrafiche",anagrafiche);
+		model.addAttribute("catalogo", "utenti");
+		model.addAttribute("adminArea", false);
+		return "catalogoAmministratore";
+		
+		
+	}
+	
+	@GetMapping("/cancellaanagrafica")
+	public String cancellaAnagrafica(@RequestParam("id") int id) {
+		Anagrafica anagrafica = anagraficaService.getAnagraficaByid(id);
+		anagraficaService.cancellaAnagrafica(anagrafica);
+		return "redirect:/catalogo/utenti";
+	}
+	
+	@PostMapping("/logout")
+	public String logoutAmministratore(HttpSession session) {
+		session.invalidate();
+		return "redirect:/homepage";
 	}
 }

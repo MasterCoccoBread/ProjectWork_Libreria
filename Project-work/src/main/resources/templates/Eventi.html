@@ -42,6 +42,31 @@
             <div class="linea"></div>
                 <h1>SCOPRI TUTTI I NOSTRI EVENTI</h1>
         </div>
+        <form action="eventi/prenotaevento" method="post">
+	        <div class="container-body" >
+	        	<div class="text-event">
+	        		<h1>Titolo</h1>
+	        		<h5> Autore</h5>
+	        		<p > 23/3/4234 32:34:34</p>
+	        	</div>
+	            <div class="container-desc-autore">
+	                <div class="autore-immagine">
+			            <img th:src="e.immagine" alt="">
+			        </div>
+			        <div class="desc-autore" >
+			            <p>sfdggsfdsghshgiksudfghksjgsdjfhgueegyrejhugkjdfhgkdfhfgkjdhgkjdfhg
+			          </p>
+			        </div>
+				</div> 
+				<div>
+				    <label for="idEvento"  ></label>
+				    <input type="hidden" id="idEvento" name="idEvento" >
+					<div class="content-button" >
+				    	<input type="submit" class="btn btn-primary" value="'PRENOTA BIGLIETTO'">
+		            </div>
+	    		</div>
+        	</div>
+        </form>
         <form action="eventi/prenotaevento" method="post" th:each="e : ${eventi}">
 	        <div class="container-body" >
 	        	<div class="text-event">

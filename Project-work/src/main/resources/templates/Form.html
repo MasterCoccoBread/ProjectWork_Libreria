@@ -34,7 +34,7 @@
     <div class="contenitore-form">
         <div class="accedi_registrati-box">
             <div class="box accedi" id="accedi">
-                    <form th:object="${anagrafica}" method="post">
+                    <form action="loginutente" th:object="${anagrafica}" method="post">
                         <h2 th:text="'Accedi'"></h2>
                            <div class="input-box" hidden="hidden">
                 				<input th:field="*{profilo.id}" type="text" id="idP" name="idP" class="form-control" required="required" readonly hidden="hidden">
@@ -62,7 +62,7 @@
         </div>
 
         <div class="box registrati" style="display:none" id="reg">
-            <form th:object="${anagrafica}" method="POST">
+            <form action="loginutente" th:object="${anagrafica}" method="POST">
                 <h2 th:text="'Registrati'"></h2>
                    <div class="input-box" hidden="hidden"> 
                    <input th:field="*{id}" type="text" id="id" name="id" class="form-control"

@@ -60,7 +60,7 @@ public class FormAnagraficaController {
 		}
 
 
-		return "redirect:/areautente";
+		return "redirect:/loginutente";
 	}
 
 	

@@ -31,7 +31,7 @@ public class LibriController {
 	}
 	
 	@PostMapping("/prenotalibro")
-	public String prenotaLibro(
+	public String prenotaLibro( //html session
 			@RequestParam int idLibro) {
 		Integer idAnagrafica = 1;
 		

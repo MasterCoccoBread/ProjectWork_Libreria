@@ -5,22 +5,26 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
     	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    	<link th:href="@{css/style.css}" type="text/css" rel="stylesheet">
+    	<link th:href="@{/css/style.css}" type="text/css" rel="stylesheet">
+ 		<link th:href="@{/css/AreaAmministratore.css}" type="text/css" rel="stylesheet">
+    	
 	</head>
 <body>
 	<header class="header">
-		<div class="row">
-	        <div class="col-3  text-center content-logo">
-	        	<img src="/images/LibreriaDelLevantesolo_logo2.jpg" alt="LOGO">
-		        </div>
-			<div class="col-6 text-center">
-				<h1 th:text="'Admin Area'" style="margin: 0 auto;"></h1>
+        <div class="content-logo">
+        <a href="HomePage.html"><img class="img-logo" th:src="@{/images/LibreriaDelLevantesolo_logo2.jpg}" alt="LOGO">
+        <img class="img-testo" th:src="@{/images/LibreriaDelLevantesolo_testo2.jpg}" alt="LOGO"></a>
+        </div>
+        <div class="text-center">
+				<h1 th:text="'Area Admin'" style="margin: 0px auto; color:white;"></h1>
 			</div>
-			<div class="col-3  text-center">
-	        	<a th:href="@{/homepage}" th:text="'Home Page'" class="btn btn-success"></a>
+        <div class="text-center" style="margin:0 20px;">
+			        	<a th:href="@{/homepage}" th:text="'Home'" class="btn btn-success"></a>
+			        	<form th:action="@{/catalogo/logout}" method="post">
+			        		<input  type="submit" th:value="'Logout'" class="btn btn-success">
+			        	</form>
 	        </div>
-		</div>
-	</header>
+    </header>
 	<div class="cover-header"></div>
 	<div class="container-fluid"  style="min-height:1000px; width:100%;">   
 			<div class="row mt-4">
@@ -30,38 +34,38 @@
 				</div>
 			</div>
 			<div class="row justify-content-center mt-4" th:if="${divform == true}">
-				<div class="col-4">
+				<div class="col-4 contenitore-form">
 					<form action="salvaevento" method="POST" enctype="multipart/form-data">
-						<div class="row">
-							<div class="col-12">
+						<div class="row ">
+							<div class="col-12 box">
 								<label for="titolo" th:text="'Titolo:'"></label>
 								<input th:value="${evento.titolo}" type="text" id="titolo" name="titolo" class="form-control" 
 									required="required" >
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-12">
+							<div class="col-12 box">
 								<label for="descrizione" th:text="'Descrizione:'"></label>
 								<textarea th:text="${evento.descrizione}" id="descrizione" name="descrizione" class="form-control" 
 								maxlength="999" rows="6" required="required" style="resize:none;"></textarea>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-12">
+							<div class="col-12 box">
 								<label for="data" th:text="'Data:'"></label>
 								<input th:value="${evento.data}" type="date" id="data" name="data" class="form-control" 
 									required="required">
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-12">
+							<div class="col-12 box">
 								<label for="orario" th:text="'Orario:'"></label>
 								<input th:value="${evento.orario}" type="time" id="orario" name="orario" class="form-control" 
 									required="required">
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-12">
+							<div class="col-12 box">
 								<label for="autore" th:text="'Autore:'"></label>
 								<select id="autore" name="autore" class="form-select" onchange="abilita()">
 									<option value="seleziona" th:text="seleziona" th:hidden>
@@ -84,49 +88,48 @@
 							</div>
 						</div>
 						<div class="row mt-4">
-							<div class="col-12 text-center">
-								<input type="submit" th:value="'Registra Evento'" class="btn btn-primary">
-								&emsp;
-								<a th:href="@{/catalogo/eventi}" class="btn btn-secondary" th:text="'Torna Indietro'"></a>
+							<div class="col-12">
+								<input type="submit" th:value="'Registra Evento'" class="btn-admin btn-registra">
+								<a th:href="@{/catalogo/eventi}" class="btn-admin btn-indietro" th:text="'Torna Indietro'"></a>
 							</div>
 						</div>
 					</form>
 				</div>
 			</div>
 			<div class="row justify-content-center mt-4" th:if="${divform == false}">
-				<div class="col-4">
+				<div class="col-4 contenitore-form">
 					<form action="salvalibro" method="POST" enctype="multipart/form-data" name="modulo">
-						<div class="row">
-							<div class="col-12">
+						<div class="row box">
+							<div class="col-12 box-input">
 								<label for="titolo" th:text="'Titolo:'"></label>
 								<input th:value="${libro.titolo}" type="text" id="titolo" name="titolo" class="form-control" 
 									required="required">
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-12">
+						<div class="row box">
+							<div class="col-12 box-input">
 								<label for="descrizione" th:text="'Descrizione:'"></label>
 								<textarea th:text="${libro.descrizione}" id="descrizione" name="descrizione" class="form-control" 
 								maxlength="999" rows="6" required="required" style="resize:none;"></textarea>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-12">
+						<div class="row box">
+							<div class="col-12 input-box">
 								<label for="prezzo" th:text="'Prezzo:'"></label>
-								<input th:value="${libro.prezzo}" type="number" id="prezzo" name="prezzo" class="form-control" 
+								<input th:value="${libro.prezzo}" type="number" id="prezzo" name="prezzo" class="form-control prezzo" 
 									required="required">
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-12">
+						<div class="row box">
+							<div class="col-12 input-box">
 								<label for="isbn" th:text="'ISBN(inserire 10 o 13 numeri ed inizino per 978 o 979):'"></label>
 								<p th:if="${formError}" th:text="'ISBN DUPLICATO'" style="text-align:center; color:red; margin:0;"><p>
 								<input th:value="${libro.isbn}" type="text" pattern="(97(8|9))\d{7}|(97(8|9))\d{10}" id="isbn" name="isbn" class="form-control" 
 									required="required">
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-12">
+						<div class="row box">
+							<div class="col-12 input-box">
 								<label for="genere" th:text="'Genere:'"></label>
 								<select id="genere" name="genere" class="form-select">
 									<option value="seleziona" th:text="seleziona" th:hidden>
@@ -135,8 +138,8 @@
 								</select>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-12">
+						<div class="row box">
+							<div class="col-12 input-box">
 								<label for="autore" th:text="'Autore:'"></label>
 								<select id="autore" name="autore" class="form-select" onchange="abilita()">
 									<option value="seleziona" th:text="seleziona" th:hidden>
@@ -152,17 +155,16 @@
 								<input type="text" id="nome" name="nome" class="form-control">
 							</div>
 						</div>
-						<div class="row mt-2">
-							<div class="col-12">
+						<div class="row mt-2 box">
+							<div class="col-12 input-box">
 								<label for="immagine" th:text="'Immagine Libro:'"></label>
 								<input type="file" id="immagine" name="immagine" class="form-control">
 							</div>
 						</div>
 						<div class="row mt-4">
-							<div class="col-12 text-center">
-								<input type="submit" th:value="'Registra Libro'" class="btn btn-primary">
-								&emsp;
-								<a th:href="@{/catalogo/libri}" class="btn btn-secondary" th:text="'Torna Indietro'"></a>
+							<div class="col-12">
+								<input type="submit" th:value="'Registra Libro'" class="btn-admin btn-registra">
+								<a th:href="@{/catalogo/libri}" class="btn-admin btn-indietro" th:text="'Torna Indietro'"></a>
 							</div>
 						</div>
 					</form>

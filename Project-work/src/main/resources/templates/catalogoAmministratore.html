@@ -7,6 +7,7 @@
     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     	<script src="https://cdn{.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     	<link th:href="@{/css/style.css}" type="text/css" rel="stylesheet">
+    	<link th:href="@{/css/AreaAmministratore.css}" type="text/css" rel="stylesheet">
     	
 	</head>
 <body>
@@ -39,10 +40,10 @@
 				<a th:href="@{/catalogo/utenti}" th:text="'Utenti Registrati'" class="btn btn-success"></a>
 			</div>
 		</div>
-		<div style="min-height:1000px; ">
+		<div style="min-height:700px; max-height:100%; ">
 			<div class="row mt-4" th:if="${adminArea == false}">
-				<div class="col-12 text-center">
-					<input type="text" id="search-input" class="search-input form-control" placeholder="Cerca..." 
+				<div class="col-12 text-center " style="margin-bottom: 40px;">
+					<input type="text" id="search-input" class="search-input form-control search-bar" placeholder="Cerca..." 
 					style="width:400px; height:40px; margin: 0 auto; max-width:100%;">
 				</div>
 				<div class="col-12 my-4 text-center">
@@ -77,11 +78,11 @@
 								</td>
 								<td th:text="${l.titolo}" class="align-middle"></td>
 								<td th:text="${l.autore.nome}" class="align-middle"></td>
-								<td class=" align-middle text-end">
-									<a th:href="@{/form/libri(id=${l.id})}" class="btn btn-primary btn-sm" 
+								<td class="align-middle text-end valign-middle" >
+									<a th:href="@{/form/libri(id=${l.id})}" class=" btn-primary btn-sm btn-admin button1" 
 										th:text="'Modifica Libro'"></a>
-									<a th:href="@{/form/cancellalibro(id=${l.id})}" class="btn btn-primary btn-sm" 
-										th:text="'Cancella Libro'" style="background-color:red; border:red;"></a>
+									<a th:href="@{/form/cancellalibro(id=${l.id})}" class=" btn-primary btn-sm btn-admin button2"
+										th:text="'Cancella Libro'"></a>
 								</td>
 							</tr>
 						</tbody>
@@ -98,10 +99,10 @@
 								<td th:text="${e.titolo}" class="align-middle"></td>
 								<td th:text="${e.autore.nome}" class="align-middle"></td>
 								<td class=" align-middle text-end">
-									<a th:href="@{/form/eventi(id=${e.id})}" class="btn btn-primary btn-sm" 
+									<a th:href="@{/form/eventi(id=${e.id})}" class="btn-primary btn-sm btn-admin button1" 
 										th:text="'Modifica Evento'"></a>
-									<a th:href="@{/form/cancellaevento(id=${e.id})}" class="btn btn-primary btn-sm" 
-										th:text="'Cancella Evento'" style="background-color:red; border:red;"></a>
+									<a th:href="@{/form/cancellaevento(id=${e.id})}" class="btn-primary btn-sm btn-admin button2" 
+										th:text="'Cancella Evento'"></a>
 								</td>
 							</tr>
 						</tbody>
@@ -112,8 +113,8 @@
 								<td th:text="${a.profilo.email}" class="align-middle"></td>
 								<td th:text="${a.telefono}" class="align-middle"></td>
 								<td class=" align-middle text-end">
-									<a th:href="@{/catalogo/cancellaanagrafica(id=${a.id})}" class="btn btn-primary btn-sm" 
-										th:text="'Cancella Anagrafica'" style="background-color:red; border:red;"></a>
+									<a th:href="@{/catalogo/cancellaanagrafica(id=${a.id})}" class=" btn-primary btn-sm btn-admin button2" 
+										th:text="'Cancella Anagrafica'"></a>
 								</td>
 							</tr>
 						</tbody>

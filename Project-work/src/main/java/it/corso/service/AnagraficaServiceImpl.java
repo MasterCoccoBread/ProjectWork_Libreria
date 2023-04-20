@@ -48,6 +48,8 @@ public class AnagraficaServiceImpl implements AnagraficaService{
 
 		// Bisognerebbe cancellailre il profilo perchè la FK al profilo sta nell'anagrafica. Se invece si mettesse ls FK all'anagraica nel profilo,
 		// si potrebbe cancellare direttamente l'analgrafica che quindi cancellerebbe anche il profilo.
+
+
 		anagraficaDao.delete(anagrafica);
 		//profiloService.cancellaProfilo(anagrafica.getProfilo()); non necessario grazie al cascade ALL 
 		//cancellato da qui e inserito nel metodo getMapping

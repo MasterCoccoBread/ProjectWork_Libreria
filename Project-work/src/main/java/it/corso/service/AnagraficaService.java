@@ -13,9 +13,7 @@ public interface AnagraficaService {
 	Anagrafica getAnagraficaByid(int id);
 	List<Anagrafica> getAnagrafiche();
 	void cancellaAnagrafica(Anagrafica anagrafica);
-	
-	
-	public boolean controlloLogin(String username, String password, HttpSession session);
+	boolean controlloLogin(String username, String password, HttpSession session);
 	
 
 }

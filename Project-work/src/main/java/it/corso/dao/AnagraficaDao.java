@@ -9,8 +9,7 @@ public interface AnagraficaDao extends CrudRepository<Anagrafica, Integer>{
 	
 	Anagrafica findByProfiloUsername(String username);
 	
-	
-	//Errore forse è qui: 
+	 
 	Anagrafica findByProfiloUsernameAndProfiloPassword(String username, String password);
 
 	

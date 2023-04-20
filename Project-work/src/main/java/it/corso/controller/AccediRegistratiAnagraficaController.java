@@ -16,21 +16,22 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("/formutente")
-public class FormAnagraficaController {
+@RequestMapping("/utente")
+public class AccediRegistratiAnagraficaController {
 	@Autowired
 	private AnagraficaService anagraficaService;
 
 	@Autowired
 	private ProfiloService profiloService;
 	private Anagrafica anagraficaP;
-
 	private Profilo profilo;
-	@GetMapping
+	
+	
+	@GetMapping ("/form")
 	public String getPage(Model model,@RequestParam(name="id", required = false) Integer id,
 						  @RequestParam (name = "idP", required = false) Integer idP,
 						  @RequestParam (name="fe", required = false) String formError
-						  )
+						 )
 	{				
 		if(formError == null) {
 			anagraficaP = (id == null) ? new Anagrafica() : anagraficaService.getAnagraficaByid(id);
@@ -43,8 +44,8 @@ public class FormAnagraficaController {
 		return "Form" ;
 	}
 
-
-	@PostMapping
+ 
+	@PostMapping ("/form")
 	public String registraAnagrafica( @Valid
 			@ModelAttribute ("anagrafica") Anagrafica anagrafica,
 			BindingResult bindingResult)
@@ -63,6 +64,31 @@ public class FormAnagraficaController {
 		return "redirect:/areautente";
 	}
 
+	@GetMapping ("/login")
+	public String getPageLogin(
+			@RequestParam (name="le", required = false) String logError, Model model, HttpSession session) {
+		
+		if(session.getAttribute("utente") != null)
+		return "redirect:/areautente";
+		
+		model.addAttribute("logError",logError != null);
+		
+			return "LoginUtente";
+	}
+	
+	@PostMapping ("/login")
+	public String gestioneLogin(
+			@RequestParam ("username") String username,
+			@RequestParam ("password") String password,
+			HttpSession session) {
+		
+		if(!anagraficaService.controlloLogin(username, password, session))
+			return "redirect:/loginutente?le";
+		
+		
+		return "redirect:/areautente";
+	}
+	
 	
 	}
 	

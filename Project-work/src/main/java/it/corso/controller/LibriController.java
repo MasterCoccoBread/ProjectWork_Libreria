@@ -7,11 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import it.corso.model.Anagrafica;
 import it.corso.model.Genere;
 import it.corso.model.Libro;
 import it.corso.service.GenereService;
 import it.corso.service.LibroService;
 import it.corso.service.PrenotazioneService;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/libri")
@@ -23,39 +26,47 @@ public class LibriController {
 	private GenereService genereService;
 	@Autowired
 	private PrenotazioneService prenotazioneService;
-	
+	private Libro libro;
 	private Genere genere;
 	List<Libro> libri;
 	@GetMapping
 	private String getPage(Model model,
-			@RequestParam(name = "idGenere", required = false) Integer idGenere) {
+			@RequestParam(name = "idGenere", required = false) Integer idGenere,
+			@RequestParam(name = "idLibro", required = false) Integer idLibro) {
 		
-		if (idGenere == null) {
+		if (idGenere == null && idLibro == null) {
 			libri = libroService.getLibri();
-		} else {
+			model.addAttribute("libri", libri);
+			model.addAttribute("totale", true);
+		} else if (idGenere != null) {
 			genere = genereService.getGenereById(idGenere);
 			libri = genere.getLibri();
+			model.addAttribute("libri", libri);
+			model.addAttribute("totale", true);
+		} else if (idLibro != null) {
+			libro = libroService.getLibroById(idLibro);
+			model.addAttribute("libro", libro);
+			model.addAttribute("totale", false);
 		}
-		
-		
-	 
 		List<Genere> generi = genereService.getGeneri();
-		model.addAttribute("libri", libri);
+		
 		model.addAttribute("generi", generi);
-		model.addAttribute("totale", true);
 		return "CatalogoLibri";
 	}
 	
 	@PostMapping("/prenotalibro")
-	public String prenotaLibro( //html session
+	public String prenotaLibro( HttpSession session,
 			@RequestParam int idLibro,
 			Model model) {
-		Integer idAnagrafica = 1;
-		
-		String tipoPrenotazione = "libro";
-		String ticket = prenotazioneService.generaTicket(idLibro, tipoPrenotazione);
-		prenotazioneService.registraPrenotazione(ticket, idAnagrafica, idLibro, tipoPrenotazione);
-		model.addAttribute("pren", true);
-		return "redirect:/libri";
+		if (session.getAttribute("utente") != null) {
+			Integer idAnagrafica = ((Anagrafica) session.getAttribute("utente")).getId();
+			
+			String tipoPrenotazione = "libro";
+			String ticket = prenotazioneService.generaTicket(idLibro, tipoPrenotazione);
+			prenotazioneService.registraPrenotazione(ticket, idAnagrafica, idLibro, tipoPrenotazione);
+			model.addAttribute("pren", true);
+			return "redirect:/libri";
+		} 
+		return "redirect:/utente/form";
 	}
 }

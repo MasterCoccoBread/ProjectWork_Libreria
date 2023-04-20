@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="css/styleHome.css">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Home page</title>
+    <title th:text="'Home page'"></title>
 </head>
  <body>
     <header class="header">
@@ -22,14 +22,13 @@
         <img class="img-testo" src="LibreriaDelLevantesolo_testo2.jpg" alt="LOGO"></a>
         </div>
         <nav class="nav-bar">
-            <a href="HomePage.html">Home</a>
-            <a href="CatalogoLibri.html">Cataloghi</a>
-            <a href="Eventi.html">Eventi</a>
-            <a href="#">Contatti</a> 
+            <a th:href="@{/homepage}" th:text="'Home'"></a>
+            <a th:href="@{/libri}" th:text="'Libri'"></a>
+            <a th:href="@{/eventi}" th:text="'Eventi'"></a>
         </nav>
         <nav class="nav-bar">
         	<ul>
-            <li><a th:href="@{/formutente}" href="Form.html">Accedi / Registrati</a></li>
+            <li><a th:href="@{/formutente}" th:text="'Accedi / Registrati'"></a></li>
             </ul>
         </nav>
     </header>
@@ -38,167 +37,47 @@
         <div class="contenitore-top">
         <div class="locandine-eventi">
             <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true }'>
-                <div class="carousel-cell"><a href="Eventi.html"><img src="images/imgEvento1.jpg" alt=""></a></div>
+                <div class="carousel-cell"><a th:href="@{/eventi}"><img src="images/imgEvento1.jpg" alt=""></a></div>
               </div>
         </div>
         </div>
-        <div class="titoli" style="background: burlywood;"><h1>SCOPRI I NOSTRI LIBRI IN PROMOZIONE</h1></div>
+        <div class="titoli" style="background: burlywood;"><h1 th:text="'SCOPRI I NOSTRI LIBRI IN PROMOZIONE'"></h1></div>
         <div class="container-body">
         <div class="cover-section-1"></div>
         <div class="section-1 swiper mySwiper">
             <div class="section-1-card swiper-wrapper">
-                        <div class="card swiper-slide" id="card-libri" style="width: 200px;">
+                        <div class="card swiper-slide" id="card-libri" th:each="l : ${libri}" style="width: 12rem;">
                             <div class="nascondi">
                                 <div class="cover-dettaglio">
-                                    <button class="btn-dettaglio"  href="Dettaglio.html">
-                                        Dettagli
-                                    </button>
+                                	<a th:href="@{/libri(idLibro=${l.id})}">
+                                    <button class="btn-dettaglio"  th:text="'Dettagli'"></button>
+                                    </a>
                                 </div>
-                                
                                 <div class="card-cart">
-                                    <a href="#" class="btn">PRENOTA IL LIBRO</a>
+	                                <form action="homepage/prenotalibro" method="post">
+	                                	<label for="idLibro"  ></label>
+	                                	<input th:value="${l.id}" type="hidden" id="idLibro" name="idLibro" >
+	                                    <input type="submit" class="btn" th:value="'PRENOTA IL LIBRO'">
+	                                </form>
                                 </div>
                             </div>
                         <div class="cover-img">
-                        <img src="images/imglocandica.jpg" alt="Card image cap">
+                        <img th:src="${l.immagine}" alt="Card image cap">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title" style="color: white;">Titolo libro</h5>
-                            <p class="card-price" style="color: white;">5.00$</p>
-                            </div>
-                        </div>
-                        
-                        <div class="card swiper-slide" id="card-libri" style="width: 12rem;">
-                            <div class="nascondi">
-                                <div class="cover-dettaglio">
-                                    <button class="btn-dettaglio"  href="Dettaglio.html">
-                                        Dettagli
-                                    </button>
-                                </div>
-                                
-                                <div class="card-cart">
-                                    <a href="#" class="btn">PRENOTA IL LIBRO</a>
-                                </div>
-                            </div>
-                        <div class="cover-img">
-                        <img src="images/imglocandica.jpg" alt="Card image cap">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title" style="color: white;">Titolo libro2</h5>
-                            <p class="card-price" style="color: white;">5.00$</p>
-                            </div>
-                        </div>
-                        <div class="card swiper-slide" id="card-libri" style="width: 12rem;">
-                            <div class="nascondi">
-                                <div class="cover-dettaglio">
-                                    <button class="btn-dettaglio"  href="Dettaglio.html">
-                                        Dettagli
-                                    </button>
-                                </div>
-                                
-                                <div class="card-cart">
-                                    <a href="#" class="btn">PRENOTA IL LIBRO</a>
-                                </div>
-                            </div>
-                        <div class="cover-img">
-                        <img src="images/imglocandica.jpg" alt="Card image cap">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title" style="color: white;">Titolo libro3</h5>
-                            <p class="card-price" style="color: white;">5.00$</p>
-                            </div>
-                        </div>
-                        <div class="card swiper-slide" id="card-libri" style="width: 12rem;">
-                            <div class="nascondi">
-                                <div class="cover-dettaglio">
-                                    <button class="btn-dettaglio"  href="Dettaglio.html">
-                                        Dettagli
-                                    </button>
-                                </div>
-                                
-                                <div class="card-cart">
-                                    <a href="#" class="btn">PRENOTA IL LIBRO</a>
-                                </div>
-                            </div>
-                        <div class="cover-img">
-                        <img src="images/imglocandica.jpg" alt="Card image cap">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title" style="color: white;">Titolo libro</h5>
-                            <p class="card-price" style="color: white;">5.00$</p>
-                            </div>
-                        </div>
-                        <div class="card swiper-slide" id="card-libri" style="width: 12rem;">
-                            <div class="nascondi">
-                                <div class="cover-dettaglio">
-                                    <button class="btn-dettaglio"  href="Dettaglio.html">
-                                        Dettagli
-                                    </button>
-                                </div>
-                                
-                                <div class="card-cart">
-                                    <a href="#" class="btn">PRENOTA IL LIBRO</a>
-                                </div>
-                            </div>
-                        <div class="cover-img">
-                        <img src="images/imglocandica.jpg" alt="Card image cap">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title" style="color: white;">Titolo libro</h5>
-                            <p class="card-price" style="color: white;">5.00$</p>
-                            </div>
-                        </div>
-                        <div class="card swiper-slide" id="card-libri" style="width: 12rem;">
-                            <div class="nascondi">
-                                <div class="cover-dettaglio">
-                                    <button class="btn-dettaglio"  href="Dettaglio.html">
-                                        Dettagli
-                                    </button>
-                                </div>
-                                
-                                <div class="card-cart">
-                                    <a href="#" class="btn">PRENOTA IL LIBRO</a>
-                                </div>
-                            </div>
-                        <div class="cover-img">
-                        <img src="images/imglocandica.jpg" alt="Card image cap">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title" style="color: white;">Titolo libro</h5>
-                            <p class="card-price" style="color: white;">5.00$</p>
-                            </div>
-                        </div>
-                        <div class="card swiper-slide" id="card-libri" style="width: 12rem;">
-                            <div class="nascondi">
-                                <div class="cover-dettaglio">
-                                    <button class="btn-dettaglio"  href="Dettaglio.html">
-                                        Dettagli
-                                    </button>
-                                </div>
-                                
-                                <div class="card-cart">
-                                    <a href="#" class="btn">PRENOTA IL LIBRO</a>
-                                </div>
-                            </div>
-                        <div class="cover-img">
-                        <img src="images/imglocandica.jpg" alt="Card image cap">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title" style="color: white;">Titolo libro</h5>
-                            <p class="card-price" style="color: white;">5.00$</p>
+                            <h5 class="card-title" th:text=${l.titolo} style="color: white;"></h5>
+                            <p class="card-price" th:text="${#numbers.formatDecimal(l.prezzo,0,'POINT',2,'COMMA')} + '€'" style="color: white;"></p>
                             </div>
                         </div>
                 </div>
-
-                
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
                 
                   </div>
                   <div class="linea"></div>
                   <div class="titoli">
-            <h1>ESPLORA IL NOSTRO BOOKSTORE</h1>
-            <button class="btn btn-bookstore">BOOKSTORE</button>
+            <h1 th:text="'ESPLORA IL NOSTRO BOOKSTORE'"></h1>
+            <a class="btn btn-bookstore" th:href="'@{/libri}'" th:text="'BOOKSTORE'"></a>
         </div>
         </div>
     
@@ -210,25 +89,25 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-md-3 item">
-                        <h3>Servizi</h3>
+                        <h3 th:text="'Servizi'"></h3>
                         <ul>
-                            <li><a href="#">Web design</a></li>
-                            <li><a href="#">Svilupppo</a></li>
-                            <li><a href="#">Hosting</a></li>
+                            <li><a href="#" th:text="'Web design'"></a></li>
+                            <li><a href="#" th:text="'Sviluppo'"></a></li>
+                            <li><a href="#" th:text="'Generation'"></a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-md-3 item">
-                        <h3>Di noi!</h3>
+                        <h3 th:text="'Di noi!'"></h3>
                         <ul>
-                            <li><a href="#">Azienda</a></li>
-                            <li><a href="#">Squadra</a></li>
-                            <li><a href="#">Carriere</a></li>
+                            <li><a href="#" th:text="'Compagnia'"></a></li>
+                            <li><a href="#" th:text="'Squadra'"></a></li>
+                            <li><a href="#" th:text="'Carriera'"></a></li>
                         </ul>
                     </div>
                     <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
                 </div>
-               <a th:href="@{/catalogo}" style="text-decoration: none; color: rgb(178, 172, 172); cursor: pointer;">
-                <p class="copyright"> Libreria Del Levante © 2023</p></a>
+               <a th:href="@{/catalogo}" style="text-decoration: none; color: rgb(178, 172, 172); cursor: pointer;"></a>
+                <p class="copyright" th:text="'Libreria Del Levante © 2023'"></p>
             </div>
         </footer>
     </div>

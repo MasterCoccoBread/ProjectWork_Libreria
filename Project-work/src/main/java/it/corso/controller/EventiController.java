@@ -7,9 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import it.corso.model.Anagrafica;
 import it.corso.model.Evento;
 import it.corso.service.EventoService;
 import it.corso.service.PrenotazioneService;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/eventi")
@@ -28,14 +31,15 @@ public class EventiController {
 	}
 	
 	@PostMapping("/prenotaevento")
-	public String prenotaEvento(// html session
-			//@RequestParam Integer idAnagrafica,
+	public String prenotaEvento( HttpSession session,
 			@RequestParam int idEvento) {
-		Integer idAnagrafica = 1;
-		
-		String tipoPrenotazione = "evento";
-		String ticket = prenotazioneService.generaTicket(idEvento, tipoPrenotazione);
-		prenotazioneService.registraPrenotazione(ticket, idAnagrafica, idEvento, tipoPrenotazione);
-		return "redirect:/eventi";
+		if (session.getAttribute("utente") != null) {
+			Integer idAnagrafica = ((Anagrafica) session.getAttribute("utente")).getId();
+			String tipoPrenotazione = "evento";
+			String ticket = prenotazioneService.generaTicket(idEvento, tipoPrenotazione);
+			prenotazioneService.registraPrenotazione(ticket, idAnagrafica, idEvento, tipoPrenotazione);
+			return "redirect:/eventi";
+		}
+		return "redirect:/utente/form";
 	}
 }

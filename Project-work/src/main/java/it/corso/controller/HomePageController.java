@@ -1,21 +1,52 @@
 package it.corso.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import it.corso.model.Anagrafica;
+import it.corso.model.Libro;
+import it.corso.service.LibroService;
+import it.corso.service.PrenotazioneService;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/homepage")
 public class HomePageController {
 
-		@GetMapping
-		public String getPage() {
+	@Autowired
+	private LibroService libroService;
+	@Autowired
+	private PrenotazioneService prenotazioneService;
+	List<Libro> libri;
+	@GetMapping
+	public String getPage(Model model) {
+		libri = libroService.getLibri();
+		model.addAttribute("libri", libri);
 	
+		return "HomePage";
+	}
 	
-				return "HomePage";
-}
-	
-	
+	@PostMapping("/prenotalibro")
+	public String prenotaLibro( HttpSession session,
+			@RequestParam int idLibro,
+			Model model) {
+		if (session.getAttribute("utente") != null) {
+			Integer idAnagrafica = ((Anagrafica) session.getAttribute("utente")).getId();
+			
+			String tipoPrenotazione = "libro";
+			String ticket = prenotazioneService.generaTicket(idLibro, tipoPrenotazione);
+			prenotazioneService.registraPrenotazione(ticket, idAnagrafica, idLibro, tipoPrenotazione);
+			return "redirect:/homepage";
+		} 
+		return "redirect:/utente/form";
+	}
 	
 	
 }

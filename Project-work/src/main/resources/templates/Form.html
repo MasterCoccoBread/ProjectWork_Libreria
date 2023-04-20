@@ -25,7 +25,7 @@
         </nav>
         <nav class="nav-bar">
                 <ul>
-                <li><a th:href="@{/formutente}">Accedi / Registrati</a></li>
+               <li><a th:href="@{/utente}" th:text="'Accedi / Registrati'"></a></li>
                 </ul>
         </nav>
     </header>
@@ -34,35 +34,42 @@
     <div class="contenitore-form">
         <div class="accedi_registrati-box">
             <div class="box accedi" id="accedi">
-                    <form action="loginutente" th:object="${anagrafica}" method="post">
-                        <h2 th:text="'Accedi'"></h2>
-                           <div class="input-box" hidden="hidden">
-                				<input th:field="*{profilo.id}" type="text" id="idP" name="idP" class="form-control" required="required" readonly hidden="hidden">
-               				</div> 
-                        <div class="input-box">
-                            <span class="icon"></span>
-                           <input th:field="*{profilo.email}" type="email" id="email" name="email" class="form-control" required="required">
-                            <label th:text="'Email'"></label>
-                        </div>
-                        <div class="input-box">
-                            <span class="icon"></span>
-                            <input th:field="*{profilo.password}" type="password" id="password" name="password" class="form-control" placeholder="Password">
-                            <label th:text="'Password'"></label>
-                        </div>
-                        <div class="pass-dimenticato">
-                            <a href="#" th:text="'Password Dimenticata?'"></a>
-                        </div>
-                        <input  type="submit" th:value="'Accedi'" class="btn-accedi">
-                        <div class="accedi-registrati">
+                    <form action="login" method="post" >
+						<div class="row">
+								<div class="col-12">
+								<label th:text="'Username'"></label>
+								<input type="text" id="username" name="username" class="form-control"
+									required="required">
+							</div>
+						</div>
+						<div class="row mt-2">
+							<div class="col-12">
+								<label th:text="'Password:'"></label>
+								<input type="password" id="password"
+									   name="password" class="form-control" required="required">
+							</div>
+						</div>
+						<div class="row mt-4">
+							<div class="col-12 text-center">
+								<input type="submit" th:value="'Accedi'" class="btn btn-primary">
+								&emsp;
+
+								<a th:href="@{/homepage}" class="btn btn-secondary" th:text="'Torna Indietro'"></a>
+							</div>
+						</div>
+					</form>
+					<div th:if="${logError}" >
+							<p th:text="'Credenziali Errate, accesso negato'"></p>
+						</div>
+                    <div class="accedi-registrati">
                             <p th:text="'Non hai un account?'" style="display:inline-block"></p>
                             <a th:text="'Registrati'" id="registratiLink" ></a>
                         </div>
-                    </form>
             </div>
         </div>
 
         <div class="box registrati" style="display:none" id="reg">
-            <form action="loginutente" th:object="${anagrafica}" method="POST">
+            <form th:object="${anagrafica}" method="POST">
                 <h2 th:text="'Registrati'"></h2>
                    <div class="input-box" hidden="hidden"> 
                    <input th:field="*{id}" type="text" id="id" name="id" class="form-control"

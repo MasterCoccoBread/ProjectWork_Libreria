@@ -37,7 +37,7 @@ public class ModicaAnagraficaController {
 		
 	}
 
-	@GetMapping("/cancellaanagrafica")
+	@GetMapping("/cancellaanagrafica") //@deletemapping
 	public String cancellaAnagrafica(@RequestParam("id") int id) {
 		Anagrafica anagrafica = anagraficaService.getAnagraficaByid(id);
 		anagraficaService.cancellaAnagrafica(anagrafica);

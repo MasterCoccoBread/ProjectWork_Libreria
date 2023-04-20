@@ -1,16 +1,16 @@
 .contenitore-catologo {
     width: 100%;
-    min-height: 1000px;
     max-height: 100%;
+    display:flex;
     
     }
     
     .left-bar {
-        position: relative;
         width: 20%;
+        min-height:1000px;
         height: 100%;
         background: transparent;
-        float: left;
+		display: block;
     
     }
     .left-bar h4 {
@@ -30,16 +30,22 @@
     }
     
     .cataloghi {
-        margin: 0;
-        position: relative;
+    	z-index:1;
+		margin: 0 auto;
         width: 80%;
-        min-height: inherit;
-        height: 100%;
-        background-color: transparent;
+        max-height: 100%;
+        position:relative;
         float:left;
+        background-color: burlywood;
+        
     }
     
+    .cataloghi-content{
+    width: 90%;
+    margin: 0 auto;
+    min-height:100%;
     
+    }
     
     .contenitore-catologo h4 {
         margin-top: 10px;
@@ -71,7 +77,12 @@
     }
     
     .linea-top{
-        width: 50%;
+        width: 200px;
         margin: 0 auto;
+    }
+    
+    .spazio {
+    width:100%;
+    height: 40px;
     }
     

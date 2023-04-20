@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/stylecatalogo.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styleDettaglio.css}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title th:text="'Catalogo Libri'"></title>
 </head>
  <body>
     <header class="header">
         <div class="content-logo">
-            <a href="HomePage.html"><img class="img-logo" th:src="@{/images/LibreriaDelLevantesolo_logo2.jpg}" alt="LOGO">
+            <a th:href="@{/homepage}"><img class="img-logo" th:src="@{/images/LibreriaDelLevantesolo_logo2.jpg}" alt="LOGO">
                 <img class="img-testo" th:src="@{/images/LibreriaDelLevantesolo_testo2.jpg}" alt="LOGO"></a>
         </div>
         <form action="#" class="search-bar">
@@ -28,15 +29,15 @@
             <a th:href="@{/eventi}" th:text="'Eventi'"></a>
         </nav>
         <nav class="nav-bar">
-            <ul>
-            <li><a th:href="@{/formutente}" th:text="'Accedi / Registrati'"></a></li>
-            </ul>
+        	<a th:href="@{/utente/login}" th:text="'Accedi'"></a>
+	           <a th:href="@{/utente/form}" th:text="'Registrati'"></a>
         </nav>
     </header>
     <div class="cover-header"></div>
     <div class="titolo-catalogo">
         <h6 th:text="'IL NOSTRO'"></h6>
         <h1 th:text="'BOOKSTORE'"></h1>
+        <div class="spazio"></div>
         <div class="linea linea-top"></div>
 	    <div style="margin-top: 8px;" th:if="${pren == true}">
 	    	<h3 th:text="'PRENOTAZIONE AVVENUTA CON SUCCESSO'" style="color: green;"></h3>
@@ -52,12 +53,9 @@
                     	<a th:href="@{libri(idGenere=${g.id})}" th:text="${g.descrizione}"></a> 
                     </li>
                 </ul>
-            <div class="linea"></div>
         </div>
         <div class="cataloghi">
-            <div class="catologhi-content">
-                <div class="section-1">
-                    <div class="section-1-card">
+            <div class="cataloghi-content">
                      
                         <div class="card" id="card-libri" style="width: 12rem;" th:each="l : ${libri}" th:if="${totale == true}">
 	                        <div class="cover-img">
@@ -86,36 +84,37 @@
 				            <div class="box-immagine">
 				                <img th:src="${libro.immagine}" alt="immagine">
 				            </div>
-				            <div class="linea linea-top" style="margin-top:10px"></div>
 				            <div class="box-resume">
 				                <div class="box-resume-2">
 				                	<h1 th:text="${libro.titolo}"></h1>
 					                <div class="content-autore">
 					                    <p class="contenuto-autore" th:text="${libro.autore.nome}"></p>
 					                </div>
-					                <div class="box-descrizione">
-					                        <p th:text="${libro.descrizione}"></p>
-					                </div>
+
+					              
 					                <div class="content-acquisti">
+					          			<p th:text="'Prezzo:'"></p>
+					                    <p class="sconto" th:text="${#numbers.formatDecimal(libro.prezzo,0,'POINT',2,'COMMA')} + '€'"></p>
 					                    <p th:text="${#numbers.formatDecimal(libro.prezzo,0,'POINT',2,'COMMA')} + '€'"></p>
-					                    <p th:text="${#numbers.formatDecimal(libro.prezzo,0,'POINT',2,'COMMA')} + '€'"></p>
-					                    <div class="linea linea-top"></div>
-					                    <div class="content-button-prenota" style="margin-top:30px;">
+					                  
+					                   
+					                   
 					                        <form action="libri/prenotalibro" method="post">
-						                    	<label for="idLibro"  ></label>
+						                    	<label for="idLibro" ></label>
 							   					<input th:value="${libro.id}" type="hidden" id="idLibro" name="idLibro" >
-						       					<input type="submit" class="btn" th:value="'PRENOTA IL LIBRO'">
+						       					<input type="submit" class="btn-dettaglio-buy" th:value="'PRENOTA IL LIBRO'">
 						                    </form>
 					                    </div>
+					                    <div class="linea linea-top"></div>
+					                     <div class="box-descrizione">
+					                        <p th:text="${libro.descrizione}"></p>
+					                </div>
 				                    </div>
 				                </div>
 				            </div>
 				        </div>
-                    </div>
-                </div>
             </div>
         </div>
-    </div>
     <div class="footer-dark">
         <footer>
             <div class="container">

@@ -30,8 +30,8 @@ public class AccediRegistratiAnagraficaController {
 	@GetMapping ("/form")
 	public String getPage(Model model,@RequestParam(name="id", required = false) Integer id,
 						  @RequestParam (name = "idP", required = false) Integer idP,
-						  @RequestParam (name="fe", required = false) String formError,
-						  HttpSession session)
+						  @RequestParam (name="fe", required = false) String formError
+						 )
 	{				
 		if(formError == null) {
 			anagraficaP = (id == null) ? new Anagrafica() : anagraficaService.getAnagraficaByid(id);

@@ -11,6 +11,11 @@ public class AreaUtenteController {
 	@GetMapping
 	public String getPage() {
 		
+		
+		//hhttp session primo controllo 
+		// se session la chiave utente == null rimando al login o hp 
+		// altrimenti dichiaro oggetto di tipo anagrafica = 
+		//model e attributo 
 		//aggiungere la vista dei dati profilo 
 		//aggiungere la vista delle prenotazioni 
 		

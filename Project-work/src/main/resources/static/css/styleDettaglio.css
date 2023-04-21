@@ -6,7 +6,7 @@ div {
     height: 592px;
     display: block;
     margin: 24px auto;
-    background: white;
+    background: burlywood;
     border-radius: 3px;
 }
 
@@ -50,19 +50,22 @@ border-right: 1px solid black;
 }
 
 .content-acquisti {
-    width: 256px;
-    height: 60px;
+    width: 100%;
+    height: 150px;
 
 }
 
+
 .content-acquisti p {
-    font-size: 30px;
+	display:inline-block;
+	width: 80px;
+	font-size: 20px;
 }
 
 .box-descrizione {
     width: 100%;
-
-    height: 284px; 
+    min-height: 250px; 
+    max-height: 500px;
 }
 
 .content-button-prenota {
@@ -96,3 +99,19 @@ border-right: 1px solid black;
     height: 100%;
 }
 
+.btn-dettaglio-buy {
+	width: 100%;
+	height:50px;
+	border: 1px solid black;
+	border-radius: 5px;
+	background:black;
+	color:white;
+}
+
+.sconto {
+	text-decoration:line-through;
+}
+
+.linea-top {
+	margin-bottom: 20px;
+}

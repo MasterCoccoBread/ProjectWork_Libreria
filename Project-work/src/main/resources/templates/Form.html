@@ -14,19 +14,18 @@
  <body>
     <header class="header">
         <div class="content-logo">
-        <a href="HomePage.html"><img class="img-logo" src="LibreriaDelLevantesolo_logo2.jpg" alt="LOGO">
-        <img class="img-testo" src="LibreriaDelLevantesolo_testo2.jpg" alt="LOGO"></a>
+        <a th:href="@{/homepage}"><img class="img-logo" th:src="@{/images/LibreriaDelLevantesolo_logo2.jpg}" alt="LOGO">
+        <img class="img-testo" th:src="@{/images/LibreriaDelLevantesolo_testo2.jpg}" alt="LOGO"></a>
         </div>
-         <nav class="nav-bar">
+
+        <nav class="nav-bar">
             <a th:href="@{/homepage}" th:text="'Home'"></a>
-            <a th:href="@{/libri}" th:text="'Libri'"></a>
+            <a th:href="@{/libri}" th:text="'Bookstore'"></a>
             <a th:href="@{/eventi}" th:text="'Eventi'"></a>
         </nav>
-       <nav class="nav-bar">
-        	<ul>
-	        	<li><a th:href="@{/utente/login}">Accedi</a></li>
-	            <li><a th:href="@{/utente/form}">Registrati</a></li>
-            </ul>
+        <nav class="nav-bar">
+        	<a th:href="@{/utente/login}" th:text="'Accedi'"></a>
+	           <a th:href="@{/utente/form}" th:text="'Registrati'"></a>
         </nav>
     </header>
     <div class="cover-header"></div>
@@ -110,7 +109,7 @@
                     </div>
                     <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
                 </div>
-                <a href="" style="text-decoration: none; color: rgb(178, 172, 172); cursor: pointer;">
+                <a th:href="@{/catalogo}" style="text-decoration: none; color: rgb(178, 172, 172); cursor: pointer;">
                 <p class="copyright">Libreria Del Levante © 2023</p></a>
             </div>
         </footer>

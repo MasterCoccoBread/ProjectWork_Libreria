@@ -12,23 +12,18 @@
  <body>
     <header class="header">
         <div class="content-logo">
-            <a th:href="@{/homepage}"><img class="img-logo" src="LibreriaDelLevantesolo_logo2.jpg" alt="LOGO">
-                <img class="img-testo" src="LibreriaDelLevantesolo_testo2.jpg" alt="LOGO"></a>
+             <a th:href="@{/homepage}"><img class="img-logo" th:src="@{/images/LibreriaDelLevantesolo_logo2.jpg}" alt="LOGO">
+        <img class="img-testo" th:src="@{/images/LibreriaDelLevantesolo_testo2.jpg}" alt="LOGO"></a>
         </div>
         <nav class="nav-bar">
             <a th:href="@{/homepage}" th:text="'Home'"></a>
             <a href="CatalogoLibri.html">Cataloghi</a>
             <a href="Eventi.html">Eventi</a>
-            <a href="#">Contatti</a> 
         </nav>
-        <nav class="nav-bar">
-            <li><a th:href="@{/loginutente}">Accedi</a></li>
-            <li><a th:href="@{/formutente}">Registrati</a></li>
-        </nav>
-    </header>
+        </header>
     <div class="cover-header"></div>
         <div class="alert" style="margin: 0 auto; text-align: center; height: 600px; padding: 150px 0;">
-        <h1 th:text="'Accesso avvenuto con successo'"></h1><br>
+        <h1 th:text="'Registrazione avvenuta con successo'"></h1><br>
         <div class="bottone-indietro">
         <a th:href="@{/homepage}" th:text="'Torna in home page'"></a></div>
         </div>

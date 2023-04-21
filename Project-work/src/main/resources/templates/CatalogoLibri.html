@@ -20,7 +20,7 @@
                 <img class="img-testo" th:src="@{/images/LibreriaDelLevantesolo_testo2.jpg}" alt="LOGO"></a>
         </div>
         <form action="#" class="search-bar">
-            <input type="text" placeholder="Cerca...">
+            <input type="text" id="search-input" placeholder="Cerca...">
             <button type="submit"><i class="bx bx-search"></i></button>
         </form>
         <nav class="nav-bar">
@@ -57,7 +57,7 @@
         <div class="cataloghi">
             <div class="cataloghi-content">
                      
-                        <div class="card" id="card-libri" style="width: 12rem;" th:each="l : ${libri}" th:if="${totale == true}">
+                        <div class="card cercatitolo" id="card-libri" style="width: 12rem;" th:each="l : ${libri}" th:if="${totale == true}">
 	                        <div class="cover-img">
 	                        	<img th:src="${l.immagine}" alt="Card image cap">
 	                        </div>
@@ -143,5 +143,32 @@
             </div>
         </footer>
     </div>
+    <script>
+  const searchInput = document.getElementById("search-input");
+  const cat = document.getElementsByClassName("cataloghi-content")[0];
+  var cards = cat.getElementsByClassName("cercatitolo");
+
+  searchInput.addEventListener("keyup", function(event) {
+    const searchText = event.target.value.toLowerCase();
+
+    Array.from(cards).forEach(function(card) {
+      const cells = card.getElementsByClassName("card-title");
+      let found = false;
+
+      Array.from(cells).forEach(function(cell) {
+        const cellText = cell.textContent.toLowerCase();
+        if(cellText.indexOf(searchText) !== -1) {
+          found = true;
+        }
+      });
+
+      if(found) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+</script>
 </body>
 </html>

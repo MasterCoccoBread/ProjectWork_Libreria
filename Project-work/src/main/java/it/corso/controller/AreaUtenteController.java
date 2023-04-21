@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/areautente")
 public class AreaUtenteController {
 	
-	@GetMapping
+	@GetMapping ("/accesso")
 	public String getPage() {
 		
 		
@@ -18,11 +18,17 @@ public class AreaUtenteController {
 		//model e attributo 
 		//aggiungere la vista dei dati profilo 
 		//aggiungere la vista delle prenotazioni 
-		
-		
 		return "AreaProfilo";
 	}
 		
+	
+	@GetMapping ("/registrazione")
+	public String getPageRegistrazione() {
+		
+		return "AreaProfiloRegistrazione";
+	}
+	
+	
 	
 	
 }

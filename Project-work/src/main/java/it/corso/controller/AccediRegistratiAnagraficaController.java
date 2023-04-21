@@ -52,12 +52,12 @@ public class AccediRegistratiAnagraficaController {
 	{ 
 		//se ci sono errori ripresento la pagina html dove mostro i singoli messaggi
 		if (bindingResult.hasErrors()){
-			return "redirect:/formutente?fe";
+			return "redirect:/utente/form?fe";
 
 		}
 		if (!anagraficaService.registraAnagrafica(anagrafica)){
 			anagraficaP = anagrafica;
-			return "redirect:/formutente?fe";
+			return "redirect:/utente/form?fe";
 		}
 
 

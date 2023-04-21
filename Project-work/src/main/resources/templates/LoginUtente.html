@@ -34,14 +34,14 @@
             <form th:object="${anagrafica}" method="POST" action="areautente/accesso">
                 <h2 th:text="'Accedi'"></h2>
                 <div class="input-box">
-                    <span class="icon"></span>
+                    <span class="icon"><i class='bx bx-user'></i></span>
                     <input  type="text" id="username" name="username" class="form-control" required="required">
                   <label th:text="'Username'"></label>
                 </div>
                 
                 <div class="input-box">
-                    <span class="icon"></span>
-					<input type="password" id="password" name="password" class="form-control">
+                    <span class="icon"><i class='bx bxs-lock-alt' ></i></span>
+					<input type="password" id="password" name="password" class="form-control" required="required">
                     <label th:text="'Password'"></label>
                 </div>
                 <div class="pass-dimenticato">

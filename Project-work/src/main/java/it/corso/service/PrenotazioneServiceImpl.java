@@ -7,8 +7,7 @@ import it.corso.model.Anagrafica;
 import it.corso.model.Evento;
 import it.corso.model.Libro;
 import it.corso.model.Prenotazione;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
+
 
 @Service
 public class PrenotazioneServiceImpl implements PrenotazioneService {

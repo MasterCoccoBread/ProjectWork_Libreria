@@ -4,4 +4,5 @@ import it.corso.model.Prenotazione;
 
 public interface PrenotazioniDao extends CrudRepository<Prenotazione, Integer>{
 
+	
 }

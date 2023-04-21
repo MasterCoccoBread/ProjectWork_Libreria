@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import it.corso.model.Anagrafica;
 import it.corso.model.Evento;
 import it.corso.model.Libro;
+import it.corso.model.Prenotazione;
 import it.corso.service.AnagraficaService;
 import it.corso.service.EventoService;
 import it.corso.service.LibroService;
+import it.corso.service.PrenotazioneService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -26,6 +27,8 @@ public class CatalogoAmministratoreController {
 	private LibroService libroService;
 	@Autowired
 	private AnagraficaService anagraficaService;
+	@Autowired
+	private PrenotazioneService prenotazioneService;
 	
 	@GetMapping
 	public String getPage(Model model, HttpSession session) {
@@ -54,20 +57,42 @@ public class CatalogoAmministratoreController {
 	}
 	
 	@GetMapping("/utenti")
-	public String getPage(Model model) {
+	public String getPageUtente(Model model) {
 		List<Anagrafica> anagrafiche = anagraficaService.getAnagrafiche();
 		model.addAttribute("anagrafiche",anagrafiche);
 		model.addAttribute("catalogo", "utenti");
 		model.addAttribute("adminArea", false);
 		return "catalogoAmministratore";
-		
-		
+	}
+	
+	@GetMapping("/prenotazioni")
+	public String getPagePrenotazione(Model model) {
+		List<Evento> eventi = eventoService.getEventi();
+		List<Prenotazione> prenotazioni = prenotazioneService.getPrenotazioni();
+		model.addAttribute("prenotazioni", prenotazioni);
+		model.addAttribute("catalogo", "prenotazioni");
+		model.addAttribute("adminArea", false);
+		return "catalogoAmministratore";
 	}
 	
 	@GetMapping("/cancellaanagrafica")
 	public String cancellaAnagrafica(@RequestParam("id") int id) {
 		Anagrafica anagrafica = anagraficaService.getAnagraficaByid(id);
 		anagraficaService.cancellaAnagrafica(anagrafica);
+		return "redirect:/catalogo/utenti";
+	}
+	
+	@GetMapping("/cancellaprenotazioneevento")
+	public String cancellaPrenotazioneEvento(@RequestParam("id") int id) {
+		Prenotazione prenotazione = prenotazioneService.getPrenotazioneById(id);
+		prenotazioneService.cancellaPrenotazioneEvento(prenotazione);
+		return "redirect:/catalogo/utenti";
+	}
+	
+	@GetMapping("/cancellaprenotazionelibro")
+	public String cancellaPrenotazioneLibro(@RequestParam("id") int id) {
+		Prenotazione prenotazione = prenotazioneService.getPrenotazioneById(id);
+		prenotazioneService.cancellaPrenotazioneLibro(prenotazione);
 		return "redirect:/catalogo/utenti";
 	}
 	

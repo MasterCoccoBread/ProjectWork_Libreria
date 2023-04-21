@@ -12,12 +12,13 @@ body {
 
 }
 
+
 .contenitore-immmagine-event {
 
     position: relative;
     width: 100%;
     height: 100%;
-    background: url('imgEvento1.jpg') no-repeat;
+    background-image: url('123.jpg');
     background-size: cover;
     background-position: center;
     margin-top: 0;
@@ -35,6 +36,7 @@ body {
     width: 90%;
     position: relative;
     height: 100%;
+    background: rgb(170, 137, 95);
  
 
 }
@@ -82,7 +84,7 @@ body {
 iframe {
 height: 180px;
 background: #25FF00;
-margin: 3% 10%;
+margin: 3% auto;
 
 }
 
@@ -106,7 +108,7 @@ margin: 3% 10%;
 
 
   .content-button {
-    width: 200px;
+    padding: 15px 20px;
     text-align: center;
     position: relative;
     color: white;
@@ -116,10 +118,25 @@ margin: 3% 10%;
   }
 
   .content-button .btn-eventi {
-    width: 100% ;
+	padding: 15px 20px;
     background: black;
+    border:none;
+    outline: none;
+    transition: all 0.4s ease;
+    border: 2px solid black;
+  }
+  
+  .btn-eventi:hover {
+  background: burlywood;
+  color: black;
   }
 
   .text-event {
     color: black;
+  }
+  
+.immagine-evento{
+	margin: 20px auto;
+	width:70%;
+ 	 background: rgb(170, 137, 95);
   }

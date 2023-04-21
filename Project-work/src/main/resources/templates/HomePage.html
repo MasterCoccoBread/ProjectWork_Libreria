@@ -64,7 +64,7 @@
                         <img th:src="${l.immagine}" alt="Card image cap">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title" th:text=${l.titolo} style="color: white;"></h5>
+                            <h5 class="card-title" th:text=${l.titolo} style="color: white;" ></h5>
                             <p class="sconto" th:text="${#numbers.formatDecimal(l.prezzo,0,'POINT',2,'COMMA')} + '€'"></p>
                             <p class="card-price" th:text="${#numbers.formatDecimal(l.sconto,0,'POINT',2,'COMMA')} + '€'" style="color: white;"></p>
                             </div>
@@ -89,6 +89,13 @@
         <footer>
             <div class="container">
                 <div class="row">
+                <div class="col-sm-6 col-md-3 item">
+                        <h3 th:text="'Contatti'"></h3>
+                        <ul>
+                            <li><a href="#" th:text="'Email: Levante@gmail.com'"></a></li>
+                            <li><a href="#" th:text="'Telefono: +010 41404054'"></a></li>
+						</ul>
+                    </div>
                     <div class="col-sm-6 col-md-3 item">
                         <h3 th:text="'Servizi'"></h3>
                         <ul>

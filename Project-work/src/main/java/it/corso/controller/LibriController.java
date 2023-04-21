@@ -31,6 +31,7 @@ public class LibriController {
 	List<Libro> libri;
 	@GetMapping
 	private String getPage(Model model,
+			@RequestParam(name = "ok", required = false) String ok,
 			@RequestParam(name = "idGenere", required = false) Integer idGenere,
 			@RequestParam(name = "idLibro", required = false) Integer idLibro) {
 		
@@ -51,6 +52,7 @@ public class LibriController {
 		List<Genere> generi = genereService.getGeneri();
 		
 		model.addAttribute("generi", generi);
+		model.addAttribute("ok", ok != null);
 		return "CatalogoLibri";
 	}
 	
@@ -65,7 +67,7 @@ public class LibriController {
 			String ticket = prenotazioneService.generaTicket(idLibro, tipoPrenotazione);
 			prenotazioneService.registraPrenotazione(ticket, idAnagrafica, idLibro, tipoPrenotazione);
 			model.addAttribute("pren", true);
-			return "redirect:/libri";
+			return "redirect:/libri?ok";
 		} 
 		return "redirect:/utente/form";
 	}

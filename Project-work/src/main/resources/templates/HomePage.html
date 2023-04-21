@@ -36,7 +36,7 @@
         <div class="contenitore-top">
         <div class="locandine-eventi">
             <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true }'>
-                <div class="carousel-cell"><a th:href="@{/eventi}"><img src="images/imgEvento1.jpg" alt=""></a></div>
+                <div class="carousel-cell" th:each=" e : ${eventi}"><a th:href="@{/eventi}"><img th:src="${e.immagine}" alt=""></a></div>
               </div>
         </div>
         </div>

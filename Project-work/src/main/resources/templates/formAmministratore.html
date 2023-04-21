@@ -122,6 +122,13 @@
 						</div>
 						<div class="row box">
 							<div class="col-12 input-box">
+								<label for="sconto" th:text="'Prezzo Scontato:'"></label>
+								<input th:value="${libro.sconto}" type="number" id="sconto" name="sconto" class="form-control prezzo" 
+									required="required">
+							</div>
+						</div>
+						<div class="row box">
+							<div class="col-12 input-box">
 								<label for="isbn" th:text="'ISBN(inserire 10 o 13 numeri ed inizino per 978 o 979):'"></label>
 								<p th:if="${formError}" th:text="'ISBN DUPLICATO'" style="text-align:center; color:red; margin:0;"><p>
 								<input th:value="${libro.isbn}" type="text" pattern="(97(8|9))\d{7}|(97(8|9))\d{10}" id="isbn" name="isbn" class="form-control" 

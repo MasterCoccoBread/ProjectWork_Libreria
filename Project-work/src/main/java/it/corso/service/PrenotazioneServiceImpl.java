@@ -7,8 +7,6 @@ import it.corso.model.Anagrafica;
 import it.corso.model.Evento;
 import it.corso.model.Libro;
 import it.corso.model.Prenotazione;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
 
 @Service
 public class PrenotazioneServiceImpl implements PrenotazioneService {
@@ -56,15 +54,9 @@ public class PrenotazioneServiceImpl implements PrenotazioneService {
 	}
 
 	@Override
-	public void cancellaPrenotazioneEvento(Prenotazione prenotazione) {
+	public void cancellaPrenotazione(Prenotazione prenotazione) {
 		prenotazione.getAnagrafica().getPrenotazioni().remove(prenotazione);
 		prenotazione.getEvento().clear();
-		prenotazioniDao.delete(prenotazione);
-	}
-
-	@Override
-	public void cancellaPrenotazioneLibro(Prenotazione prenotazione) {
-		prenotazione.getAnagrafica().getPrenotazioni().remove(prenotazione);
 		prenotazione.getLibro().clear();
 		prenotazioniDao.delete(prenotazione);
 	}
@@ -101,7 +93,7 @@ public class PrenotazioneServiceImpl implements PrenotazioneService {
 				corpo = "0" + corpo;
 		}
 		
-		String ticket = "Ticket_" +  corpoPrenotazione + "_" + corpoTipo +corpo;
+		String ticket = "Ticket_" +  corpoPrenotazione + "_" + corpoTipo + corpo;
 		return ticket;
 	}
 

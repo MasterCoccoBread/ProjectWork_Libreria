@@ -8,7 +8,7 @@ import it.corso.model.Libro;
 
 public interface LibroService {
 
-	boolean registraLibro(Libro libro, String titolo, String descrizione, double prezzo, String isbn, Genere genere, Autore autore, MultipartFile immagine);
+	boolean registraLibro(Libro libro, String titolo, String descrizione, double prezzo, double sconto, String isbn, Genere genere, Autore autore, MultipartFile immagine);
 	Libro getLibroById(int id);
 	List<Libro> getLibri();
 	void cancellaLibro(Libro libro);

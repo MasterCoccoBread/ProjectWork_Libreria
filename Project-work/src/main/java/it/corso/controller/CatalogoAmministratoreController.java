@@ -67,7 +67,6 @@ public class CatalogoAmministratoreController {
 	
 	@GetMapping("/prenotazioni")
 	public String getPagePrenotazione(Model model) {
-		List<Evento> eventi = eventoService.getEventi();
 		List<Prenotazione> prenotazioni = prenotazioneService.getPrenotazioni();
 		model.addAttribute("prenotazioni", prenotazioni);
 		model.addAttribute("catalogo", "prenotazioni");
@@ -82,18 +81,11 @@ public class CatalogoAmministratoreController {
 		return "redirect:/catalogo/utenti";
 	}
 	
-	@GetMapping("/cancellaprenotazioneevento")
-	public String cancellaPrenotazioneEvento(@RequestParam("id") int id) {
+	@GetMapping("/cancellaprenotazione")
+	public String cancellaPrenotazione(@RequestParam("id") int id) {
 		Prenotazione prenotazione = prenotazioneService.getPrenotazioneById(id);
-		prenotazioneService.cancellaPrenotazioneEvento(prenotazione);
-		return "redirect:/catalogo/utenti";
-	}
-	
-	@GetMapping("/cancellaprenotazionelibro")
-	public String cancellaPrenotazioneLibro(@RequestParam("id") int id) {
-		Prenotazione prenotazione = prenotazioneService.getPrenotazioneById(id);
-		prenotazioneService.cancellaPrenotazioneLibro(prenotazione);
-		return "redirect:/catalogo/utenti";
+		prenotazioneService.cancellaPrenotazione(prenotazione);
+		return "redirect:/catalogo/prenotazioni";
 	}
 	
 	@PostMapping("/logout")

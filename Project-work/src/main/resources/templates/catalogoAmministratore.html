@@ -133,7 +133,7 @@
 								<td th:text="${p.ticket}" class="align-middle"></td>
 								<td th:text="${p.anagrafica.nome} + ' ' + ${p.anagrafica.cognome}" class="align-middle"></td>
 								<td class=" align-middle text-end">
-									<a th:href="@{/catalogo/cancellaevento(id=${p.id})}" class=" btn-primary btn-sm btn-admin button2" 
+									<a th:href="@{/catalogo/cancellaprenotazione(id=${p.id})}" class=" btn-primary btn-sm btn-admin button2" 
 										th:text="'Cancella Prenotazione'"></a>
 								</td>
 							</tr>

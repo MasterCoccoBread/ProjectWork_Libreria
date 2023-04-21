@@ -8,8 +8,6 @@ public interface AnagraficaDao extends CrudRepository<Anagrafica, Integer>{
 	
 	
 	Anagrafica findByProfiloUsername(String username);
-	
-	 
 	Anagrafica findByProfiloUsernameAndProfiloPassword(String username, String password);
 
 	

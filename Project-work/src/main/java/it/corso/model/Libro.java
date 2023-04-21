@@ -32,6 +32,9 @@ public class Libro {
 	@Column(name = "prezzo")
 	private double prezzo;
 	
+	@Column(name = "sconto")
+	private double sconto;
+	
 	@Column(name = "immagine")
 	private String immagine;
 	
@@ -85,6 +88,15 @@ public class Libro {
 
 	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
+	}
+
+
+	public double getSconto() {
+		return sconto;
+	}
+
+	public void setSconto(double sconto) {
+		this.sconto = sconto;
 	}
 
 	public String getImmagine() {

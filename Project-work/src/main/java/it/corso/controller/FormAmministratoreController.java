@@ -81,6 +81,7 @@ public class FormAmministratoreController {
 			@RequestParam("titolo") String titolo,
 			@RequestParam("descrizione") String descrizione,
 			@RequestParam("prezzo") double prezzo,
+			@RequestParam("sconto") double sconto,
 			@RequestParam ("isbn") String isbn,
 			@RequestParam("genere") Genere genere,
 			@RequestParam(name = "autore",required = false) Autore autore,
@@ -92,7 +93,7 @@ public class FormAmministratoreController {
 			autoreService.registraAutore(autore, nome);
 		}
 		 
-		if(!libroService.registraLibro(libro, titolo, descrizione, prezzo, isbn, genere, autore, immagine)){
+		if(!libroService.registraLibro(libro, titolo, descrizione, prezzo, sconto, isbn, genere, autore, immagine)){
 			return "redirect:/form/libri?fe";
 		}
 		

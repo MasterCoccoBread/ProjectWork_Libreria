@@ -17,11 +17,12 @@ public class LibroServiceImpl implements LibroService {
 	@Autowired
 	private LibroDao libroDao;
 	@Override
-	public boolean registraLibro(Libro libro,String titolo, String descrizione, double prezzo, String isbn, Genere genere, Autore autore, MultipartFile immagine) {
+	public boolean registraLibro(Libro libro,String titolo, String descrizione, double prezzo, double sconto, String isbn, Genere genere, Autore autore, MultipartFile immagine) {
 
 		libro.setTitolo(titolo);
 		libro.setDescrizione(descrizione);
 		libro.setPrezzo(prezzo);
+		libro.setSconto(sconto);
 		libro.setGenere(genere);
 		libro.setAutore(autore);
 		if (immagine != null && !immagine.isEmpty()) {

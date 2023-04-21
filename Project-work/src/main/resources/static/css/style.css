@@ -482,3 +482,17 @@ html {
 .content-logo a {
 	text-decoration: none;
 }
+.sconto {
+	width: 40%;
+	position:relative;
+	float: left;
+	color: white;
+	text-decoration:line-through;
+	font-weight: 600;
+}
+.card-price {
+	width: 40%;
+	position: relative;
+	float: left;
+
+}

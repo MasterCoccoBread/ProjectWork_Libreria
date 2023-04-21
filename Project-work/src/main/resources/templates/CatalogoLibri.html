@@ -20,7 +20,7 @@
                 <img class="img-testo" th:src="@{/images/LibreriaDelLevantesolo_testo2.jpg}" alt="LOGO"></a>
         </div>
         <form action="#" class="search-bar">
-            <input type="text" placeholder="Cerca...">
+            <input type="text" id="search-input" placeholder="Cerca...">
             <button type="submit"><i class="bx bx-search"></i></button>
         </form>
         <nav class="nav-bar">
@@ -39,7 +39,7 @@
         <h1 th:text="'BOOKSTORE'"></h1>
         <div class="spazio"></div>
         <div class="linea linea-top"></div>
-	    <div style="margin-top: 8px;" th:if="${pren == true}">
+	    <div style="margin-top: 8px;" th:if="${ok}">
 	    	<h3 th:text="'PRENOTAZIONE AVVENUTA CON SUCCESSO'" style="color: green;"></h3>
 	    	<div class="linea linea-top"></div>
 	    </div>
@@ -57,7 +57,7 @@
         <div class="cataloghi">
             <div class="cataloghi-content">
                      
-                        <div class="card" id="card-libri" style="width: 12rem;" th:each="l : ${libri}" th:if="${totale == true}">
+                        <div class="card cercatitolo" id="card-libri" style="width: 12rem;" th:each="l : ${libri}" th:if="${totale == true}">
 	                        <div class="cover-img">
 	                        	<img th:src="${l.immagine}" alt="Card image cap">
 	                        </div>
@@ -138,10 +138,37 @@
                     </div>
                     <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
                 </div>
-                <a th:href="@{/catalogo}" style="text-decoration: none; color: rgb(178, 172, 172); cursor: pointer;"></a>
-                <p class="copyright" th:text="'Libreria Del Levante © 2023'"></p>
+                <a th:href="@{/catalogo}" style="text-decoration: none; color: rgb(178, 172, 172); cursor: pointer;">
+                <p class="copyright" th:text="'Libreria Del Levante © 2023'"></p></a>
             </div>
         </footer>
     </div>
+    <script>
+  const searchInput = document.getElementById("search-input");
+  const cat = document.getElementsByClassName("cataloghi-content")[0];
+  var cards = cat.getElementsByClassName("cercatitolo");
+
+  searchInput.addEventListener("keyup", function(event) {
+    const searchText = event.target.value.toLowerCase();
+
+    Array.from(cards).forEach(function(card) {
+      const cells = card.getElementsByClassName("card-title");
+      let found = false;
+
+      Array.from(cells).forEach(function(cell) {
+        const cellText = cell.textContent.toLowerCase();
+        if(cellText.indexOf(searchText) !== -1) {
+          found = true;
+        }
+      });
+
+      if(found) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+</script>
 </body>
 </html>

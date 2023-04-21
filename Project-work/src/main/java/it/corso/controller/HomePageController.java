@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.corso.model.Anagrafica;
+import it.corso.model.Evento;
 import it.corso.model.Libro;
+import it.corso.service.EventoService;
 import it.corso.service.LibroService;
 import it.corso.service.PrenotazioneService;
 import jakarta.servlet.http.HttpSession;
@@ -21,13 +23,17 @@ import jakarta.servlet.http.HttpSession;
 public class HomePageController {
 
 	@Autowired
+	private EventoService eventoService;
+	@Autowired
 	private LibroService libroService;
 	@Autowired
 	private PrenotazioneService prenotazioneService;
-	List<Libro> libri;
+	
 	@GetMapping
 	public String getPage(Model model) {
-		libri = libroService.getLibri();
+		List<Evento> eventi = eventoService.getEventi();
+		List<Libro> libri = libroService.getLibri();
+		model.addAttribute("eventi", eventi);
 		model.addAttribute("libri", libri);
 	
 		return "HomePage";

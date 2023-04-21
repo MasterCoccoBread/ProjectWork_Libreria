@@ -63,7 +63,8 @@
 	                        </div>
 	                        <div class="card-body">
 	                            <h5 class="card-title" th:text=${l.titolo}></h5>
-	                            <p class="card-price" th:text="${#numbers.formatDecimal(l.prezzo,0,'POINT',2,'COMMA')} + '€'"></p>
+	                            <p class="sconto" th:text="${#numbers.formatDecimal(l.prezzo,0,'POINT',2,'COMMA')} + '€'"></p>
+	                            <p class="card-price" th:text="${#numbers.formatDecimal(l.sconto,0,'POINT',2,'COMMA')} + '€'"></p>
 	                        </div>
                         	<div class="nascondi">
 	                        	<div class="cover-dettaglio" >
@@ -95,7 +96,7 @@
 					                <div class="content-acquisti">
 					          			<p th:text="'Prezzo:'"></p>
 					                    <p class="sconto" th:text="${#numbers.formatDecimal(libro.prezzo,0,'POINT',2,'COMMA')} + '€'"></p>
-					                    <p th:text="${#numbers.formatDecimal(libro.prezzo,0,'POINT',2,'COMMA')} + '€'"></p>
+					                    <p th:text="${#numbers.formatDecimal(libro.sconto,0,'POINT',2,'COMMA')} + '€'"></p>
 					                  
 					                   
 					                   

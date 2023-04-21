@@ -120,6 +120,13 @@
         <footer>
             <div class="container">
                 <div class="row">
+                <div class="col-sm-6 col-md-3 item">
+                        <h3 th:text="'Contatti'"></h3>
+                        <ul>
+                            <li><a href="#" th:text="'Email: Levante@gmail.com'"></a></li>
+                            <li><a href="#" th:text="'Telefono: +010 41404054'"></a></li>
+						</ul>
+                    </div>
                     <div class="col-sm-6 col-md-3 item">
                         <h3 th:text="'Servizi'"></h3>
                         <ul>
@@ -138,8 +145,9 @@
                     </div>
                     <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
                 </div>
-                <a th:href="@{/catalogo}" style="text-decoration: none; color: rgb(178, 172, 172); cursor: pointer;">
-                <p class="copyright" th:text="'Libreria Del Levante © 2023'"></p></a>
+               <a th:href="@{/catalogo}"style="text-decoration: none; color: rgb(178, 172, 172); cursor: pointer;">
+                <p class="copyright" th:text="'Libreria Del Levante © 2023'"></p>
+                </a>
             </div>
         </footer>
     </div>

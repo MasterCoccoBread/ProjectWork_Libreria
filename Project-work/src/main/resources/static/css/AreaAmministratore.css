@@ -57,3 +57,23 @@
 	.btn-nav {
 	border: none;
 	outline: none;}
+	
+	
+	
+	
+	tr {
+	height: 60px;
+	}
+	
+	.box {
+	border: none;}
+	
+	
+	.errore {
+	width: 100%;
+		margin: 0 auto;
+		color: red;
+		font-weight: 600;
+		text-align:center;
+		
+	}

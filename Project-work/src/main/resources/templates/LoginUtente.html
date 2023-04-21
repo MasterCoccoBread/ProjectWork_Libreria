@@ -24,17 +24,17 @@
             <a href="#">Contatti</a> 
         </nav>
         <nav class="nav-bar">
-                
-               <a th:href="@{/utente/login}" th:text="'Accedi '"></a>
-               <a th:href="@{/utente/form}" th:text="' Registrati'"></a>
-                
+        	<ul>
+	        	<li><a th:href="@{/utente/login}">Accedi</a></li>
+	            <li><a th:href="@{/utente/form}">Registrati</a></li>
+            </ul>
         </nav>
     </header>
     <div class="cover-header"></div>
 
     <div class="contenitore-form">
         <div class="box accedi" id="accedi">
-            <form th:object="${anagrafica}" method="POST" action="login">
+            <form th:object="${anagrafica}" method="POST" action="areautente/accesso">
                 <h2 th:text="'Accedi'"></h2>
                 <div class="input-box">
                     <span class="icon"></span>

@@ -17,17 +17,16 @@
         <a href="HomePage.html"><img class="img-logo" src="LibreriaDelLevantesolo_logo2.jpg" alt="LOGO">
         <img class="img-testo" src="LibreriaDelLevantesolo_testo2.jpg" alt="LOGO"></a>
         </div>
-        <nav class="nav-bar">
-            <a href="HomePage.html">Home</a>
-            <a href="CatalogoLibri.html">Cataloghi</a>
-            <a href="Eventi.html">Eventi</a>
-            <a href="#">Contatti</a> 
+         <nav class="nav-bar">
+            <a th:href="@{/homepage}" th:text="'Home'"></a>
+            <a th:href="@{/libri}" th:text="'Libri'"></a>
+            <a th:href="@{/eventi}" th:text="'Eventi'"></a>
         </nav>
-        <nav class="nav-bar">
-                
-               <a th:href="@{/utente/login}" th:text="'Accedi '"></a>
-               <a th:href="@{/utente/form}" th:text="' Registrati'"></a>
-                
+       <nav class="nav-bar">
+        	<ul>
+	        	<li><a th:href="@{/utente/login}">Accedi</a></li>
+	            <li><a th:href="@{/utente/form}">Registrati</a></li>
+            </ul>
         </nav>
     </header>
     <div class="cover-header"></div>
@@ -75,13 +74,11 @@
 					<input th:field="*{profilo.password}" type="password" id="password" name="password" class="form-control">
                     <label th:text="'Password'"></label>
                 </div>
-                <div class="pass-dimenticato">
-                    <a href="#">Password dimenticata?</a>
-                </div>
+                
                 <input  type="submit" th:value="'Registrati'" class="btn-accedi">
 				&emsp; 
                 <div class="accedi-registrati">
-                    <p>Hai già un account?<a href="@{/utente/login}" id="accediLink"> Accedi</a></p>
+                    <p>Hai già un account?<a th:href="@{/utente/login}" id="accediLink"> Accedi</a></p>
                 </div>
             </form>
         </div>

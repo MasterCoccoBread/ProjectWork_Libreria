@@ -17,7 +17,7 @@ import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/utente")
-public class AccediRegistratiAnagraficaController {
+public class AccediAnagraficaController {
 	@Autowired
 	private AnagraficaService anagraficaService;
 
@@ -61,7 +61,7 @@ public class AccediRegistratiAnagraficaController {
 		}
 
 
-		return "redirect:/areautente";
+		return "redirect:/registrati";
 	}
 
 	@GetMapping ("/login")

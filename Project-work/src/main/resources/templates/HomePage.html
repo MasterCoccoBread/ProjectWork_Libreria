@@ -77,7 +77,7 @@
                   <div class="titoli">
             <h1 th:text="'ESPLORA IL NOSTRO BOOKSTORE'"></h1>
             <div class=spazio></div>
-            <a class="btn-bookstore" th:href="'@{/libri}'" th:text="'BOOKSTORE'"></a>
+            <a class="btn-bookstore" th:href="@{/libri}" th:text="'BOOKSTORE'"></a>
         </div>
         </div>
     
@@ -106,7 +106,7 @@
                     </div>
                     <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
                 </div>
-               <a th:href="@{/catalogo}" style="text-decoration: none; color: rgb(178, 172, 172); cursor: pointer;"></a>
+               <a th:href="@{/catalogo}"style="text-decoration: none; color: rgb(178, 172, 172); cursor: pointer;"></a>
                 <p class="copyright" th:text="'Libreria Del Levante © 2023'"></p>
             </div>
         </footer>

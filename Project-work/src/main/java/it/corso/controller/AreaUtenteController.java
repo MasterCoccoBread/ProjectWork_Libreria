@@ -1,16 +1,18 @@
 package it.corso.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/areautente")
 public class AreaUtenteController {
 	
-	@GetMapping ("/accesso")
-	public String getPage() {
-		
+	@GetMapping 
+	public String getPage(Model model, HttpSession session) {
 		
 		//hhttp session primo controllo 
 		// se session la chiave utente == null rimando al login o hp 
@@ -19,16 +21,6 @@ public class AreaUtenteController {
 		//aggiungere la vista dei dati profilo 
 		//aggiungere la vista delle prenotazioni 
 		return "AreaProfilo";
-	}
-		
-	
-	@GetMapping ("/registrazione")
-	public String getPageRegistrazione() {
-		
-		return "AreaProfiloRegistrazione";
-	}
-	
-	
-	
+	}	
 	
 }

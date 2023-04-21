@@ -19,9 +19,9 @@
 				<h1 th:text="'Area Admin'" style="margin: 0px auto; color:white;"></h1>
 			</div>
         <div class="text-center" style="margin:0 20px;">
-			        	<a th:href="@{/homepage}" th:text="'Home'" class="btn btn-success"></a>
+			        	<a th:href="@{/homepage}" th:text="'Home'" class="btn btn-success btn-nav"></a>
 			        	<form th:action="@{/catalogo/logout}" method="post">
-			        		<input  type="submit" th:value="'Logout'" class="btn btn-success">
+			        		<input  type="submit" th:value="'Logout'" class="btn btn-success btn-nav">
 			        	</form>
 	        </div>
     </header>
@@ -169,7 +169,7 @@
 							</div>
 						</div>
 						<div class="row mt-4">
-							<div class="col-12">
+							<div class="col-12 align-middle">
 								<input type="submit" th:value="'Registra Libro'" class="btn-admin btn-registra">
 								<a th:href="@{/catalogo/libri}" class="btn-admin btn-indietro" th:text="'Torna Indietro'"></a>
 							</div>

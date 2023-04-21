@@ -1,0 +1,59 @@
+@charset "ISO-8859-1";
+
+.btn-admin {
+	padding: 10px 24px;
+	border-radius: 4px;
+	color: white;
+	text-decoration: none;
+	border: 1px solid transparent;
+	font-weight: 600;
+	transition: all 0.2s ease;
+	
+}
+
+.button1 {
+	background:blue;
+	
+}
+
+.button2 {
+	background:red;
+}
+
+.button1:hover {
+	opacity: 0.6;
+	color:white;
+	
+}
+
+.button2:hover {
+	opacity: 0.6;
+	color: white;
+}
+
+.btn-registra {
+	background: black;
+	float: left;
+}
+
+
+.btn-indietro {
+	background: black;
+	padding: 10px 32px;
+	float: right
+}
+
+.btn-registra:hover {
+	background: green;
+	color:black;
+}
+
+
+.btn-indietro:hover {
+	background: red;
+	text-decoration: none;
+	color:black;}
+	
+	.btn-nav {
+	border: none;
+	outline: none;}

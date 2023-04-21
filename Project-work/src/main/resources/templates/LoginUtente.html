@@ -22,41 +22,30 @@
             <a th:href="@{/libri}" th:text="'Bookstore'"></a>
             <a th:href="@{/eventi}" th:text="'Eventi'"></a>
         </nav>
-        <nav class="nav-bar">
-        	<a th:href="@{/utente/login}" th:text="'Accedi'"></a>
-	           <a th:href="@{/utente/form}" th:text="'Registrati'"></a>
-        </nav>
     </header>
     <div class="cover-header"></div>
 
     <div class="contenitore-form">
         <div class="box accedi" id="accedi">
-            <form th:object="${anagrafica}" method="POST" action="areautente/accesso">
+            <form th:object="${anagrafica}" method="POST">
                 <h2 th:text="'Accedi'"></h2>
                 <div class="input-box">
-                    <span class="icon"></span>
+                    <span class="icon"><i class='bx bx-user'></i></span>
                     <input  type="text" id="username" name="username" class="form-control" required="required">
                   <label th:text="'Username'"></label>
                 </div>
                 
                 <div class="input-box">
-                    <span class="icon"></span>
-					<input type="password" id="password" name="password" class="form-control">
+                    <span class="icon"><i class='bx bxs-lock-alt' ></i></span>
+					<input type="password" id="password" name="password" class="form-control" required="required">
                     <label th:text="'Password'"></label>
-                </div>
-                <div class="pass-dimenticato">
-                    <a href="#">Password dimenticata?</a>
                 </div>
                 <input  type="submit" th:value="'Accedi'" class="btn-accedi">
                 <div class="accedi-registrati">
-                    <p>Hai già un account?<a href="@{/form}" id="accediLink"> Registrati</a></p>
+                    <p>Hai già un account?<a th:href="@{/utente/form}" id="accediLink"> Registrati</a></p>
                 </div>
             </form>
         </div>
-
-
-        
-
     </div>
 
     <div class="footer-dark">

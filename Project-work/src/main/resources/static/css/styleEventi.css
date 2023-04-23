@@ -13,21 +13,19 @@ body {
 }
 
 
-.contenitore-immmagine-event {
+.contenitore-immmagine-event img{
 
     position: relative;
     width: 100%;
-    height: 100%;
-    background-image: url('123.jpg');
-    background-size: cover;
-    background-position: center;
-    margin-top: 0;
+    height: auto;
+    margin: 0 atuo;
 }
 
 .container-top {
     width: 100%;
     position: relative;
-    height: 200px;
+    height: auto;
+    margin: 0px auto;
 
 }
 

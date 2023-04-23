@@ -89,9 +89,9 @@
 								<td th:text="${l.autore.nome}" class="align-middle"></td>
 								<td class="align-middle text-end valign-middle" >
 									<a th:href="@{/form/libri(id=${l.id})}" class=" btn-primary btn-sm btn-admin button1" 
-										th:text="'Modifica Libro'"></a>
+										th:text="'Modifica'"></a>
 									<a th:href="@{/form/cancellalibro(id=${l.id})}" class=" btn-primary btn-sm btn-admin button2"
-										th:text="'Cancella Libro'"></a>
+										th:text="'Cancella'"></a>
 								</td>
 							</tr>
 						</tbody>
@@ -109,9 +109,9 @@
 								<td th:text="${e.autore.nome}" class="align-middle"></td>
 								<td class=" align-middle text-end">
 									<a th:href="@{/form/eventi(id=${e.id})}" class="btn-primary btn-sm btn-admin button1" 
-										th:text="'Modifica Evento'"></a>
+										th:text="'Modifica'"></a>
 									<a th:href="@{/form/cancellaevento(id=${e.id})}" class="btn-primary btn-sm btn-admin button2" 
-										th:text="'Cancella Evento'"></a>
+										th:text="'Cancella'"></a>
 								</td>
 							</tr>
 						</tbody>
@@ -121,9 +121,9 @@
 								<td th:text="${a.profilo.username}" class="align-middle"></td>
 								<td th:text="${a.profilo.email}" class="align-middle"></td>
 								<td th:text="${a.telefono}" class="align-middle"></td>
-								<td class=" align-middle text-end">
+								<td class=" align-middle ">
 									<a th:href="@{/catalogo/cancellaanagrafica(id=${a.id})}" class=" btn-primary btn-sm btn-admin button2" 
-										th:text="'Cancella Anagrafica'"></a>
+										th:text="'Cancella'"></a>
 								</td>
 							</tr>
 						</tbody>
@@ -132,9 +132,9 @@
 								<td th:text="${p.id}" class="align-middle"></td>
 								<td th:text="${p.ticket}" class="align-middle"></td>
 								<td th:text="${p.anagrafica.nome} + ' ' + ${p.anagrafica.cognome}" class="align-middle"></td>
-								<td class=" align-middle text-end">
+								<td class=" align-middle ">
 									<a th:href="@{/catalogo/cancellaprenotazione(id=${p.id})}" class=" btn-primary btn-sm btn-admin button2" 
-										th:text="'Cancella Prenotazione'"></a>
+										th:text="'Cancella'"></a>
 								</td>
 							</tr>
 						</tbody>
@@ -143,33 +143,40 @@
 			</div>
 		</div>
 		<div class="footer-dark">
-	        <footer>
-	            <div class="container">
-	                <div class="row">
-	                    <div class="col-sm-6 col-md-3 item">
-	                        <h3>Servizi</h3>
-	                        <ul>
-	                            <li><a href="#">Web design</a></li>
-	                            <li><a href="#">Sviluppo</a></li>
-	                            <li><a href="#">Hosting</a></li>
-	                        </ul>
-	                    </div>
-	                    <div class="col-sm-6 col-md-3 item">
-	                        <h3>Di noi!</h3>
-	                        <ul>
-	                            <li><a href="#">Azienda</a></li>
-	                            <li><a href="#">Squadra</a></li>
-	                            <li><a href="#">Carriere</a></li>
-	                        </ul>
-	                    </div>
-	                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
-	                </div>
-	               <a th:href="@{/catalogo}" style="text-decoration: none; color: rgb(178, 172, 172); cursor: pointer;">
-	                <p class="copyright"> Libreria Del Levante © 2023</p></a>
-	            </div>
-	        </footer>
+	       <footer>
+            <div class="container">
+                <div class="row">
+                <div class="col-sm-6 col-md-3 item">
+                        <h3 th:text="'Contatti'"></h3>
+                        <ul>
+                            <li><a href="#" th:text="'Email: Levante@gmail.com'"></a></li>
+                            <li><a href="#" th:text="'Telefono: +010 41404054'"></a></li>
+						</ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3 th:text="'Servizi'"></h3>
+                        <ul>
+                            <li><a href="#" th:text="'Web design'"></a></li>
+                            <li><a href="#" th:text="'Sviluppo'"></a></li>
+                            <li><a href="#" th:text="'Generation'"></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3 th:text="'Di noi!'"></h3>
+                        <ul>
+                            <li><a href="#" th:text="'Compagnia'"></a></li>
+                            <li><a href="#" th:text="'Squadra'"></a></li>
+                            <li><a href="#" th:text="'Carriera'"></a></li>
+                        </ul>
+                    </div>
+                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                </div>
+               <a th:href="@{/catalogo}"style="text-decoration: none; color: rgb(178, 172, 172); cursor: pointer;">
+                <p class="copyright" th:text="'Libreria Del Levante © 2023'"></p>
+                </a>
+            </div>
+        </footer>
 	    </div>
-	</div>
 		<script>
 		const searchInput = document.getElementById("search-input");
 		const table = document.getElementsByTagName("table")[0];

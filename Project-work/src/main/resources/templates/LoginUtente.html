@@ -25,7 +25,7 @@
     </header>
     <div class="cover-header"></div>
 
-    <div class="contenitore-form">
+    <div class="contenitore-form" style="min-height:700px;">
         <div class="box accedi" id="accedi">
             <form th:object="${anagrafica}" method="POST">
                 <h2 th:text="'Accedi'"></h2>
@@ -40,6 +40,9 @@
 					<input type="password" id="password" name="password" class="form-control" required="required">
                     <label th:text="'Password'"></label>
                 </div>
+            <div th:if="${logError}" >
+				<p th:text="'Credenziali Errate, accesso negato'" style="color:red;"></p>
+			</div>
                 <input  type="submit" th:value="'Accedi'" class="btn-accedi">
                 <div class="accedi-registrati">
                     <p>Hai già un account?<a th:href="@{/utente/form}" id="accediLink"> Registrati</a></p>

@@ -1,10 +1,7 @@
 package it.corso.service;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import it.corso.dao.AnagraficaDao;
 import it.corso.model.Anagrafica;
 import it.corso.model.Profilo;
@@ -13,11 +10,11 @@ import jakarta.servlet.http.HttpSession;
 @Service
 public class AnagraficaServiceImpl implements AnagraficaService{
 
-
 	@Autowired
 	private AnagraficaDao anagraficaDao;
 
 	private Anagrafica anagraficaEsistente;
+	
 	@Override
 	public boolean registraAnagrafica(Anagrafica anagrafica) {
 
@@ -25,12 +22,9 @@ public class AnagraficaServiceImpl implements AnagraficaService{
 		if (anagrafica.getId()==0&&anagraficaEsistente != null) {
 			return false;
 		}
-
 		anagraficaDao.save(anagrafica);
 			return  true;
-
 		//save fa già da solo il controllo ID, se valido o null (solo integer può essere null, no int)
-
 	}
 
 	@Override
@@ -49,13 +43,8 @@ public class AnagraficaServiceImpl implements AnagraficaService{
 		// Bisognerebbe cancellailre il profilo perchè la FK al profilo sta nell'anagrafica. Se invece si mettesse ls FK all'anagraica nel profilo,
 		// si potrebbe cancellare direttamente l'analgrafica che quindi cancellerebbe anche il profilo.
 
-
 		anagraficaDao.delete(anagrafica);
-		//profiloService.cancellaProfilo(anagrafica.getProfilo()); non necessario grazie al cascade ALL 
-		//cancellato da qui e inserito nel metodo getMapping
-
 	}
-
 
 	@Override
 	public boolean controlloLogin(String username, String password, HttpSession session) {
@@ -67,8 +56,6 @@ public class AnagraficaServiceImpl implements AnagraficaService{
 			
 			return true;
 		}
-		
 		return false;
 	}
-	
 }

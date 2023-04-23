@@ -83,7 +83,7 @@ public class AccediAnagraficaController {
 			HttpSession session) {
 		
 		if(!anagraficaService.controlloLogin(username, password, session))
-			return "redirect:/loginutente?le";
+			return "redirect:/utente/login?le";
 		
 		
 		return "redirect:/areautente";

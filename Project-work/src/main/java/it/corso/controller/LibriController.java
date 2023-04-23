@@ -66,7 +66,7 @@ public class LibriController {
 			String tipoPrenotazione = "libro";
 			String ticket = prenotazioneService.generaTicket(idLibro, tipoPrenotazione);
 			prenotazioneService.registraPrenotazione(ticket, idAnagrafica, idLibro, tipoPrenotazione);
-			model.addAttribute("pren", true);
+			//model.addAttribute("pren", true);
 			return "redirect:/libri?ok";
 		} 
 		return "redirect:/utente/form";

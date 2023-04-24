@@ -49,7 +49,7 @@ public class HomePageController {
 			String tipoPrenotazione = "libro";
 			String ticket = prenotazioneService.generaTicket(idLibro, tipoPrenotazione);
 			prenotazioneService.registraPrenotazione(ticket, idAnagrafica, idLibro, tipoPrenotazione);
-			return "redirect:/homepage";
+			return "redirect:/areautente";
 		} 
 		return "redirect:/utente/form";
 	}

@@ -38,7 +38,7 @@ public class EventiController {
 			String tipoPrenotazione = "evento";
 			String ticket = prenotazioneService.generaTicket(idEvento, tipoPrenotazione);
 			prenotazioneService.registraPrenotazione(ticket, idAnagrafica, idEvento, tipoPrenotazione);
-			return "redirect:/eventi";
+			return "redirect:/areautente";
 		}
 		return "redirect:/utente/form";
 	}

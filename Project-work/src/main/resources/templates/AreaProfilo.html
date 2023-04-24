@@ -30,9 +30,7 @@
     <div class="cover-header"></div>
         <div class="alert" style="margin: 0 auto; text-align: center; padding: 150px 100px;">
 	        <h1 th:text="'Area Personale'"></h1><br>
-	        <div class="bottone-indietro">
-	        <a th:href="@{/homepage}" th:text="'Torna in home page'"></a>
-	        </div>
+	        
 	        <div >
 	        <form th:action="@{/areautente/logout}" method="post">
 	        <input type="submit" th:value="'Logout'" class="bottone-indietro"id="logoutsubmit">

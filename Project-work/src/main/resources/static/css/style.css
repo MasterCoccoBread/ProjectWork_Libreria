@@ -446,9 +446,12 @@ margin: 0 20px;
   width: 100%;
   height: 100%;
 }
+.bottone-indietro a {
+	text-decoration: none;
 
+	}
 .bottone-indietro {
-  border: 2px solid white;
+text-decoration:none;
   background-color: black;
   color:white;
   width: 200px;
@@ -456,21 +459,31 @@ margin: 0 20px;
   padding: 10px 0;
   margin: 0 auto;
   transition: all .2s ease-in-out;
+ 
 }
-.bottone-indietro a {
-   text-decoration: none;
-   color: white;
-   transition: all .2s ease-in-out;
+
+ .bottone-indietro a {
+text-decoration:none;
+  background-color: transparent;
+  color:white;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  transition: all .4s ease-in-out;
+ 
 }
 .bottone-indietro:hover {
   border: 2px solid black;
   background: white;
+  color: black;
 
 }
 
 .bottone-indietro a:hover {
-  color: black;
+	background: transparent;color: black;
 }
+
+
 
 html {
   overflow-x: hidden;
